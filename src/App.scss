@@ -1,0 +1,38 @@
+@import "./assets/styles/_variables.scss";
+@import "./assets/styles/_mixins.scss";
+
+.wrapper {
+  height: 100%;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.card {
+  display: flex;
+
+  &__arrow {
+    margin: 0 0 0 100px;
+    display: flex;
+    
+    &-img {
+      width: 80px;
+    }
+
+    @include phoneScreen {
+      margin: 0;
+    }
+  }
+
+  &__commoner {
+    filter: drop-shadow(0px 5px 3px #00000038);
+    font-weight: 900;
+    margin: 0 5px 0 0;
+    padding: 0 5px 0 0;
+    background: -webkit-linear-gradient(45deg, #ab40ff, #b14242);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-variation-settings: "slnt" -8;
+  }
+}

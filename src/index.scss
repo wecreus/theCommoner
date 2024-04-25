@@ -1,0 +1,26 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:slnt,wght@-8,100..900&display=swap");
+@import './assets/styles/_variables.scss';
+
+:root {
+  font-family: Inter, system-ui;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  color: white;
+  font-variation-settings: "slnt" 0;
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+body {
+  box-sizing: border-box;
+  background-color: $background;
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  margin: 0;
+}
