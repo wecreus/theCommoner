@@ -24,12 +24,12 @@
   &__arrow {
     margin: 0 0 0 100px;
     display: flex;
-    
+
     &-img {
       width: 80px;
 
       @include tabletScreen {
-        width: 50px
+        width: 50px;
       }
 
       @include phoneScreen {
@@ -41,15 +41,44 @@
       margin: 0;
     }
   }
+}
 
-  &__commoner {
-    filter: drop-shadow(0px 5px 3px #00000038);
-    font-weight: 900;
-    margin: 0 5px 0 0;
-    padding: 0 5px 0 0;
-    background: -webkit-linear-gradient(45deg, #ab40ff, #b14242);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-variation-settings: "slnt" -8;
+.commoner {
+  filter: drop-shadow(0px 5px 3px #00000038);
+  font-weight: 900;
+  margin: 0 5px 0 0;
+  padding: 0 5px 0 0;
+  background: linear-gradient(
+    90deg,
+    $accent1,
+    $accent2,
+    $accent1,
+    $accent2,
+    $accent1
+  );
+  background-clip: text;
+  background-size: 400% auto;
+  color: transparent;
+  font-variation-settings: "slnt" -8;
+
+  animation: CommonerAnimation 7s ease-in-out infinite;
+}
+
+.emoji {
+  width: 50px;
+  margin: 0 0 -10px 0;
+}
+
+@keyframes CommonerAnimation {
+  0% {
+    background-position: 0% center;
+  }
+
+  35% {
+    background-position: 200% center;
+  }
+
+  100% {
+    background-position: 200% center;
   }
 }

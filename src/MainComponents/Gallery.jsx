@@ -1,9 +1,7 @@
-
-
 function App() {
   return (
     <div className="card">
-      Gallery
+      <p className="card__text">Gallery</p>
     </div>
   );
 }

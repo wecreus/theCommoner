@@ -6,7 +6,7 @@ import ReactPageScroller from "react-page-scroller";
 
 function App() {
   return (
-    <ReactPageScroller>
+    <ReactPageScroller animationTimer={350}>
       <Welcome />
       <Gallery />
     </ReactPageScroller>
