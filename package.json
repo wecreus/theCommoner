@@ -12,6 +12,7 @@
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-page-scroller": "^3.0.1",
     "sass": "^1.75.0"
   },
   "devDependencies": {

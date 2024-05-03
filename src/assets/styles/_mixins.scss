@@ -1,5 +1,11 @@
 @mixin phoneScreen {
-  @media (max-width: #{$screen-sm-min}) {
+  @media (max-width: #{$screen-phone-min}) {
+    @content;
+  }
+}
+
+@mixin tabletScreen {
+  @media (max-width: #{$screen-tablet-min}) {
     @content;
   }
 }
