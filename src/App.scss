@@ -22,12 +22,19 @@
   }
 
   &__arrow {
-    margin: 0 0 0 100px;
+   
     display: flex;
+    animation: jumpInfinite 4s infinite;
+    opacity: 0.5;
+    
+    &:hover {
+      opacity: 1;
+      transition: all 200ms ease-in-out;
+    }
 
     &-img {
-      width: 80px;
-
+      width: 120px;
+      cursor: pointer;
       @include tabletScreen {
         width: 50px;
       }
@@ -44,9 +51,9 @@
 }
 
 .commoner {
-  filter: drop-shadow(0px 5px 3px #00000038);
+  filter: drop-shadow(2px 5px 5px #4912458c);
   font-weight: 900;
-  margin: 0 5px 0 0;
+  margin: 0;
   padding: 0 5px 0 0;
   background: linear-gradient(
     90deg,
@@ -60,8 +67,9 @@
   background-size: 400% auto;
   color: transparent;
   font-variation-settings: "slnt" -8;
+  animation: 7s CommonerAnimation 2s ease-in-out infinite;
+  position: relative;
 
-  animation: CommonerAnimation 7s ease-in-out infinite;
 }
 
 .emoji {
@@ -74,11 +82,27 @@
     background-position: 0% center;
   }
 
-  35% {
+  60% {
     background-position: 200% center;
   }
 
   100% {
     background-position: 200% center;
+  }
+}
+
+
+@keyframes jumpInfinite {
+  0% {
+    margin-top: 0;
+  }
+  25% {
+    margin-top: 40px;
+  }
+  50% {
+    margin-top: 0;
+  }
+  100% {
+    margin-top: 0;
   }
 }
