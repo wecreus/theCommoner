@@ -14,7 +14,8 @@
     "react-dom": "^18.2.0",
     "react-page-scroller": "^3.0.1",
     "react-typed": "^2.0.12",
-    "sass": "^1.75.0"
+    "sass": "^1.75.0",
+    "vite-plugin-svgr": "^4.2.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",

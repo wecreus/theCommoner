@@ -1,11 +1,89 @@
 @import "./assets/styles/_variables.scss";
 @import "./assets/styles/_mixins.scss";
 
+// TODO: split styles into different files
+
+.main {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  box-sizing: border-box;
+}
+
+.page-selector {
+  padding: 10px;
+  background: #00000067;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border-radius: 0px 10px 10px 0px;
+  margin: 0;
+
+  &__hidden {
+    position: absolute;
+    top: 50%;
+    transform: translate(-30px, -50%);
+    z-index: 2;
+    padding: 40px 40px 40px 0;
+    transition: transform 200ms;
+    transition-delay: 1.5s;
+
+    &:hover {
+      transform: translate(0, -50%);
+      transition-delay: 0s;
+      // addit "s" to "0s" this value will actually make it work
+    }
+  }
+
+  &__page {
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0);
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    transition: all 200ms ease-in-out;
+    position: relative;
+
+    &:before {
+      content: "";
+      display: block;
+      width: 6px;
+      height: 6px;
+      background-color: white;
+      left: 50%;
+      top: 50%;
+      position: absolute;
+      transform: translate(-50%, -50%);
+      border-radius: 20px;
+      transition: all 200ms ease-in-out;
+    }
+
+    &:active:before {
+      width: 12px;
+      height: 12px;
+    }
+
+    &:hover {
+      filter: drop-shadow(0px 0px 5px $accent3);
+      border: 1px solid $accent3;
+    }
+
+    &-selected {
+      pointer-events: none;
+      &:before {
+        width: 12px;
+        height: 12px;
+      }
+    }
+  }
+}
+
 .card {
   display: flex;
   height: 100%;
   align-items: center;
   padding: 50px;
+  box-sizing: border-box;
 
   @include phoneScreen {
     padding: 10px;
@@ -16,25 +94,35 @@
     font-size: 40px;
 
     @include tabletScreen {
-      padding: 0 20px 0 0;
+      padding: 0;
       font-size: 30px;
     }
   }
 
   &__arrow {
-   
     display: flex;
     animation: jumpInfinite 4s infinite;
-    opacity: 0.5;
-    
-    &:hover {
-      opacity: 1;
-      transition: all 200ms ease-in-out;
+    filter: drop-shadow(6px 4px 6px rgba(0, 0, 0, 0.712));
+    height: 100%;
+    align-items: center;
+
+    @include tabletScreen {
+      align-items: end;
     }
 
     &-img {
       width: 120px;
       cursor: pointer;
+      transition: all 200ms ease-in-out;
+      opacity: 0.5;
+
+      &:hover {
+        opacity: 1;
+        & > path {
+          stroke: white;
+        }
+      }
+
       @include tabletScreen {
         width: 50px;
       }
@@ -51,7 +139,7 @@
 }
 
 .commoner {
-  filter: drop-shadow(2px 5px 5px #4912458c);
+  text-shadow: 3px 1px 10px #c3babc2a;
   font-weight: 900;
   margin: 0;
   padding: 0 5px 0 0;
@@ -69,12 +157,19 @@
   font-variation-settings: "slnt" -8;
   animation: 7s CommonerAnimation 2s ease-in-out infinite;
   position: relative;
+}
 
+.transparent {
+  opacity: 0;
 }
 
 .emoji {
-  width: 50px;
+  width: 45px;
   margin: 0 0 -10px 0;
+
+  &:hover {
+    animation: hithere 1s ease normal; 
+  }
 }
 
 @keyframes CommonerAnimation {
@@ -91,7 +186,6 @@
   }
 }
 
-
 @keyframes jumpInfinite {
   0% {
     margin-top: 0;
@@ -105,4 +199,12 @@
   100% {
     margin-top: 0;
   }
+}
+
+@keyframes hithere {
+  30% { transform: scale(1.2); }
+  40%, 60% { transform: rotate(-20deg) scale(1.2); }
+  50% { transform: rotate(20deg) scale(1.2); }
+  70% { transform: rotate(0deg) scale(1.2); }
+  100% { transform: scale(1); }
 }
