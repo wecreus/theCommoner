@@ -1,20 +1,6 @@
-import { useState, useEffect } from "react";
-
 function MainPageSelector(props) {
   const { totalPages, currentPage, handlePageChange } = props;
-  /* dublicating state for tracking currentPage ensures that 
-  we update this component right away instead of waiting 
-  for the animation to finish*/
-  const [internalCurrentPage, setInternalCurrentPage] = useState(currentPage);
-  console.log("current state", currentPage, internalCurrentPage);
-  const internalHandlePageChange = (i) => {
-    setInternalCurrentPage(i);
-    handlePageChange(i);
-  };
-
-  useEffect(() => {
-    setInternalCurrentPage(currentPage);
-  }, [currentPage]);
+  console.log(currentPage);
   return (
     <div className="page-selector__hidden">
       <div className="page-selector">
@@ -22,9 +8,9 @@ function MainPageSelector(props) {
           <div
             key={i + `pageselector`}
             className={`page-selector__page ${
-              internalCurrentPage === i ? "page-selector__page-selected" : ""
+                currentPage === i ? "page-selector__page-selected" : ""
             }`}
-            onClick={() => internalHandlePageChange(i)}
+            onClick={() => handlePageChange(i)}
           ></div>
         ))}
       </div>
