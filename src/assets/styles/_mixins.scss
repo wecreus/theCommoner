@@ -9,3 +9,9 @@
     @content;
   }
 }
+
+@mixin desktopScreen {
+  @media (min-width: #{$screen-tablet-min}) {
+    @content;
+  }
+}

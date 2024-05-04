@@ -25,6 +25,7 @@ function App() {
         animationTimer={250}
         customPageNumber={pageNumber}
         onBeforePageScroll={(i) => {console.log("scroller", i); handlePageChange(i)}}
+        renderAllPagesOnFirstRender
       >
         <Welcome onScrollClick={() => handlePageChange(1)} />
         <Gallery />

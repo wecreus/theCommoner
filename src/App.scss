@@ -15,9 +15,13 @@
   background: #00000067;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 10px;
   border-radius: 0px 10px 10px 0px;
   margin: 0;
+
+  @include desktopScreen {
+    padding: 20px 15px 20px 10px;
+  }
 
   &__hidden {
     position: absolute;
@@ -27,6 +31,11 @@
     padding: 40px 40px 40px 0;
     transition: transform 200ms;
     transition-delay: 1.5s;
+    animation: jumpPageSelector 2s normal;
+
+    @include desktopScreen {
+      transform: translate(-45px, -50%);
+    }
 
     &:hover {
       transform: translate(0, -50%);
@@ -36,7 +45,7 @@
   }
 
   &__page {
-    border-radius: 10px;
+    border-radius: 20px;
     border: 1px solid rgba(255, 255, 255, 0);
     width: 16px;
     height: 16px;
@@ -44,18 +53,28 @@
     transition: all 200ms ease-in-out;
     position: relative;
 
+    @include desktopScreen {
+      width: 28px;
+      height: 28px;
+    }
+
     &:before {
       content: "";
       display: block;
       width: 6px;
       height: 6px;
-      background-color: white;
+      background-color: rgba(255, 255, 255, 0.466);
       left: 50%;
       top: 50%;
       position: absolute;
       transform: translate(-50%, -50%);
       border-radius: 20px;
       transition: all 200ms ease-in-out;
+
+      @include desktopScreen {
+        width: 10px;
+        height: 10px;
+      }
     }
 
     &:active:before {
@@ -71,6 +90,13 @@
     &-selected {
       pointer-events: none;
       &:before {
+        background-color: white;
+
+        @include desktopScreen {
+          width: 22px;
+          height: 22px;
+        }
+
         width: 12px;
         height: 12px;
       }
@@ -168,7 +194,7 @@
   margin: 0 0 -10px 0;
 
   &:hover {
-    animation: hithere 1s ease normal; 
+    animation: hithere 1s ease normal;
   }
 }
 
@@ -202,9 +228,33 @@
 }
 
 @keyframes hithere {
-  30% { transform: scale(1.2); }
-  40%, 60% { transform: rotate(-20deg) scale(1.2); }
-  50% { transform: rotate(20deg) scale(1.2); }
-  70% { transform: rotate(0deg) scale(1.2); }
-  100% { transform: scale(1); }
+  30% {
+    transform: scale(1.2);
+  }
+  40%,
+  60% {
+    transform: rotate(-20deg) scale(1.2);
+  }
+  50% {
+    transform: rotate(20deg) scale(1.2);
+  }
+  70% {
+    transform: rotate(0deg) scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+
+@keyframes jumpPageSelector {
+  0% {
+    transform: translate(0px, -50%);
+  }
+  90% {
+    transform: translate(0px, -50%);
+  }
+  100% {
+    transform: translate(-45px, -50%);
+  }
 }

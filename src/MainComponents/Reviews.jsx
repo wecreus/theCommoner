@@ -1,4 +1,4 @@
-function App() {
+function Reviews() {
   return (
     <div className="card">
       <p className="card__text">Reviews</p>
@@ -6,4 +6,4 @@ function App() {
   );
 };
 
-export default App;
+export default Reviews;
