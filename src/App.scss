@@ -40,7 +40,7 @@
     &:hover {
       transform: translate(0, -50%);
       transition-delay: 0s;
-      // addit "s" to "0s" this value will actually make it work
+      // adding "s" to "0s" will actually make it work
     }
   }
 
@@ -77,14 +77,15 @@
       }
     }
 
-    &:active:before {
-      width: 12px;
-      height: 12px;
-    }
+    &:hover:before {
+      background-color: white;
+      width: 8px;
+      height: 8px;
 
-    &:hover {
-      filter: drop-shadow(0px 0px 5px $accent3);
-      border: 1px solid $accent3;
+      @include desktopScreen {
+        width: 14px;
+        height: 14px;
+      }
     }
 
     &-selected {
@@ -177,6 +178,7 @@
     $accent2,
     $accent1
   );
+  -webkit-background-clip: text;
   background-clip: text;
   background-size: 400% auto;
   color: transparent;
@@ -185,13 +187,15 @@
   position: relative;
 }
 
-.transparent {
-  opacity: 0;
+.hidden {
+  display: inline-block;
+  visibility: hidden;
 }
 
 .emoji {
   width: 45px;
   margin: 0 0 -10px 0;
+  cursor: pointer;
 
   &:hover {
     animation: hithere 1s ease normal;
@@ -245,7 +249,6 @@
     transform: scale(1);
   }
 }
-
 
 @keyframes jumpPageSelector {
   0% {

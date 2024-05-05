@@ -6,7 +6,6 @@ import Technologist from "../assets/icons/Technologist.webp";
 import Thoughts from "../assets/icons/Thoughts.webp";
 import Fireworks from "../assets/icons/Fireworks.webp";
 import { ReactTyped } from "react-typed";
-import { useState } from "react";
 
 function Welcome(props) {
   const { onScrollClick } = props;
@@ -20,7 +19,7 @@ function Welcome(props) {
             typeSpeed={100}
             backSpeed={20}
             onComplete={(instance) => {
-              instance.cursor.className = "transparent";
+              instance.cursor.className = "hidden";
             }}
           />
         </span>
