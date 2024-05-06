@@ -4,8 +4,7 @@ import Home from "@/layout/HomeLayout/Home"
 
 // TODO: 
 // 1. add 404 page
-// 2. Global imports
-// 3. not use react-page-scroller 
+// 2. not use react-page-scroller 
 const Router = () => (
   <BrowserRouter>
     <RoutesList>
