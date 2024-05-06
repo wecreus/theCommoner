@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Routes as RoutesList } from "react-router-dom";
-import Home from "../layout/HomeLayout/Home"
+import Home from "@/layout/HomeLayout/Home"
 
 // TODO: 
 // 1. add 404 page
