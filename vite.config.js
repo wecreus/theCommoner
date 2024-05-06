@@ -7,11 +7,7 @@ import path from "path";
 export default defineConfig({
   plugins: [
     react(),
-    svgr({
-      svgrOptions: {
-        // svgr options
-      },
-    }),
+    svgr(),
   ],
   define: {
     global: {},
@@ -22,6 +18,7 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
+        // TODO: adds about 4kb to css bundle, scales with more styles, look into optimising
         additionalData: `@import "src/assets/styles/_variables.scss"; @import "src/assets/styles/_mixins.scss";`,
       },
     },
