@@ -16,7 +16,8 @@
     "react-router-dom": "^6.23.0",
     "react-typed": "^2.0.12",
     "sass": "^1.75.0",
-    "vite-plugin-svgr": "^4.2.0"
+    "vite-plugin-svgr": "^4.2.0",
+    "yarn": "^1.22.22"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",

@@ -1,14 +1,12 @@
 import { useState } from "react";
-import "./App.scss";
-import Welcome from "./MainComponents/Welcome";
-import Gallery from "./MainComponents/Gallery";
-import Reviews from "./MainComponents/Reviews";
+import "./Home.scss";
 import ReactPageScroller from "react-page-scroller";
-import MainPageSelector from "./MainComponents/MainPageSelector";
+import Welcome from "./HomeComponents/Welcome";
+import Gallery from "./HomeComponents/Gallery";
+import Reviews from "./HomeComponents/Reviews";
+import MainPageSelector from "./HomeComponents/MainPageSelector";
 
-
-// migrate to react-scroll because this sucks
-function App() {
+const Home = () => {
   const [pageNumber, setPageNumber] = useState(0);
   const handlePageChange = (page) => {
     setPageNumber(page);
@@ -24,7 +22,7 @@ function App() {
       <ReactPageScroller
         animationTimer={250}
         customPageNumber={pageNumber}
-        onBeforePageScroll={(i) => {console.log("scroller", i); handlePageChange(i)}}
+        onBeforePageScroll={(i) => {handlePageChange(i)}}
         renderAllPagesOnFirstRender
       >
         <Welcome onScrollClick={() => handlePageChange(1)} />
@@ -35,4 +33,4 @@ function App() {
   );
 }
 
-export default App;
+export default Home;

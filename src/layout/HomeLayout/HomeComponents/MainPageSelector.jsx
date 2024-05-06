@@ -1,6 +1,6 @@
 function MainPageSelector(props) {
   const { totalPages, currentPage, handlePageChange } = props;
-  console.log(currentPage);
+
   return (
     <div className="page-selector__hidden">
       <div className="page-selector">

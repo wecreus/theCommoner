@@ -1,10 +1,10 @@
 //TODO: add global import
 
-import CoolArrow2 from "../assets/icons/arrow.svg?react";
-import AlienMonster from "../assets/icons/AlienMonster.webp";
-import Technologist from "../assets/icons/Technologist.webp";
-import Thoughts from "../assets/icons/Thoughts.gif";
-import Fireworks from "../assets/icons/Fireworks.webp";
+import CoolArrow2 from "../../../assets/icons/arrow.svg?react";
+import AlienMonster from "../../../assets/icons/AlienMonster.webp";
+import Technologist from "../../../assets/icons/Technologist.webp";
+import Thoughts from "../../../assets/icons/Thoughts.gif";
+import Fireworks from "../../../assets/icons/Fireworks.webp";
 import { ReactTyped } from "react-typed";
 
 function Welcome(props) {
