@@ -4,6 +4,7 @@ import ReactPageScroller from "react-page-scroller";
 import Welcome from "./HomeComponents/Welcome";
 import Gallery from "./HomeComponents/Gallery";
 import Reviews from "./HomeComponents/Reviews";
+import Map from "./HomeComponents/Map";
 import MainPageSelector from "./HomeComponents/MainPageSelector";
 
 const Home = () => {
@@ -13,9 +14,9 @@ const Home = () => {
   };
 
   return (
-    <div className="main">
+    <main className="main">
       <MainPageSelector
-        totalPages={3} /* cool number 🗿 */
+        totalPages={4} /* cool number 🗿 */
         currentPage={pageNumber}
         handlePageChange={handlePageChange}
       />
@@ -28,8 +29,9 @@ const Home = () => {
         <Welcome onScrollClick={() => handlePageChange(1)} />
         <Gallery />
         <Reviews />
+        <Map />
       </ReactPageScroller>
-    </div>
+    </main>
   );
 }
 
