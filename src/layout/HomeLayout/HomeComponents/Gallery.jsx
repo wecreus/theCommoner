@@ -1,9 +1,16 @@
-function App() {
+function Gallery() {
   return (
-    <div className="card">
-      <p className="card__text">Gallery</p>
-    </div>
-  );
-};
+    <section className="card">
 
-export default App;
+        <img
+          src="https://live.staticflickr.com/65535/53702745672_469946719a_k.jpg"
+          width="400px"
+          alt="Best"
+        />
+   
+
+    </section>
+  );
+}
+
+export default Gallery;
