@@ -5,7 +5,7 @@ View it online https://the-commoner.vercel.app/
 
 <div align="center">
 
-![LOGO](./public/theCommoner.svg) 
+![LOGO](./public/theCommoner.png) 
 </div>
 
 This project is an opportunity for me to learn and improve at web developement.
