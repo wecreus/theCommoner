@@ -208,6 +208,10 @@ main {
   }
 }
 
+.Gallery-carousel {
+  max-width: 800px;
+}
+
 @keyframes CommonerAnimation {
   0% {
     background-position: 0% center;
