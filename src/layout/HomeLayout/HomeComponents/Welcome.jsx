@@ -6,7 +6,7 @@ function Welcome(props) {
 
   return (
     <section className="card">
-      <p className="card__text">
+      <p className="card__content">
         <span className="commoner">
           <ReactTyped
             strings={["THE", "theCommoner"]}
