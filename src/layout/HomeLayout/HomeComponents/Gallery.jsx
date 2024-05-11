@@ -13,7 +13,7 @@ const Gallery = () => {
           showIndicators={false}
           showThumbs={false}
           showStatus={false}
-          className="carousel"
+          className="carousel-custom"
           onSwipeMove={(e) => {
             e.stopPropagation();
           }}
@@ -27,7 +27,7 @@ const Gallery = () => {
               }}
               title={picture.title}
               aria-label={picture.title}
-              className="carousel__image"
+              className="carousel-custom__image"
               role="img"
               key={picture.title + i}
             >

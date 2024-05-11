@@ -1,35 +1,51 @@
-.carousel {
-  border-radius: 15px;
+.carousel-custom {
   filter: drop-shadow(8px 4px 15px rgba(0, 0, 0, 0.226));
   cursor: pointer;
-  max-width: 800px;
+  max-width: 900px;
+  width: 100%;
+  position: relative;
 
-  @include toTabletScreen {
-    max-width: 600px;
+  & .carousel {
+    border-radius: 15px;
   }
 
-  &__image {
-    width: 800px;
-    height: 500px;
+  &:before {
+    content: "";
+    opacity: 1;
+    transition: all 200ms ease;
+    width: 45px;
+    aspect-ratio: 1/1;
+    position: absolute;
+    bottom: -25px;
+    left: 15px;
+    background-image: url(@/assets/icons/pointing.png);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     background-blend-mode: screen;
-
-    @include toTabletScreen {
-      width: 600px;
-      height: 380px;
-    }
-
-    @include toTabletScreenMin {
-      width: 480px;
-      height: 300px;
-    }
+    z-index: 1;
+    animation: animateDrag 6000ms infinite;
+    animation-timing-function: ease-out;
+    filter: drop-shadow(3px 4px 6px rgba(0, 0, 0, 0.26));
+    visibility: visible;
+    transition: all 300ms ease-in-out;
 
     @include toPhoneScreen {
-        width: 300px;
-        height: 187px;
-      }
+      width: 35px;
+    }
+  }
+
+  &:hover:before {
+    visibility: hidden;
+  }
+
+
+  &__image {
+    aspect-ratio: 8/5;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-blend-mode: screen;
 
     & > span {
       position: relative;
@@ -41,24 +57,53 @@
 .card__gallery {
   display: flex;
   gap: 80px;
+  position: relative;
 
   @include toDesktopScreenMid {
     flex-direction: column-reverse;
     gap: 50px;
     max-width: 800px;
     margin: 0 auto;
-  }
 
-  @include toTabletScreen {
-    max-width: 600px;
+    .card__gallery--text {
+      width: 100%;
+    }
   }
 
   @include toTabletScreenMin {
     gap: 25px;
-    max-width: 480px;
   }
 
-  @include toPhoneScreen {
-    max-width: 300px;
+  &--text {
+    width: 42%;
+  }
+}
+
+@keyframes animateDrag {
+  0% {
+    opacity: 0;
+    margin-left: 40px;
+    transform: rotate(10deg);
+  }
+  15% {
+    opacity: 0;
+  }
+  20% {
+    margin-left: 40px;
+    transform: rotate(10deg);
+    opacity: 1;
+  }
+  35% {
+    margin-left: -20px;
+    opacity: 1;
+    transform: rotate(-10deg);
+  }
+  40% {
+    opacity: 0;
+  }
+  100% {
+    transform: rotate(-10deg);
+    margin-left: -20px;
+    opacity: 0;
   }
 }

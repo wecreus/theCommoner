@@ -134,7 +134,7 @@ main {
     padding: 0 100px;
     font-size: 40px;
     font-weight: 500;
-    text-wrap: wrap;
+    text-wrap: balance;
     
     @include toTabletScreen {
       padding: 0;
