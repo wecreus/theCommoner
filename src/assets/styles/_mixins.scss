@@ -1,17 +1,31 @@
-@mixin phoneScreen {
+// from 0 to phone screen 
+@mixin toPhoneScreen {
   @media (max-width: #{$screen-phone-min}) {
     @content;
   }
 }
 
-@mixin tabletScreen {
-  @media (max-width: #{$screen-tablet-min}) {
+@mixin toTabletScreen {
+  @media (max-width: #{$screen-tablet-max}) {
     @content;
   }
 }
 
-@mixin desktopScreen {
-  @media (min-width: #{$screen-tablet-min}) {
+// from desktop to infinity 
+@mixin fromDesktopScreen {
+  @media (min-width: #{$screen-tablet-max}) {
+    @content;
+  }
+}
+
+@mixin toDesktopScreenMid {
+  @media (max-width: #{$screen-desktop-min}) {
+    @content;
+  }
+}
+
+@mixin toTabletScreenMin {
+  @media (max-width: #{$screen-tablet-min}) {
     @content;
   }
 }
