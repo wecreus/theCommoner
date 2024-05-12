@@ -1,4 +1,4 @@
-.carousel-custom {
+.carousel-gallery {
   filter: drop-shadow(8px 4px 15px rgba(0, 0, 0, 0.226));
   cursor: pointer;
   max-width: 900px;
@@ -34,11 +34,6 @@
       width: 35px;
     }
   }
-
-  &:hover:before {
-    visibility: hidden;
-  }
-
 
   &__image {
     aspect-ratio: 8/5;
