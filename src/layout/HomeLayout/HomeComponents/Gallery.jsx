@@ -13,7 +13,7 @@ const Gallery = () => {
           showIndicators={false}
           showThumbs={false}
           showStatus={false}
-          className="carousel-custom"
+          className="carousel-gallery"
           onSwipeMove={(e) => {
             e.stopPropagation();
           }}
@@ -27,7 +27,7 @@ const Gallery = () => {
               }}
               title={picture.title}
               aria-label={picture.title}
-              className="carousel-custom__image"
+              className="carousel-gallery__image"
               role="img"
               key={picture.title + i}
             >
@@ -36,7 +36,7 @@ const Gallery = () => {
           ))}
         </Carousel>
         <p className="card__gallery--text">
-          Here are a couple of my photos way back from 2016. While Im not making a living on this anymore, I still consider myself pretty good at it.
+          Here are a couple of my photos way back from 2016. While Im not making money from taking pictures anymore, I still enjoy it very much.
         </p>
       </div>
     </section>
