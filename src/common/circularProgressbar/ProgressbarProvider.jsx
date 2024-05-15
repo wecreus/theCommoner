@@ -3,7 +3,7 @@ import { Animate } from "react-move";
 import easeCubicOut from "./easeCubicOut";
 
 const ProgressProvider = memo(
-  ({ valueStart, valueEnd, children, duration }) => {
+  ({ valueStart, valueEnd, children, duration, delay }) => {
     const [isAnimated, setIsAnimated] = useState(false);
     
     useEffect(() => {
@@ -13,6 +13,7 @@ const ProgressProvider = memo(
     return (
       <Animate
         show
+
         start={() => ({
           value: valueStart,
         })}
@@ -21,6 +22,7 @@ const ProgressProvider = memo(
           timing: {
             duration: duration,
             ease: easeCubicOut,
+            delay: delay
           },
         })}
       >

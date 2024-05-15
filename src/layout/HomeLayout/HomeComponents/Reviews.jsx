@@ -68,6 +68,7 @@ const Reviews = memo(({focused}) => {
           }}
           autoPlay
           interval={8000}
+          transitionTime={400}
           useKeyboardArrows
           stopOnHover
           selectedItem={currentSlide}
@@ -134,6 +135,7 @@ const ReviewSlide = ({ name, score, url, description, selected, focused }) => {
             valueStart={1}
             valueEnd={focused && selected ? score : 0}
             duration={1500}
+            delay={200}
             repeat
           >
             {(v) => (
@@ -141,12 +143,13 @@ const ReviewSlide = ({ name, score, url, description, selected, focused }) => {
                 value={Math.round(v)}
                 minValue={0}
                 maxValue={100}
-                text={Math.round(v)}
+                text={<tspan dy={2}>{Math.round(v)}</tspan>}
                 className={"review-slide__score"}
+                
                 background={true}
                 backgroundPadding="10"
                 styles={buildStyles({
-                  rotation: 0.5,
+                  rotation: 0.26,
                   trailColor: "transparent",
                   backgroundColor: "transparent",
                   pathTransition: "none",

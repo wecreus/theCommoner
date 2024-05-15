@@ -124,7 +124,17 @@
   }
 }
 
-.CircularProgressbar .CircularProgressbar-path {
-  stroke: url("#score");
-  filter: drop-shadow(-3px -2px 5px rgba($accent1, 0.3));
+.CircularProgressbar {
+  .CircularProgressbar-path {
+    stroke: url("#score");
+    filter: drop-shadow(-3px -2px 5px rgba($accent1, 0.3));
+  }
+
+  .CircularProgressbar-text {
+    font-weight: 800;
+    fill: white;
+    text-shadow: 3px 3px 10px #c3babc4f;
+    font-size: 30px;
+    font-variation-settings: "slnt" -8;
+  }
 }
