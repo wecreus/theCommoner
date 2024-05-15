@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, memo } from "react";
 import db from "@/firebase-config";
 import { collection, getDocs } from "firebase/firestore";
 import { Carousel } from "react-responsive-carousel";
@@ -6,7 +6,7 @@ import { AlienMonster } from "@/common/utils";
 import classNames from "classnames";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import GradientSVG from "@/common/circularProgressbar/GradientSVG";
-import ProgressProvider from "@/common/circularProgressbar/ProgressProvider";
+import ProgressProvider from "@/common/circularProgressbar/ProgressbarProvider";
 import styles from "@/assets/styles/exports.module.scss";
 import "react-circular-progressbar/dist/styles.css";
 import "./Reviews.scss";
@@ -35,7 +35,7 @@ const mock = [
 // TODO: adding firebase reduces the performance by a lot
 
 // fix a bug where gallery starts at the last item
-const Reviews = () => {
+const Reviews = memo(({focused}) => {
   const [reviews, setReviews] = useState();
   const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -67,17 +67,35 @@ const Reviews = () => {
             e.stopPropagation();
           }}
           autoPlay
-          infiniteLoop
-          interval={10000}
+          interval={8000}
           useKeyboardArrows
           stopOnHover
-          selectedItem={0}
-          onChange={(i) => setCurrentSlide(i)}
+          selectedItem={currentSlide}
+          onChange={(i) => {
+            // why doesnt react do it on its own???
+            if (i !== currentSlide) {
+              setCurrentSlide(i);
+            }
+          }}
           renderArrowNext={(onClickHandler) => (
-            <CustomArrow clickHandler={onClickHandler} direction={"next"} />
+            <CustomArrow
+              clickHandler={() =>
+                currentSlide + 1 === reviews.length
+                  ? setCurrentSlide(0)
+                  : onClickHandler()
+              }
+              direction={"next"}
+            />
           )}
           renderArrowPrev={(onClickHandler) => (
-            <CustomArrow clickHandler={onClickHandler} direction={"prev"} />
+            <CustomArrow
+              clickHandler={() =>
+                currentSlide === 0
+                  ? setCurrentSlide(reviews.length - 1)
+                  : onClickHandler()
+              }
+              direction={"prev"}
+            />
           )}
         >
           {reviews?.map((review, i) => (
@@ -88,16 +106,17 @@ const Reviews = () => {
               description={review.description}
               selected={i === currentSlide}
               key={review.name + i}
+              focused={focused}
             />
           ))}
         </Carousel>
       </div>
     </section>
   );
-};
+});
 
-const ReviewSlide = ({ name, score, url, description, selected }) => {
-  console.log(selected);
+const ReviewSlide = ({ name, score, url, description, selected, focused }) => {
+
   return (
     <div className="review-slide">
       <div
@@ -113,22 +132,24 @@ const ReviewSlide = ({ name, score, url, description, selected }) => {
           <span className="review-slide__title">{name}</span>
           <ProgressProvider
             valueStart={1}
-            valueEnd={selected ? score : 0}
-            delay={20}
+            valueEnd={focused && selected ? score : 0}
+            duration={1500}
+            repeat
           >
             {(v) => (
               <CircularProgressbar
-                value={v}
+                value={Math.round(v)}
                 minValue={0}
                 maxValue={100}
-                text={v}
+                text={Math.round(v)}
                 className={"review-slide__score"}
                 background={true}
                 backgroundPadding="10"
                 styles={buildStyles({
+                  rotation: 0.5,
                   trailColor: "transparent",
                   backgroundColor: "transparent",
-                  pathTransitionDuration: 0.1,
+                  pathTransition: "none",
                 })}
               />
             )}

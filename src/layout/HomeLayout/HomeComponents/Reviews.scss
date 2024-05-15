@@ -22,6 +22,10 @@
   margin: 0 80px;
   gap: 20px;
 
+  &__description {
+    text-align: right;
+  }
+
   &__cover {
     aspect-ratio: 4/5;
     filter: drop-shadow(8px 6px 8px rgba(0, 0, 0, 0.226));
@@ -37,7 +41,6 @@
     display: flex;
     flex-direction: column;
     align-items: start;
-    text-align: right;
 
     &--head {
       display: flex;
@@ -56,6 +59,7 @@
     font-weight: 700;
     font-variation-settings: "slnt" -8;
     text-shadow: 3px 1px 10px #c3babc2a;
+    text-align: left;
   }
 }
 
@@ -122,5 +126,5 @@
 
 .CircularProgressbar .CircularProgressbar-path {
   stroke: url("#score");
-  filter: drop-shadow(3px 1px 5px #000000);
+  filter: drop-shadow(-3px -2px 5px rgba($accent1, 0.3));
 }

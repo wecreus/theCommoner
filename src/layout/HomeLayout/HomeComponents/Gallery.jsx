@@ -1,9 +1,11 @@
+import { memo } from "react";
 import { Carousel } from "react-responsive-carousel";
 import { GalleryPictures } from "@/common/utils";
 import "./Gallery.scss";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
-const Gallery = () => {
+
+const Gallery = memo(() => {
   return (
     <section className="card">
       <div className="card__content card__gallery">
@@ -40,6 +42,6 @@ const Gallery = () => {
       </div>
     </section>
   );
-};
+});
 
 export default Gallery;
