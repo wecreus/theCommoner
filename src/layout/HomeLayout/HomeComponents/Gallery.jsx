@@ -28,7 +28,6 @@ const Gallery = () => {
               title={picture.title}
               aria-label={picture.title}
               className="carousel-gallery__image"
-              role="img"
               key={picture.title + i}
             >
               <span>{picture.title}</span>

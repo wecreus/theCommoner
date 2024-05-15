@@ -1,7 +1,7 @@
 # theCommoner
 My blog for random stuff that I like.
 
-View it online https://the-commoner.vercel.app/
+View it online https://commoner.vercel.app/
 
 <div align="center">
 
