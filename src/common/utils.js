@@ -3,12 +3,14 @@ import alien from "@/assets/icons/AlienMonster.webp";
 import tech from "@/assets/icons/Technologist.webp";
 import fireworks from "@/assets/icons/Fireworks.webp";
 import thoughts from "@/assets/icons/Thoughts.gif";
+import pen from "@/assets/icons/pen.svg";
 
 export const CoolArrow = arrow;
 export const AlienMonster = alien;
 export const Technologist = tech;
 export const Thoughts = thoughts;
 export const Fireworks = fireworks;
+export const Pen = pen;
 
 export const GalleryPictures = [
   {

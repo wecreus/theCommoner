@@ -2,15 +2,17 @@ import { useState, useEffect, memo } from "react";
 import db from "@/firebase-config";
 import { collection, getDocs } from "firebase/firestore";
 import { Carousel } from "react-responsive-carousel";
-import { AlienMonster } from "@/common/utils";
+import { AlienMonster, Pen } from "@/common/utils";
 import classNames from "classnames";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import GradientSVG from "@/common/circularProgressbar/GradientSVG";
 import ProgressProvider from "@/common/circularProgressbar/ProgressbarProvider";
+import Divider from "@/common/Divider/Divider";
 import styles from "@/assets/styles/exports.module.scss";
 import "react-circular-progressbar/dist/styles.css";
 import "./Reviews.scss";
 
+// split this component
 // TODO: use a more sophisticated mock
 const mock = [
   {
@@ -21,6 +23,7 @@ const mock = [
     id: "Jn6d4huJ7XwnoDjwpV5H",
     name: "Baldurs Gate 3 mock",
     score: 95,
+    funFact: "I have completed solo honour mode run watch it on youtube",
   },
   {
     coverUrl:
@@ -28,14 +31,15 @@ const mock = [
     description: "Card game that saved me from going insane (truth)",
     id: "qrTmXurJl3SOb7wU0RW6",
     name: "Slay the Spire",
-    score: 92,
+    score: 88,
+    funFact: "my Ascention 20 win streak is around 7 (I think) rotating",
   },
 ];
 
 // TODO: adding firebase reduces the performance by a lot
 
 // fix a bug where gallery starts at the last item
-const Reviews = memo(({focused}) => {
+const Reviews = memo(({ focused }) => {
   const [reviews, setReviews] = useState();
   const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -105,6 +109,7 @@ const Reviews = memo(({focused}) => {
               name={review.name}
               score={review.score}
               description={review.description}
+              funFact={review.funFact}
               selected={i === currentSlide}
               key={review.name + i}
               focused={focused}
@@ -116,8 +121,15 @@ const Reviews = memo(({focused}) => {
   );
 });
 
-const ReviewSlide = ({ name, score, url, description, selected, focused }) => {
-
+const ReviewSlide = ({
+  name,
+  score,
+  url,
+  description,
+  funFact,
+  selected,
+  focused,
+}) => {
   return (
     <div className="review-slide">
       <div
@@ -145,7 +157,6 @@ const ReviewSlide = ({ name, score, url, description, selected, focused }) => {
                 maxValue={100}
                 text={<tspan dy={2}>{Math.round(v)}</tspan>}
                 className={"review-slide__score"}
-                
                 background={true}
                 backgroundPadding="10"
                 styles={buildStyles({
@@ -164,7 +175,25 @@ const ReviewSlide = ({ name, score, url, description, selected, focused }) => {
           startColor={styles.accent2}
           rotation={45}
         />
+        <Divider className={"review-slide__divider"}><div className="review-slide__divider--content">REVIEW</div></Divider>
         <p className="review-slide__description">{description}</p>
+        {!!funFact && (
+          <>
+            <Divider className={"review-slide__divider"}>
+              <div className="review-slide__divider--content">
+                NOT TO BRAG
+                <i
+                  style={{
+                    backgroundImage: "url(" + Pen + ")",
+                  }}
+                  alt=""
+                  className="review-slide__divider--icon"
+                />
+              </div>
+            </Divider>
+            <div className="review-slide__fun">{funFact}</div>
+          </>
+        )}
       </div>
     </div>
   );
