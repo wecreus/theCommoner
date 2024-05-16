@@ -185,7 +185,7 @@ const ReviewSlide = ({
                 NOT TO BRAG
                 <i
                   style={{
-                    backgroundImage: "url(" + Pen + ")",
+                    backgroundImage: `url("${Pen}")`,
                   }}
                   alt=""
                   className="review-slide__divider--icon"
