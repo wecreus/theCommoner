@@ -1,0 +1,54 @@
+.divider {
+  height: 1px;
+  width: 100%;
+  margin: 10px 0;
+  opacity: 0.3;
+  background: linear-gradient(
+    90deg,
+    rgba(122, 67, 67, 0) 0%,
+    rgba(255, 255, 255, 1) 10%,
+    rgba(255, 255, 255, 1) 90%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.521);
+  user-select: none;
+
+  &-group {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    width: 100%;
+    user-select: none;
+
+    &__children {
+      display: block;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &__border {
+      height: 1px;
+      width: 100%;
+      opacity: 0.3;
+      box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.521);
+
+      &--left {
+        background: linear-gradient(
+          90deg,
+          rgba(122, 67, 67, 0) 0%,
+          rgba(255, 255, 255, 1) 10%,
+          rgba(255, 255, 255, 1) 100%,
+        );
+      }
+
+      &--right {
+        background: linear-gradient(
+          90deg,
+          rgba(255, 255, 255, 1) 0%,
+          rgba(255, 255, 255, 1) 90%,
+          rgba(122, 67, 67, 0) 100%,
+        );
+      }
+    }
+  }
+}

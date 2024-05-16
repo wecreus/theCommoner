@@ -12,6 +12,7 @@
 
   &:before {
     content: "";
+    pointer-events: none;
     opacity: 1;
     transition: all 200ms ease;
     width: 45px;

@@ -12,7 +12,7 @@ const Home = () => {
   const handlePageChange = (page) => {
     setPageNumber(page);
   };
-
+  // TODO: group all children of ReactPageScroller
   return (
     <main className="main">
       <MainPageSelector
@@ -28,7 +28,7 @@ const Home = () => {
       >
         <Welcome onScrollClick={() => handlePageChange(1)} />
         <Gallery />
-        <Reviews />
+        <Reviews focused={pageNumber === 2}/>
         <Map />
       </ReactPageScroller>
     </main>

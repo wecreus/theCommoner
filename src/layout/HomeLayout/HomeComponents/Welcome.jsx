@@ -1,7 +1,9 @@
+import { memo } from "react";
 import { CoolArrow, AlienMonster, Technologist, Thoughts, Fireworks } from "@/common/utils";
 import { ReactTyped } from "react-typed";
 
-function Welcome(props) {
+// TODO: shrink webp to 40x40
+const Welcome = memo((props) => {
   const { onScrollClick } = props;
 
   return (
@@ -29,6 +31,6 @@ function Welcome(props) {
       </div>
     </section>
   );
-}
+});
 
 export default Welcome;
