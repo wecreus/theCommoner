@@ -150,8 +150,10 @@
   width: 100%;
   box-sizing: border-box;
 
-  .control-dots {
-    bottom: 25px;
+  @include toTabletScreen {
+    .control-dots {
+      bottom: 25px;
+    }
   }
 
   & .carousel-slider {
@@ -234,7 +236,6 @@
 
 // css hack for targeting only safari
 @supports (-webkit-hyphens: none) {
-
   .CircularProgressbar .CircularProgressbar-text {
     transform: translateY(8px);
     text-shadow: 3px 1px 10px #c3babcc5;
