@@ -67,9 +67,7 @@ const Reviews = memo(({ focused }) => {
           showThumbs={false}
           showStatus={false}
           className="carousel-reviews"
-          onSwipeMove={(e) => {
-            e.stopPropagation();
-          }}
+          swipeable={false}
           autoPlay
           interval={8000}
           transitionTime={400}
@@ -140,42 +138,45 @@ const ReviewSlide = ({
         title={name}
         aria-label={name}
       />
-      <div className="review-slide__content">
-        <div className="review-slide__content--head">
-          <span className="review-slide__title">{name}</span>
-          <ProgressProvider
-            valueStart={1}
-            valueEnd={focused && selected ? score : 0}
-            duration={1500}
-            delay={200}
-            repeat
-          >
-            {(v) => (
-              <CircularProgressbar
-                value={Math.round(v)}
-                minValue={0}
-                maxValue={100}
-                text={<tspan dy={2}>{Math.round(v)}</tspan>}
-                className={"review-slide__score"}
-                background={true}
-                backgroundPadding="10"
-                styles={buildStyles({
-                  rotation: 0.26,
-                  trailColor: "transparent",
-                  backgroundColor: "transparent",
-                  pathTransition: "none",
-                })}
-              />
-            )}
-          </ProgressProvider>
-        </div>
+
+      <div className="review-slide__head">
+        <span className="review-slide__title">{name}</span>
+        <ProgressProvider
+          valueStart={1}
+          valueEnd={focused && selected ? score : 0}
+          duration={1500}
+          delay={200}
+          repeat
+        >
+          {(v) => (
+            <CircularProgressbar
+              value={Math.round(v)}
+              minValue={0}
+              maxValue={100}
+              text={<tspan dy={2}>{Math.round(v)}</tspan>}
+              className={"review-slide__score"}
+              background={true}
+              backgroundPadding="10"
+              styles={buildStyles({
+                rotation: 0.26,
+                trailColor: "transparent",
+                backgroundColor: "transparent",
+                pathTransition: "none",
+              })}
+            />
+          )}
+        </ProgressProvider>
         <GradientSVG
           idCSS={"score"}
           endColor={styles.accent3}
           startColor={styles.accent2}
           rotation={45}
         />
-        <Divider className={"review-slide__divider"}><div className="review-slide__divider--content">REVIEW</div></Divider>
+      </div>
+      <div className="review-slide__content">
+        <Divider className={"review-slide__divider"}>
+          <div className="review-slide__divider--content">REVIEW</div>
+        </Divider>
         <p className="review-slide__description">{description}</p>
         {!!funFact && (
           <>

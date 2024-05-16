@@ -11,12 +11,14 @@
     rgba(255, 255, 255, 0) 100%
   );
   box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.521);
-  
+  user-select: none;
+
   &-group {
     display: flex;
     align-items: center;
     margin: 10px 0;
     width: 100%;
+    user-select: none;
 
     &__children {
       display: block;

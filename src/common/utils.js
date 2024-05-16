@@ -3,7 +3,7 @@ import alien from "@/assets/icons/AlienMonster.webp";
 import tech from "@/assets/icons/Technologist.webp";
 import fireworks from "@/assets/icons/Fireworks.webp";
 import thoughts from "@/assets/icons/Thoughts.gif";
-import pen from "@/assets/icons/pen.svg";
+import pen from "@/assets/icons/penoriginal.svg";
 
 export const CoolArrow = arrow;
 export const AlienMonster = alien;
