@@ -8,7 +8,7 @@ const Welcome = memo((props) => {
 
   return (
     <section className="card">
-      <p className="card__content">
+      <p className="card__content welcome">
         <span className="commoner">
           <ReactTyped
             strings={["THE", "theCommoner"]}

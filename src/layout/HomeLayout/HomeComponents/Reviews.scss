@@ -6,6 +6,10 @@
   margin: 0 auto;
   align-items: center;
   max-height: 100vh;
+
+  @include toTabletScreen {
+    gap: 60px;
+  }
 }
 
 .card-reviews__content {
@@ -68,12 +72,16 @@
       background-size: cover;
       background-repeat: no-repeat;
       background-blend-mode: screen;
-      margin-top: 3px;
+      margin-top: 2px;
       transform: rotate(20deg);
       animation: standout 6s ease infinite;
 
       @include toTabletScreen {
         height: 5px;
+      }
+
+      @include toPhoneScreen {
+        height: 4px;
       }
 
       &:hover {
@@ -92,7 +100,6 @@
   &__cover {
     aspect-ratio: 4/5;
     filter: drop-shadow(8px 6px 8px rgba(0, 0, 0, 0.226));
-
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -111,6 +118,7 @@
 
     @include toTabletScreenMin {
       flex-direction: column;
+      padding-left: 8px;
     }
   }
 
@@ -131,6 +139,28 @@
 
   &__score {
     width: 80px;
+
+    @include toTabletScreenMin {
+      width: 65px;
+      &-container {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+
+    &--title {
+      font-weight: 700;
+      font-variation-settings: "slnt" -8;
+      text-shadow: 3px 1px 10px #c3babc2a;
+      font-size: 20px;
+      display: none;
+
+      @include toTabletScreenMin {
+        display: inline-block;
+      }
+    }
   }
 
   &__title {
@@ -138,9 +168,14 @@
     font-variation-settings: "slnt" -8;
     text-shadow: 3px 1px 10px #c3babc2a;
     font-size: 30px;
+    flex: 1 0 0;
+    text-align: start;
+    display: flex;
+    align-items: center;
 
     @include toTabletScreenMin {
-      font-size: 20px;
+      text-align: center;
+      font-size: 25px;
     }
   }
 }
@@ -150,9 +185,61 @@
   width: 100%;
   box-sizing: border-box;
 
-  @include toTabletScreen {
-    .control-dots {
-      bottom: 25px;
+  .control-dots {
+    
+    margin: 0;
+
+    @include toTabletScreen {
+      bottom: 35px;
+    }
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
+    .dot {
+      width: 20px;
+      height: 20px;
+      background: transparent;
+      box-shadow: none;
+      opacity: 1;
+      position: relative;
+      
+      @include toTabletScreenMin {
+        margin: 0 2px;
+      }
+
+      &:before {
+        content: "";
+        display: block;
+        width: 10px;
+        height: 10px;
+        background-color: rgba(255, 255, 255, 0.466);
+        left: 50%;
+        top: 50%;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        transition: all 200ms ease-in-out;
+        box-shadow: 2px 2px rgba(0, 0, 0, 0.233);
+
+        @include toTabletScreenMin {
+          width: 6px;
+          height: 6px;
+        }
+      }
+
+      &.selected:before { 
+        background-color: white;
+        width: 20px;
+        height: 20px;
+
+        @include toTabletScreenMin {
+          width: 12px;
+          height: 12px;
+        }
+      }
     }
   }
 
@@ -165,9 +252,10 @@
 
   &__arrow {
     position: absolute;
-    aspect-ratio: 1/1;
     height: 45px;
-    border-radius: 50px;
+    width: 45px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
     cursor: pointer;
     z-index: 1;
     opacity: 0.5;
@@ -220,7 +308,6 @@
 .CircularProgressbar {
   .CircularProgressbar-path {
     stroke: url("#score");
-    -webkit-filter: drop-shadow(-3px -2px 5px rgba($accent1, 0.3));
     filter: drop-shadow(-3px -2px 5px rgba($accent1, 0.3));
   }
 
@@ -242,7 +329,7 @@
   }
 
   .review-slide__title {
-    text-shadow: 3px 1px 10px #c3babc5b;
+    text-shadow: -2px 1px 10px #c3babc5b;
   }
 }
 

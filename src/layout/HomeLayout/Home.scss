@@ -134,19 +134,21 @@ main {
     padding: 0 100px;
     font-size: 40px;
     font-weight: 500;
-    text-wrap: balance;
     
     @include toTabletScreen {
       padding: 0;
       font-size: 30px;
+      line-height: 40px;
     }
 
     @include toTabletScreenMin {
       font-size: 25px;
+      line-height: 35px;
     }
 
     @include toPhoneScreen {
       font-size: 20px;
+      line-height: 30px;
     }
   }
 
@@ -154,10 +156,11 @@ main {
     display: flex;
     position: absolute;
     animation: jumpInfinite 4s infinite;
-    filter: drop-shadow(6px 4px 6px rgba(0, 0, 0, 0.712));
+    filter: drop-shadow(2px 4px 5px rgba(0, 0, 0, 0.512));
     top: 80%;
     right: 7%;
     padding: 5px;
+    -webkit-tap-highlight-color: transparent;
 
     @include toTabletScreen {
       width: 50px;
@@ -172,20 +175,21 @@ main {
       width: 120px;
       cursor: pointer;
       transition: all 200ms ease-in-out;
-      opacity: 0.5;
+      opacity: 0.7;
+
+      & > path {
+        stroke: url("#WelcomeArrow");
+      }
 
       &:hover {
         opacity: 1;
-        & > path {
-          stroke: white;
-        }
       }
     }
   }
 }
 
 .commoner {
-  text-shadow: 3px 1px 10px #c3babc2a;
+  text-shadow: 3px 1px 10px #c3babc18;
   font-weight: 900;
   margin: 0;
   padding: 0 5px 0 0;
@@ -218,6 +222,14 @@ main {
 
   &:hover {
     animation: hithere 1s ease normal;
+  }
+
+  @include toTabletScreen {
+    width: 40px;
+  }
+
+  @include toTabletScreenMin {
+    width: 35px;
   }
 
   @include toPhoneScreen {
