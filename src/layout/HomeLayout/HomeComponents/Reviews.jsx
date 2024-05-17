@@ -32,7 +32,8 @@ const mock = [
     id: "qrTmXurJl3SOb7wU0RW6",
     name: "Slay the Spire",
     score: 88,
-    funFact: "my Ascention 20 win streak is around 7 (I think) rotating",
+    funFact:
+      "my Ascention 20 win streak is around 7 (I think) rotating  (I think) rotating (I think) rotating",
   },
 ];
 
@@ -60,7 +61,7 @@ const Reviews = memo(({ focused }) => {
     <section className="card card-reviews">
       <div className="reviews">
         <p className="card__content card-reviews__content">
-          My 100% correct and totally unbiased game reviews{" "}
+          My <b>100% correct</b> and totally unbiased game reviews{" "}
           <img src={AlienMonster} alt="" className="emoji" />
         </p>
         <Carousel
@@ -141,31 +142,34 @@ const ReviewSlide = ({
 
       <div className="review-slide__head">
         <span className="review-slide__title">{name}</span>
-        <ProgressProvider
-          valueStart={1}
-          valueEnd={focused && selected ? score : 0}
-          duration={1500}
-          delay={200}
-          repeat
-        >
-          {(v) => (
-            <CircularProgressbar
-              value={Math.round(v)}
-              minValue={0}
-              maxValue={100}
-              text={<tspan dy={2}>{Math.round(v)}</tspan>}
-              className={"review-slide__score"}
-              background={true}
-              backgroundPadding="10"
-              styles={buildStyles({
-                rotation: 0.26,
-                trailColor: "transparent",
-                backgroundColor: "transparent",
-                pathTransition: "none",
-              })}
-            />
-          )}
-        </ProgressProvider>
+        <div className="review-slide__score-container">
+          <span className="review-slide__score--title">Rating:</span>
+          <ProgressProvider
+            valueStart={1}
+            valueEnd={focused && selected ? score : 0}
+            duration={1500}
+            delay={200}
+            repeat
+          >
+            {(v) => (
+              <CircularProgressbar
+                value={Math.round(v)}
+                minValue={0}
+                maxValue={100}
+                text={<tspan dy={2}>{Math.round(v)}</tspan>}
+                className={"review-slide__score"}
+                background={true}
+                backgroundPadding="10"
+                styles={buildStyles({
+                  rotation: 0.26,
+                  trailColor: "transparent",
+                  backgroundColor: "transparent",
+                  pathTransition: "none",
+                })}
+              />
+            )}
+          </ProgressProvider>
+        </div>
         <GradientSVG
           idCSS={"score"}
           endColor={styles.accent3}
@@ -182,10 +186,10 @@ const ReviewSlide = ({
           <>
             <Divider className={"review-slide__divider"}>
               <div className="review-slide__divider--content">
-                NOT TO BRAG
+                FUN FACT
                 <i
                   style={{
-                    backgroundImage: "url(" + Pen + ")",
+                    backgroundImage: `url("${Pen}")`,
                   }}
                   alt=""
                   className="review-slide__divider--icon"

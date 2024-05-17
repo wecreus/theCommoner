@@ -11,13 +11,6 @@
   }
 }
 
-// from desktop to infinity 
-@mixin fromDesktopScreen {
-  @media (min-width: #{$screen-tablet-max}) {
-    @content;
-  }
-}
-
 @mixin toDesktopScreenMid {
   @media (max-width: #{$screen-desktop-min}) {
     @content;
@@ -26,6 +19,13 @@
 
 @mixin toTabletScreenMin {
   @media (max-width: #{$screen-tablet-min}) {
+    @content;
+  }
+}
+
+// from desktop to infinity 
+@mixin fromDesktopScreen {
+  @media (min-width: #{$screen-tablet-max}) {
     @content;
   }
 }

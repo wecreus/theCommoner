@@ -37,7 +37,7 @@ const Gallery = memo(() => {
           ))}
         </Carousel>
         <p className="card__gallery--text">
-          Here are a couple of my photos way back from 2016. While Im not making money from taking pictures anymore, I still enjoy it very much.
+          Here are a couple of my photos way back from <b>2016</b>. While Im not making money from taking pictures anymore, I still enjoy it very much.
         </p>
       </div>
     </section>
