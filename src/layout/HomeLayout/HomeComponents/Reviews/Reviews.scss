@@ -245,6 +245,11 @@
 
   & .carousel-slider {
     height: 100%;
+    padding-bottom: 20px;
+
+    @include toTabletScreenMin {
+      padding: 0;
+    }
   }
   & .slider-wrapper {
     height: 100%;

@@ -2,17 +2,12 @@ import { useState, useEffect, memo } from "react";
 import db from "@/firebase-config";
 import { collection, getDocs } from "firebase/firestore";
 import { Carousel } from "react-responsive-carousel";
-import { AlienMonster, Pen } from "@/common/utils";
+import { AlienMonster } from "@/common/utils";
+import ReviewSlide from "./ReviewSlide";
 import classNames from "classnames";
-import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
-import GradientSVG from "@/common/circularProgressbar/GradientSVG";
-import ProgressProvider from "@/common/circularProgressbar/ProgressbarProvider";
-import Divider from "@/common/Divider/Divider";
-import styles from "@/assets/styles/exports.module.scss";
 import "react-circular-progressbar/dist/styles.css";
 import "./Reviews.scss";
 
-// split this component
 // TODO: use a more sophisticated mock
 const mock = [
   {
@@ -37,9 +32,6 @@ const mock = [
   },
 ];
 
-// TODO: adding firebase reduces the performance by a lot
-
-// fix a bug where gallery starts at the last item
 const Reviews = memo(({ focused }) => {
   const [reviews, setReviews] = useState();
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -55,7 +47,11 @@ const Reviews = memo(({ focused }) => {
       const data = await getDocs(reviewsCollectionRef);
       setReviews(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     };
-    getReviews();
+
+    getReviews().catch((e) => {
+      console.error(e);
+      setReviews(mock);
+    });
   }, []);
   return (
     <section className="card card-reviews">
@@ -119,90 +115,6 @@ const Reviews = memo(({ focused }) => {
     </section>
   );
 });
-
-const ReviewSlide = ({
-  name,
-  score,
-  url,
-  description,
-  funFact,
-  selected,
-  focused,
-}) => {
-  return (
-    <div className="review-slide">
-      <div
-        className="review-slide__cover"
-        style={{
-          backgroundImage: "url(" + url + ")",
-        }}
-        title={name}
-        aria-label={name}
-      />
-
-      <div className="review-slide__head">
-        <span className="review-slide__title">{name}</span>
-        <div className="review-slide__score-container">
-          <span className="review-slide__score--title">Rating:</span>
-          <ProgressProvider
-            valueStart={1}
-            valueEnd={focused && selected ? score : 0}
-            duration={1500}
-            delay={200}
-            repeat
-          >
-            {(v) => (
-              <CircularProgressbar
-                value={Math.round(v)}
-                minValue={0}
-                maxValue={100}
-                text={<tspan dy={2}>{Math.round(v)}</tspan>}
-                className={"review-slide__score"}
-                background={true}
-                backgroundPadding="10"
-                styles={buildStyles({
-                  rotation: 0.26,
-                  trailColor: "transparent",
-                  backgroundColor: "transparent",
-                  pathTransition: "none",
-                })}
-              />
-            )}
-          </ProgressProvider>
-        </div>
-        <GradientSVG
-          idCSS={"score"}
-          endColor={styles.accent3}
-          startColor={styles.accent2}
-          rotation={45}
-        />
-      </div>
-      <div className="review-slide__content">
-        <Divider className={"review-slide__divider"}>
-          <div className="review-slide__divider--content">REVIEW</div>
-        </Divider>
-        <p className="review-slide__description">{description}</p>
-        {!!funFact && (
-          <>
-            <Divider className={"review-slide__divider"}>
-              <div className="review-slide__divider--content">
-                FUN FACT
-                <i
-                  style={{
-                    backgroundImage: `url("${Pen}")`,
-                  }}
-                  alt=""
-                  className="review-slide__divider--icon"
-                />
-              </div>
-            </Divider>
-            <div className="review-slide__fun">{funFact}</div>
-          </>
-        )}
-      </div>
-    </div>
-  );
-};
 
 const CustomArrow = ({ clickHandler, direction }) => {
   return (
