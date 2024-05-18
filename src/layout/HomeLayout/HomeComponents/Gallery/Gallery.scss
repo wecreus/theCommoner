@@ -27,7 +27,7 @@
     background-repeat: no-repeat;
     background-blend-mode: screen;
     z-index: 1;
-    animation: animateDrag 6000ms infinite;
+    animation: animateDrag 5500ms infinite;
     animation-timing-function: ease-out;
     filter: drop-shadow(3px 4px 6px rgba(0, 0, 0, 0.26));
     visibility: visible;
@@ -65,6 +65,10 @@
   font-size: 35px;
   width: 100%;
 
+  &--text {
+    flex: 1;
+  }
+
   @include toDesktopScreenMid {
     font-size: 30px;
     gap: 25px;
@@ -98,25 +102,22 @@
 }
 
 @keyframes animateDrag {
-  0% {
+  0%, 10% {
     opacity: 0;
     margin-left: 40px;
     transform: rotate(10deg);
   }
   15% {
-    opacity: 0;
-  }
-  20% {
     margin-left: 40px;
     transform: rotate(10deg);
     opacity: 1;
   }
-  35% {
+  40% {
     margin-left: -20px;
     opacity: 1;
     transform: rotate(-10deg);
   }
-  40% {
+  45% {
     opacity: 0;
   }
   100% {

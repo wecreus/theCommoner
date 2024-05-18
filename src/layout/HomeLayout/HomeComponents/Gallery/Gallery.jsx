@@ -41,7 +41,7 @@ const Gallery = memo(() => {
           making money from taking pictures anymore, I still enjoy it very much.
         </p>
         <div className="card__gallery--links">
-          Find more of my photos on socials: insta flickr
+          <span className="card__gallery--text">Find more of my photos on socials:</span>
           <SocialIcon
             name="Instagram"
             gradient={
