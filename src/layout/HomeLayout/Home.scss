@@ -124,7 +124,7 @@ main {
   box-sizing: border-box;
 
   @include toPhoneScreen {
-    padding: 20px 40px;
+    padding: 20px 32px;
     flex-direction: column;
     justify-content: center;
   }

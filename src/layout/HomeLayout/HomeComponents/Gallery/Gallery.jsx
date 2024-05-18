@@ -1,9 +1,9 @@
 import { memo } from "react";
 import { Carousel } from "react-responsive-carousel";
-import { GalleryPictures } from "@/common/utils";
+import { Flickr, GalleryPictures, Instagram } from "@/common/utils";
 import "./Gallery.scss";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-
+import SocialIcon from "@/common/SocialIcon/SocialIcon";
 
 const Gallery = memo(() => {
   return (
@@ -37,8 +37,28 @@ const Gallery = memo(() => {
           ))}
         </Carousel>
         <p className="card__gallery--text">
-          Here are a couple of my photos way back from <b>2016</b>. While Im not making money from taking pictures anymore, I still enjoy it very much.
+          Here are a couple of my photos way back from <b>2016</b>. While Im not
+          making money from taking pictures anymore, I still enjoy it very much.
         </p>
+        <div className="card__gallery--links">
+          Find more of my photos on socials: insta flickr
+          <SocialIcon
+            name="Instagram"
+            gradient={
+              "linear-gradient(135deg, #405DE6 -20%, #E1306C 30%, #FCAF45 120%)"
+            }
+            Icon={Instagram}
+            url={"https://www.instagram.com/wecreus/"}
+          />
+          <SocialIcon
+            name="Flickr"
+            gradient={
+              "linear-gradient(135deg, #0066DD 0%, #FF0084 80%)"
+            }
+            Icon={Flickr}
+            url={"https://www.flickr.com/photos/166330239@N03/"}
+          />
+        </div>
       </div>
     </section>
   );

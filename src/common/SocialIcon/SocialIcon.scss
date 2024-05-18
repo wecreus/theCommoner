@@ -1,0 +1,92 @@
+.SocialIcon {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin: 15px;
+  transition: 250ms;
+  perspective: 500px;
+  box-sizing: border-box;
+  cursor: pointer;
+
+  &-back,
+  &-front {
+    width: inherit;
+    height: inherit;
+    border-radius: 25px;
+    transition: 250ms;
+    position: absolute;
+    transform-style: preserve-3d;
+    transform-origin: center;
+    overflow: hidden;
+    
+  }
+
+  &-back {
+    top: 15%;
+    left: 15%;
+  }
+
+  &-front {
+    stroke-width: 1px;
+    z-index: 1;
+
+    background-color: #ffffff18;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    &__icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 55%;
+      height: 55%;
+      transition: all 200ms ease; 
+      transform: translate(-50%, -50%);
+      opacity: 0.7;
+      & path {
+        fill: url(#iconGradient);
+      }
+    }
+
+    &__border {
+      width: inherit;
+      height: inherit;
+      filter: drop-shadow( 3px 3px 5px rgba(0, 0, 0, .5));
+
+      & > rect {
+        width: inherit;
+        height: inherit;
+        fill: none;
+        stroke-width: 2;
+        opacity: 0.5;
+      }
+    }
+  }
+
+  &:hover {
+
+    & .SocialIcon-front, .SocialIcon-back {
+      transform: translateZ(120px) translateY(10px) rotateX(-12deg) rotateY(18deg);
+    }
+    & .SocialIcon-front {
+      backdrop-filter: blur(0px);
+      -webkit-backdrop-filter: blur(0px);
+      opacity: 1;
+
+      &__icon {
+        width: 70%;
+        height: 70%;
+        opacity: 1;
+      }
+
+      &__border {
+        filter: none;
+      }
+    }
+
+    & .SocialIcon-back {
+      top: 0;
+      left: 0;
+    }
+  }
+}

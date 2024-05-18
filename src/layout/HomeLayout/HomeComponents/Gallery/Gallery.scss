@@ -5,6 +5,7 @@
   max-height: 100vh;
   width: 100%;
   position: relative;
+  grid-area: gallery;
 
   & .carousel {
     border-radius: 15px;
@@ -52,28 +53,47 @@
 }
 
 .card__gallery {
-  display: flex;
-  gap: 80px;
+  display: grid;
   position: relative;
   max-height: 100vh;
+  grid-template-rows: auto auto;
+  grid-template-columns: 58% auto;
+  grid-template-areas:
+    "gallery text"
+    "gallery links";
+  gap: 35px;
+  font-size: 35px;
+  width: 100%;
 
   @include toDesktopScreenMid {
-    flex-direction: column-reverse;
-    gap: 50px;
-    max-width: 800px;
-    margin: 0 auto;
-
-    .card__gallery--text {
-      width: 100%;
-    }
+    font-size: 30px;
+    gap: 25px;
+    padding: 0 25px;
+    grid-template-columns: 50% auto;
+  }
+  @include toTabletScreen {
+    padding: 0;
+    grid-template-areas:
+    "text"
+    "gallery"
+    "links";
+    grid-template-columns: 100%;
   }
 
-  @include toTabletScreenMin {
-    gap: 25px;
+  @include toPhoneScreen {
+    font-size: 20px;
+    line-height: 25px;
   }
 
   &--text {
-    width: 42%;
+    grid-area: text;
+  }
+
+  &--links {
+    grid-area: links;
+    font-size: 75%;
+    display: flex;
+    gap: 20px;
   }
 }
 
