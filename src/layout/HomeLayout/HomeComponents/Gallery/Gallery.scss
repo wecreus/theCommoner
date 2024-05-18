@@ -5,6 +5,7 @@
   max-height: 100vh;
   width: 100%;
   position: relative;
+  grid-area: gallery;
 
   & .carousel {
     border-radius: 15px;
@@ -26,7 +27,7 @@
     background-repeat: no-repeat;
     background-blend-mode: screen;
     z-index: 1;
-    animation: animateDrag 6000ms infinite;
+    animation: animateDrag 5500ms infinite;
     animation-timing-function: ease-out;
     filter: drop-shadow(3px 4px 6px rgba(0, 0, 0, 0.26));
     visibility: visible;
@@ -52,51 +53,71 @@
 }
 
 .card__gallery {
-  display: flex;
-  gap: 80px;
+  display: grid;
   position: relative;
   max-height: 100vh;
+  grid-template-rows: auto auto;
+  grid-template-columns: 58% auto;
+  grid-template-areas:
+    "gallery text"
+    "gallery links";
+  gap: 35px;
+  font-size: 35px;
+  width: 100%;
 
-  @include toDesktopScreenMid {
-    flex-direction: column-reverse;
-    gap: 50px;
-    max-width: 800px;
-    margin: 0 auto;
-
-    .card__gallery--text {
-      width: 100%;
-    }
+  &--text {
+    flex: 1;
   }
 
-  @include toTabletScreenMin {
+  @include toDesktopScreenMid {
+    font-size: 30px;
     gap: 25px;
+    padding: 0 25px;
+    grid-template-columns: 50% auto;
+  }
+  @include toTabletScreen {
+    padding: 0;
+    grid-template-areas:
+    "text"
+    "gallery"
+    "links";
+    grid-template-columns: 100%;
+  }
+
+  @include toPhoneScreen {
+    font-size: 20px;
+    line-height: 25px;
   }
 
   &--text {
-    width: 42%;
+    grid-area: text;
+  }
+
+  &--links {
+    grid-area: links;
+    font-size: 75%;
+    display: flex;
+    gap: 20px;
   }
 }
 
 @keyframes animateDrag {
-  0% {
+  0%, 10% {
     opacity: 0;
     margin-left: 40px;
     transform: rotate(10deg);
   }
   15% {
-    opacity: 0;
-  }
-  20% {
     margin-left: 40px;
     transform: rotate(10deg);
     opacity: 1;
   }
-  35% {
+  40% {
     margin-left: -20px;
     opacity: 1;
     transform: rotate(-10deg);
   }
-  40% {
+  45% {
     opacity: 0;
   }
   100% {

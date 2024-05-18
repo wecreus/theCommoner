@@ -5,12 +5,17 @@ import fireworks from "@/assets/icons/Fireworks.webp";
 import thoughts from "@/assets/icons/Thoughts.gif";
 import pen from "@/assets/icons/penoriginal.svg";
 
+import insta from "@/assets/icons/instagram.svg?react";
+import flickr from "@/assets/icons/flickr.svg?react";
+
 export const CoolArrow = arrow;
 export const AlienMonster = alien;
 export const Technologist = tech;
 export const Thoughts = thoughts;
 export const Fireworks = fireworks;
 export const Pen = pen;
+export const Instagram = insta;
+export const Flickr = flickr;
 
 export const GalleryPictures = [
   {
