@@ -1,9 +1,7 @@
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
-import GradientSVG from "@/common/circularProgressbar/GradientSVG";
-import ProgressProvider from "@/common/circularProgressbar/ProgressbarProvider";
+import ProgressProvider from "@/common/ProgressbarProvider";
 import Divider from "@/common/Divider/Divider";
 import { Pen } from "@/common/utils";
-import styles from "@/assets/styles/exports.module.scss";
 
 const ReviewSlide = ({
     name,
@@ -55,12 +53,6 @@ const ReviewSlide = ({
               )}
             </ProgressProvider>
           </div>
-          <GradientSVG
-            idCSS={"score"}
-            endColor={styles.accent3}
-            startColor={styles.accent2}
-            rotation={45}
-          />
         </div>
         <div className="review-slide__content">
           <Divider className={"review-slide__divider"}>

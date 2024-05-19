@@ -180,7 +180,7 @@ main {
       opacity: 0.7;
 
       & > path {
-        stroke: url("#WelcomeArrow");
+        stroke: url("#gBaseColors");
       }
 
       &:hover {
@@ -194,7 +194,7 @@ main {
   text-shadow: 3px 1px 10px rgba(195, 186, 188, 0.094);
   font-weight: 900;
   margin: 0;
-  padding: 0 5px 0 0;
+  padding: 0 8px 0 0;
   background: linear-gradient(
     90deg,
     $accent1,

@@ -6,8 +6,6 @@ import Gallery from "./HomeComponents/Gallery/Gallery";
 import Reviews from "./HomeComponents/Reviews/Reviews";
 import Map from "./HomeComponents/Map";
 import MainPageSelector from "./HomeComponents/MainPageSelector";
-import GradientSVG from "@/common/circularProgressbar/GradientSVG";
-import styles from "@/assets/styles/exports.module.scss";
 
 const Home = () => {
   const [pageNumber, setPageNumber] = useState(0);
@@ -35,18 +33,6 @@ const Home = () => {
         <Gallery />
         <Map />
       </ReactPageScroller>
-      <GradientSVG
-        idCSS={"WelcomeArrow"}
-        endColor={styles.accent3}
-        startColor={styles.accent2}
-        rotation={45}
-      />
-            <GradientSVG
-        idCSS={"WelcomeArrow2"}
-        endColor={styles.accent1}
-        startColor={styles.accent2}
-        rotation={45}
-      />
     </main>
   );
 };
