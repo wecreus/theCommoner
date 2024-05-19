@@ -12,6 +12,12 @@
     height: 80px;
   }
 
+  @include toDesktopScreenMid {
+    width: 100px;
+    height: 100px;
+  }
+
+
   &-title {
     width: 100%;
     text-align: center;

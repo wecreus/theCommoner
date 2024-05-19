@@ -11,6 +11,8 @@ main {
 .page-selector {
   padding: 10px;
   background: #00000067;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
   display: flex;
   flex-direction: column;
   gap: 10px;

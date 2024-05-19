@@ -29,6 +29,11 @@ b {
   text-shadow: 3px 1px 5px rgba(195, 186, 188, 0.22);
 }
 
+a {
+  color: inherit; 
+  text-decoration: inherit; 
+}
+
 html,
 body {
     overflow: hidden;

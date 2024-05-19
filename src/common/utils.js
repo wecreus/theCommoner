@@ -7,6 +7,9 @@ import pen from "@/assets/icons/penoriginal.svg";
 
 import insta from "@/assets/icons/instagram.svg?react";
 import flickr from "@/assets/icons/flickr.svg?react";
+import xcom from "@/assets/icons/Xcom.svg?react";
+import github from "@/assets/icons/github.svg?react";
+import commonerWhite from "@/assets/icons/commonerwhite.svg?react";
 
 export const CoolArrow = arrow;
 export const AlienMonster = alien;
@@ -16,6 +19,9 @@ export const Fireworks = fireworks;
 export const Pen = pen;
 export const Instagram = insta;
 export const Flickr = flickr;
+export const Github = github;
+export const Xcom = xcom;
+export const CommonerWhite = commonerWhite;
 
 export const GalleryPictures = [
   {

@@ -1,0 +1,49 @@
+.Footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 22px;
+  padding: 0 10px;
+  align-items: center;
+  background-color: black;
+  font-size: 16px;
+  display: flex;
+  box-shadow: -2px -9px 5px rgba(0, 0, 0, 0.082);
+  font-weight: 200;
+  font-family: monospace;
+  color: rgba(255, 255, 255, 0.877);
+  justify-content: space-between;
+  transition: all 200ms ease-in;
+  user-select: none;
+  box-sizing: border-box;
+
+  @include toTabletScreenMin {
+    font-size: 12px;
+    height: 18px;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    cursor: pointer;
+    padding: 0 5px;
+    gap: 7px;
+    transition: all 200ms ease;
+
+    &--logo {
+        height: 65%;
+        width: auto;
+        
+        
+        & > path {
+          fill: url(#footerIconGradient);
+        }
+    }
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.304);
+    }
+  }
+}
