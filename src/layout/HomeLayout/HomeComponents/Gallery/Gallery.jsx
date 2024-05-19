@@ -1,6 +1,6 @@
 import { memo } from "react";
 import { Carousel } from "react-responsive-carousel";
-import { Flickr, GalleryPictures, Instagram } from "@/common/utils";
+import { Flickr, GalleryPictures, Instagram, Xcom } from "@/common/utils";
 import "./Gallery.scss";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import SocialIcon from "@/common/SocialIcon/SocialIcon";
@@ -57,6 +57,14 @@ const Gallery = memo(() => {
             }
             Icon={Flickr}
             url={"https://www.flickr.com/photos/166330239@N03/"}
+          />
+          <SocialIcon
+            name="X"
+            gradient={
+              "linear-gradient(135deg, #000 0%, #000 80%)"
+            }
+            Icon={Xcom}
+            url={"https://www.x.com/wecreus"}
           />
         </div>
       </div>

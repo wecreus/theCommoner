@@ -66,7 +66,17 @@
   width: 100%;
 
   &--text {
-    flex: 1;
+    grid-area: text;
+    flex-basis: 100%;
+  }
+
+  &--links {
+    grid-area: links;
+    font-size: 75%;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
   }
 
   @include toDesktopScreenMid {
@@ -78,31 +88,38 @@
   @include toTabletScreen {
     padding: 0;
     grid-template-areas:
-    "text"
-    "gallery"
-    "links";
+      "text"
+      "gallery"
+      "links";
     grid-template-columns: 100%;
+
+    &--links {
+      flex-wrap: nowrap;
+    }
+
+    &--text {
+      flex-basis: auto;
+    }
   }
 
   @include toPhoneScreen {
     font-size: 20px;
     line-height: 25px;
-  }
 
-  &--text {
-    grid-area: text;
-  }
+    &--text {
+      flex: 0 0 100%;
+    }
 
-  &--links {
-    grid-area: links;
-    font-size: 75%;
-    display: flex;
-    gap: 20px;
+    &--links {
+      gap: 8px;
+      flex-wrap: wrap;
+    }
   }
 }
 
 @keyframes animateDrag {
-  0%, 10% {
+  0%,
+  10% {
     opacity: 0;
     margin-left: 40px;
     transform: rotate(10deg);

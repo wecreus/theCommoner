@@ -1,14 +1,22 @@
-import React from "react";
 import { BrowserRouter, Route, Routes as RoutesList } from "react-router-dom";
-import Home from "@/layout/HomeLayout/Home"
+import Wrapper from "@/common/Wrapper";
+import Home from "@/layout/HomeLayout/Home";
 
-// TODO: 
+// TODO:
 // 1. add 404 page
-// 2. not use react-page-scroller 
+// 2. not use react-page-scroller
 const Router = () => (
   <BrowserRouter>
     <RoutesList>
-      <Route path={"/"} exact element={<Home />} />
+      <Route
+        path={"/"}
+        exact
+        element={
+          <Wrapper>
+            <Home />
+          </Wrapper>
+        }
+      />
     </RoutesList>
   </BrowserRouter>
 );

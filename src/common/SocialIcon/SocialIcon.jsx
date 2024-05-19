@@ -23,10 +23,11 @@ const SocialIcon = ({ className, url, name, Icon, gradient }) => {
   //     // setStyles({ transform: `rotateX(${rotateX}deg) rotateY(${rotateY}deg)` });
   //   };
   return (
-    <div
+    <a
       className="SocialIcon-container"
       title={name}
-      onClick={() => window.open(url, "_blank")}
+      href={url}
+      target={"_blank"}
     >
       <div className={classNames("SocialIcon", className)}>
         <div className="SocialIcon-front">
@@ -55,7 +56,7 @@ const SocialIcon = ({ className, url, name, Icon, gradient }) => {
         />
       </div>
       <div className="SocialIcon-title">{name}</div>
-    </div>
+    </a>
   );
 };
 

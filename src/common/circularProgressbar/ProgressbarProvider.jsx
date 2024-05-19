@@ -1,6 +1,9 @@
 import { useState, useEffect, memo } from "react";
 import { Animate } from "react-move";
-import easeCubicOut from "./easeCubicOut";
+
+const easeCubicOut = (t) => {
+  return --t * t * t + 1;
+};
 
 const ProgressProvider = memo(
   ({ valueStart, valueEnd, children, duration, delay }) => {
