@@ -4,12 +4,14 @@ import tech from "@/assets/icons/Technologist.webp";
 import fireworks from "@/assets/icons/Fireworks.webp";
 import thoughts from "@/assets/icons/Thoughts.gif";
 import pen from "@/assets/icons/penoriginal.svg";
+import logoTransparent from "@/assets/icons/logoTransparent.png";
 
 import insta from "@/assets/icons/instagram.svg?react";
 import flickr from "@/assets/icons/flickr.svg?react";
 import xcom from "@/assets/icons/Xcom.svg?react";
 import github from "@/assets/icons/github.svg?react";
 import commonerWhite from "@/assets/icons/commonerwhite.svg?react";
+import halfCircle from "@/assets/icons/halfCircle.svg?react";
 
 export const CoolArrow = arrow;
 export const AlienMonster = alien;
@@ -22,6 +24,8 @@ export const Flickr = flickr;
 export const Github = github;
 export const Xcom = xcom;
 export const CommonerWhite = commonerWhite;
+export const LogoTransparent = logoTransparent;
+export const HalfCircle = halfCircle;
 
 export const GalleryPictures = [
   {

@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import Footer from "@/layout/Footer/Footer";
+import Header from "@/layout/Header/Header";
 import { useLocation } from "react-router-dom";
 import GradientSVG from "./GradientSVG";
 import styles from "@/assets/styles/exports.module.scss";
@@ -12,6 +13,7 @@ const Wrapper = ({ children }) => {
 
   return (
     <div className="wrapper">
+      <Header />
       {children}
       <Footer />
       <GradientSVG

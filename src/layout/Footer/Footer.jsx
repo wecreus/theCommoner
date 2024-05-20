@@ -4,7 +4,7 @@ import GradientSVG from "@/common/GradientSVG";
 
 const Footer = () => {
   return (
-    <div className="Footer">
+    <footer className="Footer">
       <GradientSVG
           idCSS={"footerIconGradient"}
           startColor={"#ffffff"}
@@ -27,7 +27,7 @@ const Footer = () => {
         <Github className="Footer__item--logo" />
         Danylo Riabchuk
       </a>
-    </div>
+    </footer>
   );
 };
 
