@@ -22,9 +22,10 @@ const Home = () => {
       updateIsScrolled({
         isScrolled: !(pageNumber === 0),
       })
-    )
+    );
   }, [dispatch, pageNumber]);
 
+  // set scroll to false when Home unmounts to prevent Header specific logic to affect other pages
   useEffect(() => {
     return () => {
       dispatch(
@@ -33,7 +34,7 @@ const Home = () => {
         })
       );
     };
-  }, []);
+  }, [dispatch]);
   // TODO: group all children of ReactPageScroller
   return (
     <main className="main">
