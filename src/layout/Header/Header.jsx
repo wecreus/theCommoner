@@ -1,13 +1,18 @@
 import "./Header.scss";
 import { LogoTransparent } from "@/common/utils";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { HalfCircle } from "@/common/utils";
 
 const Header = () => {
   const [collapse, setCollapse] = useState(false);
   const navigate = useNavigate();
+  const isScrolled = useSelector((store) => store.scroll.isScrolled);
 
+  useEffect(() => {
+    setCollapse(isScrolled);
+  }, [isScrolled]);
   return (
     <header className={`Header ${collapse && "Header-collapse"}`}>
       <img
