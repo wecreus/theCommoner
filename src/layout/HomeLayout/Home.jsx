@@ -7,7 +7,6 @@ import Gallery from "./HomeComponents/Gallery/Gallery";
 import Reviews from "./HomeComponents/Reviews/Reviews";
 import Map from "./HomeComponents/Map";
 import MainPageSelector from "./HomeComponents/MainPageSelector";
-
 import "./Home.scss";
 
 const Home = () => {
@@ -18,6 +17,7 @@ const Home = () => {
   };
 
   useEffect(() => {
+    // only set isScrolled when user isnt on the first page of ReactPageScroller
     dispatch(
       updateIsScrolled({
         isScrolled: !(pageNumber === 0),
@@ -35,11 +35,11 @@ const Home = () => {
       );
     };
   }, [dispatch]);
-  // TODO: group all children of ReactPageScroller
+
   return (
     <main className="main">
       <MainPageSelector
-        totalPages={4} /* cool number 🗿 */
+        totalPages={4} /* total number of children for ReactPageScroller 🗿 */
         currentPage={pageNumber}
         handlePageChange={handlePageChange}
       />
@@ -52,6 +52,7 @@ const Home = () => {
         renderAllPagesOnFirstRender
       >
         <Welcome onScrollClick={() => handlePageChange(1)} />
+        {/* Reviews needs to know when user scrolls to it */}
         <Reviews focused={pageNumber === 1} />
         <Gallery />
         <Map />
