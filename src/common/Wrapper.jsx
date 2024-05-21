@@ -12,7 +12,7 @@ const Wrapper = ({ children }) => {
   }, [pathname]);
 
   return (
-    <div className="wrapper">
+    <>
       <Header />
       {children}
       <Footer />
@@ -22,7 +22,7 @@ const Wrapper = ({ children }) => {
         startColor={styles.accent2}
         rotation={45}
       />
-    </div>
+    </>
   );
 };
 
