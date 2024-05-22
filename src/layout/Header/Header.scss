@@ -6,7 +6,7 @@
   background: linear-gradient(
     170deg,
     rgba(0, 0, 0, 0.4) 0%,
-    rgba(23, 8, 58, 0.2) 120%
+    color-mix(in srgb, var(--primary) 10%, transparent) 120%
   );
   height: 80px;
   width: 95%;
@@ -23,9 +23,17 @@
   align-items: center;
   gap: 20px;
 
+  @supports not (background-color: color-mix(in srgb, white 5%, transparent)) {
+    background: linear-gradient(
+      170deg,
+      rgba(0, 0, 0, 0.4) 0%,
+      rgba(23, 8, 58, 0.2) 120%
+    );
+  }
+
   &-collapse {
     transform: translate(-50%, -1px);
-    width: calc(100% + 2px);
+    width: calc(100% + 4px);
     height: 60px;
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;
@@ -66,7 +74,7 @@
       transition: all 200ms ease;
 
       &:hover {
-        background-color: rgba(0, 0, 0, 0.8);
+        background-color: rgba(0, 0, 0, 0.3);
       }
     }
   }

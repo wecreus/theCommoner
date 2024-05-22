@@ -313,16 +313,20 @@
 .CircularProgressbar {
   .CircularProgressbar-path {
     stroke: url("#gBaseColors");
-    filter: drop-shadow(-3px -2px 5px rgba(var(--primary), 0.3));
   }
 
   .CircularProgressbar-text {
     font-weight: 800;
     fill: white;
-    text-shadow: 3px 3px 10px rgba(195, 186, 188, 0.31);
+    text-shadow: 3px 3px 10px color-mix(in srgb, var(--primary) 50%, transparent);
     font-size: 30px;
     font-variation-settings: "slnt" -8;
     height: 80px;
+
+    @supports not (text-shadow: 3px 3px 10px color-mix(in srgb, var(--primary) 60%, transparent)) {
+      text-shadow: 3px 3px 10px rgba(195, 186, 188, 0.31);
+    }
+
   }
 }
 
