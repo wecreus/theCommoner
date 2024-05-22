@@ -2,6 +2,7 @@ import { HalfCircle } from "@/common/utils";
 import { memo } from "react";
 import { useDispatch } from "react-redux";
 import { updateTheme } from "@/slices/themeReducer";
+import style from "@/assets/styles/exports.module.scss";
 
 const ThemeList = memo(() => {
   const dispatch = useDispatch();
@@ -14,12 +15,12 @@ const ThemeList = memo(() => {
     );
   };
 
-  return Array(3)
+  return Array(Number(style.totalThemes))
     .fill()
     .map((el, i) => {
       return (
         <div
-          className="ThemeList"
+          className={`ThemeList theme${i + 1}`}
           key={"theme" + i}
           onClick={() => updateStore(i)}
         >

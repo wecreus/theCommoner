@@ -313,7 +313,7 @@
 .CircularProgressbar {
   .CircularProgressbar-path {
     stroke: url("#gBaseColors");
-    filter: drop-shadow(-3px -2px 5px rgba($accent1, 0.3));
+    filter: drop-shadow(-3px -2px 5px rgba(var(--primary), 0.3));
   }
 
   .CircularProgressbar-text {

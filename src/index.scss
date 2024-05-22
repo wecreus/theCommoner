@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:slnt,wght@-8,100..900&display=swap");
-@import './assets/styles/_variables.scss';
+@import "./assets/styles/_variables.scss";
 
 :root {
   font-family: Inter, system-ui;
@@ -13,20 +13,15 @@
   width: 100%;
   box-sizing: border-box;
 
-  --primary1: #{$accent1};
-  --primary2: #{$accent4};
-  --secondary1: #{$accent2};
-  --secondary2: #{$accent5};
-}
-
-.theme1 {
-  --primary: var(--primary1);
-  --secondary: var(--secondary1);
-}
-
-.theme2 {
-  --primary: var(--primary2);
-  --secondary: var(--secondary2);
+  /* TODO: look into using @property for animated transition on variable change*/
+  @each $theme in $themes {
+    $i: index($themes, $theme);
+    .theme#{$i} {
+      @each $name, $color in $theme {
+        --#{$name}: #{$color};
+      }
+    }
+  }
 }
 
 body {
@@ -45,11 +40,11 @@ b {
 }
 
 a {
-  color: inherit; 
-  text-decoration: inherit; 
+  color: inherit;
+  text-decoration: inherit;
 }
 
 html,
 body {
-    overflow: hidden;
-} 
+  overflow: hidden;
+}

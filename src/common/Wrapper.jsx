@@ -3,7 +3,6 @@ import Footer from "@/layout/Footer/Footer";
 import Header from "@/layout/Header/Header";
 import { useLocation } from "react-router-dom";
 import GradientSVG from "./GradientSVG";
-import styles from "@/assets/styles/exports.module.scss";
 import ThemeProvider from "./ThemeProvider/ThemeProvider";
 
 const Wrapper = ({ children }) => {
@@ -19,8 +18,8 @@ const Wrapper = ({ children }) => {
       <Footer />
       <GradientSVG
         idCSS={"gBaseColors"}
-        endColor={styles.accent3}
-        startColor={styles.accent2}
+        endColor={"var(--support)"}
+        startColor={"var(--secondary)"}
         rotation={45}
       />
     </ThemeProvider>

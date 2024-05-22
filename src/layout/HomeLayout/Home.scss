@@ -191,17 +191,17 @@ main {
 }
 
 .commoner {
-  text-shadow: 3px 1px 10px rgba(195, 186, 188, 0.094);
+  text-shadow: 3px 1px 10px rgba(195, 186, 188, 0.212);
   font-weight: 900;
   margin: 0;
   padding: 0 8px 0 0;
   background: linear-gradient(
     90deg,
-    $accent1,
-    $accent2,
-    $accent1,
-    $accent2,
-    $accent1
+    var(--primary),
+    var(--secondary),
+    var(--primary),
+    var(--secondary),
+    var(--primary)
   );
   -webkit-background-clip: text;
   background-clip: text;

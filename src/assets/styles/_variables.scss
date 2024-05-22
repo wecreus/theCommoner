@@ -3,17 +3,27 @@ $screen-tablet-min: 720px;
 $screen-tablet-max: 1000px;
 $screen-desktop-min: 1500px;
 
-//---- colors ----//
+// to add new theme create a map like $theme4, fill it with colors similarly to previous themes and add it to $themes list
+// its important to keep adding numbers for themes in the end EXAMPLE: $theme4 $theme5 $theme6
 
 $background: #282b30;
-$accent1: #ab40ff;
-$accent2: #40fff5;
-$accent3: #5eaeeb;
 
-$accent4: #ff5050;
-$accent5: #ff8a00;
-$accent6: #ff2020;
+$theme1: (
+  "primary": #ab40ff,
+  "secondary": #40fff5,
+  "support": #60a6db,
+);
 
-$accent7: #ff2983;
-$accent8: #ff9e9e;
-$accent9: #b546ff;
+$theme2: (
+  "primary": #ff5050,
+  "secondary": #ff8a00,
+  "support": #ff2020,
+);
+
+$theme3: (
+  "primary": #ff2983,
+  "secondary": #ff9e9e,
+  "support": rgb(215, 163, 250),
+);
+
+$themes: $theme1 $theme2 $theme3;
