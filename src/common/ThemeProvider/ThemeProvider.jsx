@@ -20,6 +20,11 @@ const ThemeProvider = memo(({ children }) => {
       );
     } else {
       localStorage.setItem("theme", "0");
+      dispatch(
+        updateTheme({
+          theme: 0,
+        })
+      );
     }
   }, [dispatch]);
 

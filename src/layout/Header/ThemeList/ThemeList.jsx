@@ -1,11 +1,13 @@
 import { HalfCircle } from "@/common/utils";
 import { memo } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { updateTheme } from "@/slices/themeReducer";
 import style from "@/assets/styles/exports.module.scss";
+import classNames from "classnames";
 
 const ThemeList = memo(() => {
   const dispatch = useDispatch();
+  const storeTheme = useSelector((store) => store.theme.storedTheme);
 
   const updateStore = (theme) => {
     dispatch(
@@ -20,7 +22,11 @@ const ThemeList = memo(() => {
     .map((el, i) => {
       return (
         <div
-          className={`ThemeList theme${i + 1}`}
+          className={classNames({
+            ThemeList: true,
+            [`theme${i + 1}`]: true,
+            "ThemeList--selected": i === storeTheme,
+          })}
           key={"theme" + i}
           onClick={() => updateStore(i)}
         >
