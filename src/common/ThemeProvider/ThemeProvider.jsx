@@ -34,9 +34,6 @@ const ThemeProvider = memo(({ children }) => {
     localStorage.setItem("theme", storeTheme);
   }, [storeTheme]);
 
-
-  console.log("themeprovider ran", storeTheme, currentTheme)
-
   return <main className={`theme${currentTheme + 1}`}>{children}</main>;
 });
 

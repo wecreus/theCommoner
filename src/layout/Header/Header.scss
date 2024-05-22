@@ -16,32 +16,38 @@
   z-index: 2;
   box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.3);
   border-radius: 25px;
-  border: 1px solid rgb(70, 70, 70, 0.75);
   transition: all 300ms ease;
   box-sizing: border-box;
   padding: 0 20px;
   align-items: center;
   gap: 20px;
 
-  @supports not (background-color: color-mix(in srgb, white 5%, transparent)) {
-    background: linear-gradient(
-      170deg,
-      rgba(0, 0, 0, 0.4) 0%,
-      rgba(23, 8, 58, 0.2) 120%
-    );
+  &:before {
+    content: "";
+    border: 1px solid rgb(70, 70, 70, 0.75);
+    width: calc(100% - 2px);
+    height: calc(100% - 2px);
+    position: absolute;
+    border-radius: inherit;
+    left: 0;
+  
+    z-index: -1;
   }
 
   &-collapse {
     transform: translate(-50%, -1px);
-    width: calc(100% + 4px);
+    width: 100%;
     height: 60px;
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;
-    border: 1px solid rgba(0, 0, 0, 0);
 
     & .ThemeList {
       width: 36px;
       height: 36px;
+    }
+
+    &:before {
+      border: 1px solid transparent;
     }
   }
 
@@ -103,6 +109,14 @@
     &-sections__section {
       font-size: 16px;
     }
+  }
+
+  @supports not (background-color: color-mix(in srgb, white 5%, transparent)) {
+    background: linear-gradient(
+      170deg,
+      rgba(0, 0, 0, 0.4) 0%,
+      rgba(23, 8, 58, 0.2) 120%
+    );
   }
 }
 
