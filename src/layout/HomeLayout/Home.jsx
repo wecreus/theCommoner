@@ -37,7 +37,7 @@ const Home = () => {
   }, [dispatch]);
 
   return (
-    <main className="main">
+    <>
       <MainPageSelector
         totalPages={4} /* total number of children for ReactPageScroller 🗿 */
         currentPage={pageNumber}
@@ -57,7 +57,7 @@ const Home = () => {
         <Gallery />
         <Map />
       </ReactPageScroller>
-    </main>
+    </>
   );
 };
 

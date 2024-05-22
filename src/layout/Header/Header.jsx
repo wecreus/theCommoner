@@ -3,8 +3,10 @@ import { LogoTransparent } from "@/common/utils";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { HalfCircle } from "@/common/utils";
+import ThemeList from "./ThemeList/ThemeList";
+import classNames from "classnames";
 
+// TODO: check header styles for chrome on andriod
 const Header = () => {
   const [collapse, setCollapse] = useState(false);
   const navigate = useNavigate();
@@ -14,7 +16,9 @@ const Header = () => {
     setCollapse(isScrolled);
   }, [isScrolled]);
   return (
-    <header className={`Header ${collapse && "Header-collapse"}`}>
+    <header
+      className={classNames({ Header: true, "Header-collapse": collapse })}
+    >
       <img
         src={LogoTransparent}
         className="Header-logo"
@@ -28,20 +32,9 @@ const Header = () => {
           contact
         </li>
       </ul>
-      <div className="Header-themes">
-        {Array(3).fill().map((el, i) => (
-          <ThemeSwitch key={`theme${i}`} />
-        ))}
-      </div>
+      <ThemeList />
     </header>
   );
-};
-
-const ThemeSwitch = () => {
-  return <div className="ThemeSelector">
-    <HalfCircle className="ThemeSelector__theme ThemeSelector__theme--primary" />
-    <HalfCircle className="ThemeSelector__theme ThemeSelector__theme--secondary" />
-  </div>;
 };
 
 export default Header;

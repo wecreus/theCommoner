@@ -24,14 +24,14 @@
   gap: 20px;
 
   &-collapse {
-    transform: translate(-50%, 0px);
+    transform: translate(-50%, -1px);
     width: calc(100% + 2px);
     height: 60px;
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;
-    border: 0 solid rgba(0, 0, 0, 0);
+    border: 1px solid rgba(0, 0, 0, 0);
 
-    & .ThemeSelector {
+    & .ThemeList {
       width: 36px;
       height: 36px;
     }
@@ -79,7 +79,7 @@
   @include toPhoneScreen {
     height: 65px;
 
-    .ThemeSelector {
+    .ThemeList {
       width: 36px;
       height: 36px;
     }
@@ -87,7 +87,7 @@
     &-collapse {
       height: 50px;
 
-      .ThemeSelector {
+      .ThemeList {
         width: 30px;
         height: 30px;
       }
@@ -98,7 +98,7 @@
   }
 }
 
-.ThemeSelector {
+.ThemeList {
   border-radius: 50%;
   background-color: rgba(0, 0, 0, 0.479);
   height: 40px;
@@ -119,14 +119,14 @@
 
     &--primary {
       & path {
-        fill: $accent1;
+        fill: var(--primary);
       }
     }
 
     &--secondary {
       transform: translate(-50%, -50%) rotate(120deg);
       & path {
-        fill: $accent2;
+        fill: var(--secondary);
       }
     }
   }
@@ -135,7 +135,7 @@
     background-color: black;
     opacity: 1;
 
-    & .ThemeSelector__theme {
+    & .ThemeList__theme {
       width: 80%;
       height: 80%;
     }

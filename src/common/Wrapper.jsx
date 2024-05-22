@@ -4,6 +4,7 @@ import Header from "@/layout/Header/Header";
 import { useLocation } from "react-router-dom";
 import GradientSVG from "./GradientSVG";
 import styles from "@/assets/styles/exports.module.scss";
+import ThemeProvider from "./ThemeProvider/ThemeProvider";
 
 const Wrapper = ({ children }) => {
   const { pathname } = useLocation();
@@ -12,7 +13,7 @@ const Wrapper = ({ children }) => {
   }, [pathname]);
 
   return (
-    <>
+    <ThemeProvider>
       <Header />
       {children}
       <Footer />
@@ -22,7 +23,7 @@ const Wrapper = ({ children }) => {
         startColor={styles.accent2}
         rotation={45}
       />
-    </>
+    </ThemeProvider>
   );
 };
 

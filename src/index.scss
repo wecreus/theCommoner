@@ -12,6 +12,21 @@
   height: 100%;
   width: 100%;
   box-sizing: border-box;
+
+  --primary1: #{$accent1};
+  --primary2: #{$accent4};
+  --secondary1: #{$accent2};
+  --secondary2: #{$accent5};
+}
+
+.theme1 {
+  --primary: var(--primary1);
+  --secondary: var(--secondary1);
+}
+
+.theme2 {
+  --primary: var(--primary2);
+  --secondary: var(--secondary2);
 }
 
 body {
