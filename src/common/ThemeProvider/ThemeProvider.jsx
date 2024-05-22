@@ -5,13 +5,12 @@ import { useSelector } from "react-redux";
 
 const ThemeProvider = memo(({ children }) => {
   const storeTheme = useSelector((store) => store.theme.storedTheme);
-  const [currentTheme, setCurrentTheme] = useState(0);
+  const [currentTheme, setCurrentTheme] = useState(JSON.parse(localStorage.getItem("theme")) || 0);
   const dispatch = useDispatch();
 
-  //TODO: this useEffect runs after first render wich causes blinking
   useEffect(() => {
     const localTheme = JSON.parse(localStorage.getItem("theme"));
-
+  
     // if it exists in localstorage
     if (localTheme || localTheme === 0) {
       dispatch(
@@ -22,7 +21,7 @@ const ThemeProvider = memo(({ children }) => {
     } else {
       localStorage.setItem("theme", "0");
     }
-  }, []);
+  }, [dispatch]);
 
   // when redux value changes update state
   useEffect(() => {
