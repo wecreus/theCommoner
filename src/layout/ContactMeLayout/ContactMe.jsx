@@ -1,8 +1,12 @@
 import "./ContactMe.scss";
+import { Resend } from "resend";
+
 const ContactMe = () => {
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(import.meta.env.VITE_EMAIL_KEY);
+    const resend = new Resend(import.meta.env.VITE_EMAIL_KEY);
+    console.log(resend);
+
   };
   return (
     <section className="section Contact">
