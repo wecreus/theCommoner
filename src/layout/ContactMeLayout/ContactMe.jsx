@@ -2,9 +2,7 @@ import "./ContactMe.scss";
 const ContactMe = () => {
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(e.target["mail-name"].value);
-    console.log(e.target["mail-company"].value);
-    console.log(e.target["mail-message"].value);
+    console.log(import.meta.env.VITE_EMAIL_KEY);
   };
   return (
     <section className="section Contact">
