@@ -23,6 +23,7 @@ const Header = () => {
         src={LogoTransparent}
         className="Header-logo"
         onClick={() => navigate("/")}
+        title="Home"
       />
       <ul className="Header-sections">
         <li
