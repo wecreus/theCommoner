@@ -1,16 +1,19 @@
 import "./ContactMe.scss";
-import { Resend } from "resend";
 
 const ContactMe = () => {
   const onSubmit = (e) => {
     e.preventDefault();
-    const resend = new Resend(import.meta.env.VITE_EMAIL_KEY);
-    console.log(resend);
-
+    const mailName = String(e.target["mail-name"].value) || '';
+    const mailCompany = String(e.target["mail-company"].value) || '';
+    const mailMessage = String(e.target["mail-message"].value) || '';
+    const subject = `${mailName}${mailCompany ? " from " + mailCompany : ""}`;
+    
+    const result = `mailto:wecreus@gmail.com?subject=${subject}&body=${mailMessage}`;
+    window.open(result);
   };
   return (
     <section className="section Contact">
-      <form className="Form" onSubmit={onSubmit}>
+      <form className="Form" onSubmit={onSubmit} action="mailto:wecreus@gmail.com" method="post" encType="text/plain">
         <div className="Form-content">
           <div className="Form-content__group">
             <span className="Form-content__title">
@@ -27,19 +30,6 @@ const ContactMe = () => {
               // onChange={handleChangeColor}
               required
               placeholder="Your name"
-              autoComplete="off"
-            />
-          </div>
-          <div className="Form-content__group">
-            <label htmlFor="mail-adress" className="Form-content__label">
-              Your Email Adress*
-            </label>
-            <input
-              id="mail-adress"
-              className="Form-content__input Form-content__input--adress"
-              // onChange={handleChangeColor}
-              required
-              placeholder="Your Email"
               autoComplete="off"
             />
           </div>
