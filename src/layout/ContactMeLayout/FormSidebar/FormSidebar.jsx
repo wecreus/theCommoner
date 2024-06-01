@@ -72,7 +72,7 @@ const FormSidebar = memo(() => {
             text={"Ternopil, Ukraine "}
             title={"Show on the map"}
             url={
-              "https://www.google.com/maps/place/Ternopil,+Ternopil+Oblast,+46003/@49.7431183,12.3057933,4.2z"
+              "https://www.google.com/maps/place/Ternopil,+Ternopil+Oblast,+46003/@46.9651469,19.2062124,3.98z"
             }
           />
         </p>
