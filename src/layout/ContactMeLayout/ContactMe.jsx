@@ -1,23 +1,32 @@
 import "./ContactMe.scss";
+import FormSidebar from "./FormSidebar/FormSidebar";
+import { memo } from "react";
 
-const ContactMe = () => {
+const ContactMe = memo(() => {
   const onSubmit = (e) => {
     e.preventDefault();
-    const mailName = String(e.target["mail-name"].value) || '';
-    const mailCompany = String(e.target["mail-company"].value) || '';
-    const mailMessage = String(e.target["mail-message"].value) || '';
+    const mailName = String(e.target["mail-name"].value) || "";
+    const mailCompany = String(e.target["mail-company"].value) || "";
+    const mailMessage = String(e.target["mail-message"].value) || "";
     const subject = `${mailName}${mailCompany ? " from " + mailCompany : ""}`;
-    
+
     const result = `mailto:wecreus@gmail.com?subject=${subject}&body=${mailMessage}`;
     window.open(result);
   };
+
   return (
     <section className="section Contact">
-      <form className="Form" onSubmit={onSubmit} action="mailto:wecreus@gmail.com" method="post" encType="text/plain">
+      <form
+        className="Form"
+        onSubmit={onSubmit}
+        action="mailto:wecreus@gmail.com"
+        method="post"
+        encType="text/plain"
+      >
         <div className="Form-content">
           <div className="Form-content__group">
             <span className="Form-content__title">
-              Would love to hear from you
+              <b>Would love to hear from you</b>
             </span>
           </div>
           <div className="Form-content__group">
@@ -27,7 +36,6 @@ const ContactMe = () => {
             <input
               id="mail-name"
               className="Form-content__input Form-content__input--name"
-              // onChange={handleChangeColor}
               required
               placeholder="Your name"
               autoComplete="off"
@@ -42,7 +50,6 @@ const ContactMe = () => {
               className="Form-content__input Form-content__input--company"
               placeholder="Company"
               autoComplete="off"
-              // onChange={handleChangeColor}
             />
           </div>
           <div className="Form-content__group">
@@ -55,17 +62,21 @@ const ContactMe = () => {
               placeholder="Your message..."
               required
               type=""
-              rows={"4"}
+              rows={"6"}
               autoComplete="off"
-              // onChange={handleChangeColor}
             />
           </div>
-          <input type="submit" value={"Send email"} className="Form-content__submit"/>
+          <input
+            type="submit"
+            value={"Send email"}
+            className="Form-content__submit"
+          />
         </div>
-        <div className="Form-sidebar">side</div>
+        <FormSidebar />
       </form>
     </section>
   );
-};
+});
+
 
 export default ContactMe;

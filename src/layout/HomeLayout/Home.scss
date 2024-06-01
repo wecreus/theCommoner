@@ -181,66 +181,14 @@
 }
 
 .commoner {
-  text-shadow: 3px 1px 10px rgba(195, 186, 188, 0.212);
-  font-weight: 900;
   margin: 0;
   padding: 0 8px 0 0;
-  background: linear-gradient(
-    90deg,
-    var(--primary),
-    var(--secondary),
-    var(--primary),
-    var(--secondary),
-    var(--primary)
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  background-size: 400% auto;
-  color: transparent;
-  font-variation-settings: "slnt" -8;
-  animation: 7s CommonerAnimation 2s ease-in-out infinite;
   position: relative;
 }
 
 .hidden {
   display: inline-block;
   visibility: hidden;
-}
-
-.emoji {
-  width: 45px;
-  margin: 0 0 -10px 0;
-  cursor: pointer;
-
-  &:hover {
-    animation: hithere 1s ease normal;
-  }
-
-  @include toTabletScreen {
-    width: 40px;
-  }
-
-  @include toTabletScreenMin {
-    width: 35px;
-  }
-
-  @include toPhoneScreen {
-    width: 30px;
-  }
-}
-
-@keyframes CommonerAnimation {
-  0% {
-    background-position: 0% center;
-  }
-
-  60% {
-    background-position: 200% center;
-  }
-
-  100% {
-    background-position: 200% center;
-  }
 }
 
 @keyframes jumpInfinite {
@@ -255,25 +203,6 @@
   }
   100% {
     margin-top: 0;
-  }
-}
-
-@keyframes hithere {
-  30% {
-    transform: scale(1.2);
-  }
-  40%,
-  60% {
-    transform: rotate(-20deg) scale(1.2);
-  }
-  50% {
-    transform: rotate(20deg) scale(1.2);
-  }
-  70% {
-    transform: rotate(0deg) scale(1.2);
-  }
-  100% {
-    transform: scale(1);
   }
 }
 
