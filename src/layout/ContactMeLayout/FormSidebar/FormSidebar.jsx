@@ -5,16 +5,18 @@ import {
   Linkedin,
   Telegram,
   PDFicon,
+  Map,
 } from "@/common/utils";
 import SocialIcon from "@/common/SocialIcon/SocialIcon";
 import { memo } from "react";
 import "./FormSidebar.scss";
 import Divider from "@/common/Divider/Divider";
+import Link from "@/common/Link/Link";
 
 const FormSidebar = memo(() => {
   const dummyText =
     "Itext ever since the 1500s, when an unknown printer took a galley of type and scram";
-    
+
   return (
     <div className="Form-sidebar">
       <div className="Form-sidebar__text">
@@ -59,7 +61,16 @@ const FormSidebar = memo(() => {
           ></div>
         </div>
         <p className="Form-profile__description">
-          Front-end developer based in Ternopil, Ukraine
+          Front-end developer based in{" "}
+          <Link
+            Icon={Map}
+            className="Form-profile__description--link"
+            text={"Ternopil, Ukraine "}
+            title={"Show on the map"}
+            url={
+              "https://www.google.com/maps/place/Ternopil,+Ternopil+Oblast,+46003/@49.7431183,12.3057933,4.2z"
+            }
+          />
         </p>
         <Divider />
         <div className="Form-profile__links">

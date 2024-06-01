@@ -16,6 +16,7 @@ import commonerWhite from "@/assets/icons/commonerwhite.svg?react";
 import halfCircle from "@/assets/icons/halfCircle.svg?react";
 import telegram from "@/assets/icons/telegram.svg?react";
 import pdf from "@/assets/icons/PDF.svg?react";
+import map from "@/assets/icons/map.svg?react";
 
 export const CoolArrow = arrow;
 export const AlienMonster = alien;
@@ -34,6 +35,7 @@ export const ProfilePic = profilePic;
 export const Linkedin = linkedin;
 export const Telegram = telegram;
 export const PDFicon = pdf;
+export const Map = map;
 
 export const GalleryPictures = [
   {

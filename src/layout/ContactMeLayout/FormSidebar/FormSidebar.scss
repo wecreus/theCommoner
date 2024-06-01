@@ -110,6 +110,15 @@
 
     &__description {
       flex-grow: 1;
+
+      &--map {
+        width: 30px;
+        height: 30px;
+
+        & > path {
+          fill: url(#iconGradient);
+        }
+      }
     }
 
     &__picture {
