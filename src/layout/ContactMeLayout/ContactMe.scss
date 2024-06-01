@@ -14,7 +14,7 @@
     border-radius: 25px;
     display: flex;
 
-    @include toTabletScreenMin {
+    @include toTabletScreen {
       flex-direction: column-reverse;
       max-height: fit-content;
     }

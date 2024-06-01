@@ -43,6 +43,10 @@ const FormSidebar = memo(() => {
         <span className="Form-sidebar__text--gradient3 gradient-text">
           fdskjljksjlkad
         </span>
+        {dummyText}
+        <span className="Form-sidebar__text--gradient4 gradient-text">
+          TESTING
+        </span>
         {Array(3)
           .fill()
           .map(() => dummyText)}

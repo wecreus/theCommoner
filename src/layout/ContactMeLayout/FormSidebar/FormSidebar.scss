@@ -6,6 +6,10 @@
     position: relative;
     min-height: 470px;
 
+    @include toTabletScreen {
+      font-size: 90%;
+    }
+
     &::before {
       content: "";
       display: block;
@@ -101,6 +105,7 @@
         font-size: 60%;
         text-transform: lowercase;
         padding: 2px 5px;
+        border-radius: 2px;
         background: linear-gradient(
           90deg, 
           rgba(125, 245, 78, 0.445) 10%, 
@@ -111,6 +116,10 @@
 
     &__description {
       flex-grow: 1;
+
+      @include toTabletScreen {
+        font-size: 90%;
+      }
     }
 
     &__picture {
@@ -123,6 +132,10 @@
       background-blend-mode: screen;
       box-shadow: 2px 3px 15px rgba(0, 0, 0, 0.321);
       position: relative;
+
+      @include toTabletScreen {
+        width: 150px;
+      }
 
       &:before {
         content: "";
@@ -146,6 +159,20 @@
       display: flex;
       gap: 10px;
       justify-content: space-evenly;
+
+      & .SocialIcon {
+        width: 100px;
+        height: 100px;
+
+        @include toTabletScreen {
+          width: 80px;
+          height: 80px;
+        }
+        
+        &-title {
+          font-size: 60%;
+        }
+      }
     }
   }
 }
