@@ -4,6 +4,7 @@
     border-radius: 25px;
     border: 1px solid rgba(230, 220, 220, 0.315);
     position: relative;
+    min-height: 470px;
 
     &::before {
       content: "";
@@ -110,15 +111,6 @@
 
     &__description {
       flex-grow: 1;
-
-      &--map {
-        width: 30px;
-        height: 30px;
-
-        & > path {
-          fill: url(#iconGradient);
-        }
-      }
     }
 
     &__picture {
