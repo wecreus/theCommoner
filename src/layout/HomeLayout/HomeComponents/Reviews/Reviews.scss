@@ -186,7 +186,6 @@
   box-sizing: border-box;
 
   .control-dots {
-    
     margin: 0;
 
     @include toTabletScreen {
@@ -205,7 +204,7 @@
       box-shadow: none;
       opacity: 1;
       position: relative;
-      
+
       @include toTabletScreenMin {
         margin: 0 2px;
       }
@@ -230,7 +229,7 @@
         }
       }
 
-      &.selected:before { 
+      &.selected:before {
         background-color: white;
         width: 20px;
         height: 20px;
@@ -266,11 +265,17 @@
     opacity: 0.5;
     transition: all 200ms ease-in-out;
     top: 50%;
-    border: 2px solid white;
     box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.521);
     transform: translate(0, -50%);
     background-color: rgba(118, 130, 141, 0.267);
     transition: all 200ms ease;
+    border: 2px solid color-mix(in srgb, var(--support) 50%, white);
+
+    @supports not (
+      border: 2px solid color-mix(in srgb, var(--support) 50%, white)
+    ) {
+      border: 2px solid white;
+    }
 
     @include toTabletScreen {
       top: 100%;
@@ -312,17 +317,24 @@
 
 .CircularProgressbar {
   .CircularProgressbar-path {
-    stroke: url("#score");
-    filter: drop-shadow(-3px -2px 5px rgba($accent1, 0.3));
+    stroke: url("#gBaseColors");
   }
 
   .CircularProgressbar-text {
     font-weight: 800;
     fill: white;
-    text-shadow: 3px 3px 10px rgba(195, 186, 188, 0.31);
+    text-shadow: 3px 3px 10px
+      color-mix(in srgb, var(--primary) 50%, transparent);
     font-size: 30px;
     font-variation-settings: "slnt" -8;
     height: 80px;
+
+    @supports not (
+      text-shadow: 3px 3px 10px
+        color-mix(in srgb, var(--primary) 60%, transparent)
+    ) {
+      text-shadow: 3px 3px 10px rgba(195, 186, 188, 0.31);
+    }
   }
 }
 

@@ -4,12 +4,19 @@ import tech from "@/assets/icons/Technologist.webp";
 import fireworks from "@/assets/icons/Fireworks.webp";
 import thoughts from "@/assets/icons/Thoughts.gif";
 import pen from "@/assets/icons/penoriginal.svg";
+import logoTransparent from "@/assets/icons/logoTransparent.png";
+import profilePic from "@/assets/images/profilepic.webp";
 
 import insta from "@/assets/icons/instagram.svg?react";
+import linkedin from "@/assets/icons/linkedin.svg?react";
 import flickr from "@/assets/icons/flickr.svg?react";
 import xcom from "@/assets/icons/Xcom.svg?react";
 import github from "@/assets/icons/github.svg?react";
 import commonerWhite from "@/assets/icons/commonerwhite.svg?react";
+import halfCircle from "@/assets/icons/halfCircle.svg?react";
+import telegram from "@/assets/icons/telegram.svg?react";
+import pdf from "@/assets/icons/PDF.svg?react";
+import map from "@/assets/icons/map.svg?react";
 
 export const CoolArrow = arrow;
 export const AlienMonster = alien;
@@ -22,6 +29,13 @@ export const Flickr = flickr;
 export const Github = github;
 export const Xcom = xcom;
 export const CommonerWhite = commonerWhite;
+export const LogoTransparent = logoTransparent;
+export const HalfCircle = halfCircle;
+export const ProfilePic = profilePic;
+export const Linkedin = linkedin;
+export const Telegram = telegram;
+export const PDFicon = pdf;
+export const Map = map;
 
 export const GalleryPictures = [
   {

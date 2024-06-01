@@ -1,6 +1,9 @@
 import { useEffect } from "react";
 import Footer from "@/layout/Footer/Footer";
+import Header from "@/layout/Header/Header";
 import { useLocation } from "react-router-dom";
+import GradientSVG from "./GradientSVG";
+import ThemeProvider from "./ThemeProvider/ThemeProvider";
 
 const Wrapper = ({ children }) => {
   const { pathname } = useLocation();
@@ -9,10 +12,17 @@ const Wrapper = ({ children }) => {
   }, [pathname]);
 
   return (
-    <div className="wrapper">
-      {children} 
+    <ThemeProvider>
+      <Header />
+      {children}
       <Footer />
-    </div>
+      <GradientSVG
+        idCSS={"gBaseColors"}
+        endColor={"var(--support)"}
+        startColor={"var(--secondary)"}
+        rotation={45}
+      />
+    </ThemeProvider>
   );
 };
 

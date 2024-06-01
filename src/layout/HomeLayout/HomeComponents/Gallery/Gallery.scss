@@ -68,6 +68,7 @@
   &--text {
     grid-area: text;
     flex-basis: 100%;
+    font-size: 90%;
   }
 
   &--links {
@@ -84,6 +85,13 @@
     gap: 25px;
     padding: 0 25px;
     grid-template-columns: 50% auto;
+    &.card__content {
+      padding: 0 25px;
+    }
+
+    &--text {
+      font-size: 70%;
+    }
   }
   @include toTabletScreen {
     padding: 0;
@@ -108,6 +116,7 @@
 
     &--text {
       flex: 0 0 100%;
+      font-size: 100%;
     }
 
     &--links {

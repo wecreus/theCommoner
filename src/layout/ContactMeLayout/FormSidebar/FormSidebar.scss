@@ -1,0 +1,178 @@
+.Contact .Form {
+  &-sidebar {
+    flex: 1 1 0;
+    border-radius: 25px;
+    border: 1px solid rgba(230, 220, 220, 0.315);
+    position: relative;
+    min-height: 470px;
+
+    @include toTabletScreen {
+      font-size: 90%;
+    }
+
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      background: linear-gradient(
+        120deg,
+        rgba(0, 0, 0, 0.01) 0%,
+        rgba(0, 0, 255, 0.075)
+      );
+      border-radius: 25px;
+    }
+
+    &__text {
+      word-break: break-all;
+      position: absolute;
+      top: 10px;
+      left: 5px;
+      right: 5px;
+      bottom: 10px;
+      z-index: -2;
+      padding: 5px;
+      overflow: hidden;
+      color: grey;
+
+      &--gradient2 {
+        background: linear-gradient(90deg, blue, red, blue, red, blue);
+        -webkit-background-clip: text;
+        background-clip: text;
+        background-size: 400% auto;
+      }
+
+      &--gradient3 {
+        background: linear-gradient(
+          90deg,
+          purple,
+          rgb(255, 17, 203),
+          purple,
+          rgb(255, 17, 203),
+          purple
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        background-size: 400% auto;
+      }
+
+      &--gradient4 {
+        background: linear-gradient(
+          90deg,
+          rgb(203, 206, 11),
+          rgb(88, 17, 255),
+          rgb(203, 206, 11),
+          rgb(88, 17, 255),
+          rgb(203, 206, 11)
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        background-size: 400% auto;
+      }
+    }
+  }
+
+  &-profile {
+    display: flex;
+    padding: 15px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    flex-direction: column;
+    gap: 20px;
+
+    &__head {
+      width: 100%;
+      vertical-align: middle;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      justify-content: space-between;
+    }
+
+    &__name {
+      font-variation-settings: "slnt" -8;
+      display: flex;
+      flex-direction: column;
+
+      &--work {
+        font-size: 60%;
+        text-transform: lowercase;
+        padding: 2px 5px;
+        border-radius: 2px;
+        background: linear-gradient(
+          90deg, 
+          rgba(125, 245, 78, 0.445) 10%, 
+          rgba(255, 255, 255, 0)
+        );
+      }
+    }
+
+    &__description {
+      flex-grow: 1;
+
+      @include toTabletScreen {
+        font-size: 90%;
+      }
+    }
+
+    &__picture {
+      border-radius: 25px;
+      width: 30%;
+      aspect-ratio: 1/1;
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-blend-mode: screen;
+      box-shadow: 2px 3px 15px rgba(0, 0, 0, 0.321);
+      position: relative;
+
+      @include toTabletScreen {
+        width: 150px;
+      }
+
+      &:before {
+        content: "";
+        display: block;
+        width: 101%;
+        height: 101%;
+        border-radius: 25px;
+        background: linear-gradient(
+          120deg,
+          rgba(255, 255, 255),
+          rgba(112, 112, 112, 0.308)
+        );
+        transform: translate(-50%, -50%);
+        top: 50%;
+        left: 50%;
+        z-index: -1;
+        position: absolute;
+      }
+    }
+    &__links {
+      display: flex;
+      gap: 10px;
+      justify-content: space-evenly;
+
+      & .SocialIcon {
+        width: 100px;
+        height: 100px;
+
+        @include toTabletScreen {
+          width: 80px;
+          height: 80px;
+        }
+        
+        &-title {
+          font-size: 60%;
+        }
+      }
+    }
+  }
+}

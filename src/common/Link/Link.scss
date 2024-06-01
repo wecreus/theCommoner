@@ -1,0 +1,27 @@
+.Link-custom {
+    // text-decoration: underline;
+    text-shadow: 3px 1px 5px rgba(195, 186, 188, 0.5);
+    transition: all 200ms ease;
+    background-color: rgba(255, 255, 255, 0);
+    position: relative;
+    padding-right: 35px;
+
+    &:hover {
+        text-shadow: 3px 1px 15px rgba(195, 186, 188, 0.569);
+        background-color: rgba(255, 255, 255, 0.185);
+    }
+
+    &__icon {
+        height: 90%;
+        aspect-ratio: 1/1;
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+        
+        & > path {
+            fill: url(#iconGradient);
+        }
+
+    }
+}

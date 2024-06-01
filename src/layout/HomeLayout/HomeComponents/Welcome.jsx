@@ -9,7 +9,7 @@ const Welcome = memo((props) => {
   return (
     <section className="card">
       <p className="card__content welcome">
-        <span className="commoner">
+        <span className="commoner gradient-text">
           <ReactTyped
             strings={["THE", "theCommoner"]}
             typeSpeed={100}
