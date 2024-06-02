@@ -117,9 +117,16 @@
       font-size: 70%;
       display: flex;
       justify-content: space-between;
-      opacity: 0.7;
       flex-wrap: wrap;
       font-style: normal;
+
+      & a {
+        opacity: 0.7;
+        transition: all 200ms ease;
+        &:hover {
+          opacity: 1;
+        }
+      }
 
       @include toTabletScreen {
         font-size: 60%;
