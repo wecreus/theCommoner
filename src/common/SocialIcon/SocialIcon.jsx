@@ -28,6 +28,7 @@ const SocialIcon = ({ className, url, name, Icon, gradient }) => {
       title={name}
       href={url}
       target={"_blank"}
+      rel="noopener noreferrer"
     >
       <div className={classNames("SocialIcon", className)}>
         <div className="SocialIcon-front">
