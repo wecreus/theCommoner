@@ -22,6 +22,12 @@ const Wrapper = ({ children }) => {
         startColor={"var(--secondary)"}
         rotation={45}
       />
+      <GradientSVG
+        idCSS={"iconGradient"}
+        startColor={"#ffffff"}
+        endColor={"#ffffff88"}
+        rotation={"0"}
+      />
     </ThemeProvider>
   );
 };
