@@ -132,6 +132,19 @@
     width: 100%;
     grid-area: content;
 
+    &--link {
+      text-shadow: 3px 1px 5px rgba(195, 186, 188, 0.5);
+      transition: all 200ms ease;
+      background-color: rgba(255, 255, 255, 0);
+      display: inline-block;
+      text-decoration: underline;
+
+      &:hover {
+        text-shadow: 3px 1px 15px rgba(195, 186, 188, 0.569);
+        background-color: rgba(255, 255, 255, 0.185);
+      }
+    }
+
     @include toTabletScreen {
       font-size: 18px;
     }

@@ -6,6 +6,7 @@ import { AlienMonster } from "@/common/utils";
 import ReviewSlide from "./ReviewSlide";
 import classNames from "classnames";
 import { GalleryMock } from "@/common/mocks";
+import markdownParser from "@/common/markdownParser/markdownParser";
 import "react-circular-progressbar/dist/styles.css";
 import "./Reviews.scss";
 
@@ -14,22 +15,35 @@ const Reviews = memo(({ focused }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
+    const parseReviews = (rawReviews) => [
+      ...rawReviews.map((review) => {
+        return {
+          ...review,
+          description: markdownParser(review.description),
+          funFact: markdownParser(review.funFact),
+        };
+      }),
+    ];
+
     if (import.meta.env.MODE === "development") {
-      setReviews(GalleryMock);
+      setReviews(parseReviews(GalleryMock));
       return;
     }
 
     const reviewsCollectionRef = collection(db, "reviews");
     const getReviews = async () => {
       const data = await getDocs(reviewsCollectionRef);
-      setReviews(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+      setReviews(
+        parseReviews(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+      );
     };
 
     getReviews().catch((e) => {
       console.error(e);
-      setReviews(GalleryMock);
+      setReviews(parseReviews(GalleryMock));
     });
   }, []);
+
   return (
     <section className="card card-reviews">
       <div className="reviews">

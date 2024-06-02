@@ -59,7 +59,7 @@ const ReviewSlide = memo(({
           <Divider className={"review-slide__divider"}>
             <div className="review-slide__divider--content">REVIEW</div>
           </Divider>
-          <p className="review-slide__description">{description}</p>
+          <p className="review-slide__description" dangerouslySetInnerHTML={{__html: description}}></p>
           {!!funFact && (
             <>
               <Divider className={"review-slide__divider"}>
@@ -74,7 +74,7 @@ const ReviewSlide = memo(({
                   />
                 </div>
               </Divider>
-              <div className="review-slide__fun">{funFact}</div>
+              <div className="review-slide__fun" dangerouslySetInnerHTML={{__html: funFact}}></div>
             </>
           )}
         </div>
