@@ -7,7 +7,7 @@ export const GalleryMock = [
     name: "Baldurs Gate 3 mock",
     score: 95,
     funFact:
-      "I have completed solo honour mode run and you can [watch the finale of it](https://youtu.be/WdgwqteDS88?si=v6vcjnLKH-h8zxJp&t=14) of it",
+      "I have completed solo honour mode run and you can [watch the finale](https://youtu.be/WdgwqteDS88?si=v6vcjnLKH-h8zxJp&t=14) of it",
   },
   {
     coverUrl:
@@ -16,7 +16,7 @@ export const GalleryMock = [
       "My first game that I spent more than 1000 hours on, and I usually hate card games. IMHO this is the best phone game ever",
     name: "Slay the Spire",
     score: 88,
-    funFact: "My ascention 20 rotating win streak is 7💪",
+    funFact: "My A20 rotating win streak is 7💪",
   },
   {
     description:
@@ -24,7 +24,7 @@ export const GalleryMock = [
     name: "Risk of Rain 2",
     score: 89,
     funFact:
-      "I am a former [World Record holder](https://www.speedrun.com/ror2?h=Gauntlet-commando&x=w20mm7jk-wley0yrn.10v63ewl) for Commando speedrun :)",
+      "I am a former [World Record](https://www.speedrun.com/ror2?h=Gauntlet-commando&x=w20mm7jk-wley0yrn.10v63ewl) holder for Commando speedrun :)",
     coverUrl:
       "https://upload.wikimedia.org/wikipedia/en/c/c1/Risk_of_Rain_2.jpg",
   },
