@@ -76,6 +76,10 @@ const FormSidebar = memo(() => {
             }
           />
         </p>
+        <address className="Form-profile__quick-call">
+          <a href="mailto:wecreus@gmail.com">wecreus@gmail.com</a>
+          <a href="tel:+380953811523">+380953811523</a>
+        </address>
         <Divider />
         <div className="Form-profile__links">
           <SocialIcon

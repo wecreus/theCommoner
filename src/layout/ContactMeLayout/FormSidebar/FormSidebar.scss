@@ -85,11 +85,6 @@
     left: 0;
     bottom: 0;
     flex-direction: column;
-    gap: 20px;
-
-    @include toTabletScreen {
-      gap: 10px;
-    }
 
     &__head {
       width: 100%;
@@ -111,15 +106,29 @@
         padding: 2px 5px;
         border-radius: 2px;
         background: linear-gradient(
-          90deg, 
-          rgba(125, 245, 78, 0.445) 10%, 
+          90deg,
+          rgba(125, 245, 78, 0.445) 10%,
           rgba(255, 255, 255, 0)
         );
       }
     }
 
+    &__quick-call {
+      font-size: 70%;
+      display: flex;
+      justify-content: space-between;
+      opacity: 0.7;
+      flex-wrap: wrap;
+      font-style: normal;
+
+      @include toTabletScreen {
+        font-size: 60%;
+      }
+    }
+
     &__description {
       flex-grow: 1;
+      padding: 10px 0;
 
       @include toTabletScreen {
         font-size: 90%;
@@ -172,7 +181,7 @@
           width: 80px;
           height: 80px;
         }
-        
+
         &-title {
           font-size: 60%;
         }
