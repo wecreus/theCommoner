@@ -1,6 +1,6 @@
 import "./Footer.scss";
 import { Github, CommonerWhite } from "@/common/utils";
-import GradientSVG from "@/common/GradientSVG";
+import GradientSVG from "@/common/GradientSVG/GradientSVG";
 
 const Footer = () => {
   return (
@@ -14,6 +14,7 @@ const Footer = () => {
       <a
         className="Footer__item"
         target={"_blank"}
+        rel="noopener noreferrer"
         href="https://github.com/wecreus/theCommoner"
       >
         <CommonerWhite  className="Footer__item--logo" />
@@ -22,6 +23,7 @@ const Footer = () => {
       <a
         className="Footer__item"
         target={"_blank"}
+        rel="noopener noreferrer"
         href="https://github.com/wecreus"
       >
         <Github className="Footer__item--logo" />

@@ -106,7 +106,12 @@
     }
 
     &--text {
-      flex-basis: auto;
+      flex: 0 0 100%;
+    }
+
+    &--links {
+      gap: 8px;
+      flex-wrap: wrap;
     }
   }
 
@@ -114,14 +119,8 @@
     font-size: 20px;
     line-height: 25px;
 
-    &--text {
-      flex: 0 0 100%;
+    &--text { 
       font-size: 100%;
-    }
-
-    &--links {
-      gap: 8px;
-      flex-wrap: wrap;
     }
   }
 }

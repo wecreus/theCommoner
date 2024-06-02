@@ -72,10 +72,14 @@ const FormSidebar = memo(() => {
             text={"Ternopil, Ukraine "}
             title={"Show on the map"}
             url={
-              "https://www.google.com/maps/place/Ternopil,+Ternopil+Oblast,+46003/@49.7431183,12.3057933,4.2z"
+              "https://www.google.com/maps/place/Ternopil,+Ternopil+Oblast,+46003/@46.9651469,19.2062124,3.98z"
             }
           />
         </p>
+        <address className="Form-profile__quick-call">
+          <a href="mailto:wecreus@gmail.com">wecreus@gmail.com</a>
+          <a href="tel:+380953811523">+380953811523</a>
+        </address>
         <Divider />
         <div className="Form-profile__links">
           <SocialIcon
