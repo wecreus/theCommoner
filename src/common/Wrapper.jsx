@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import Footer from "@/layout/Footer/Footer";
 import Header from "@/layout/Header/Header";
 import { useLocation } from "react-router-dom";
-import GradientSVG from "./GradientSVG";
+import GradientSVG from "./GradientSVG/GradientSVG";
 import ThemeProvider from "./ThemeProvider/ThemeProvider";
 
 const Wrapper = ({ children }) => {

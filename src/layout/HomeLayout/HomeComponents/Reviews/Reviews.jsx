@@ -5,32 +5,9 @@ import { Carousel } from "react-responsive-carousel";
 import { AlienMonster } from "@/common/utils";
 import ReviewSlide from "./ReviewSlide";
 import classNames from "classnames";
+import { GalleryMock } from "@/common/mocks";
 import "react-circular-progressbar/dist/styles.css";
 import "./Reviews.scss";
-
-// TODO: use a more sophisticated mock
-const mock = [
-  {
-    coverUrl:
-      "https://upload.wikimedia.org/wikipedia/en/1/12/Baldur%27s_Gate_3_cover_art.jpg",
-    description:
-      "An absolute breathtaking game that made me love a new genre. more more text more text more text more text more text more text text ",
-    id: "Jn6d4huJ7XwnoDjwpV5H",
-    name: "Baldurs Gate 3 mock",
-    score: 95,
-    funFact: "I have completed solo honour mode run watch it on youtube",
-  },
-  {
-    coverUrl:
-      "https://upload.wikimedia.org/wikipedia/en/b/b7/Slay_the_spire_cover.jpg",
-    description: "Card game that saved me from going insane (truth)",
-    id: "qrTmXurJl3SOb7wU0RW6",
-    name: "Slay the Spire",
-    score: 88,
-    funFact:
-      "my Ascention 20 win streak is around 7 (I think) rotating  (I think) rotating (I think) rotating",
-  },
-];
 
 const Reviews = memo(({ focused }) => {
   const [reviews, setReviews] = useState();
@@ -38,7 +15,7 @@ const Reviews = memo(({ focused }) => {
 
   useEffect(() => {
     if (import.meta.env.MODE === "development") {
-      setReviews(mock);
+      setReviews(GalleryMock);
       return;
     }
 
@@ -50,7 +27,7 @@ const Reviews = memo(({ focused }) => {
 
     getReviews().catch((e) => {
       console.error(e);
-      setReviews(mock);
+      setReviews(GalleryMock);
     });
   }, []);
   return (

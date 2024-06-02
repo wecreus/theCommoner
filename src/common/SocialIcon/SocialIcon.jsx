@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import GradientSVG from "@/common/GradientSVG";
+import GradientSVG from "@/common/GradientSVG/GradientSVG";
 import "./SocialIcon.scss";
 
 const SocialIcon = ({ className, url, name, Icon, gradient }) => {

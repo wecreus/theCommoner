@@ -1,9 +1,10 @@
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
-import ProgressProvider from "@/common/ProgressbarProvider";
+import ProgressProvider from "@/common/Progressbar/ProgressbarProvider";
 import Divider from "@/common/Divider/Divider";
+import { memo } from "react";
 import { Pen } from "@/common/utils";
 
-const ReviewSlide = ({
+const ReviewSlide = memo(({
     name,
     score,
     url,
@@ -34,12 +35,12 @@ const ReviewSlide = ({
               delay={200}
               repeat
             >
-              {(v) => (
+              {(CircleValue) => (
                 <CircularProgressbar
-                  value={Math.round(v)}
+                  value={Math.round(CircleValue)}
                   minValue={0}
                   maxValue={100}
-                  text={<tspan dy={2}>{Math.round(v)}</tspan>}
+                  text={<tspan dy={2}>{Math.round(CircleValue)}</tspan>}
                   className={"review-slide__score"}
                   background={true}
                   backgroundPadding="10"
@@ -79,6 +80,6 @@ const ReviewSlide = ({
         </div>
       </div>
     );
-  };
+  });
 
 export default ReviewSlide;

@@ -1,6 +1,6 @@
 import "./Footer.scss";
 import { Github, CommonerWhite } from "@/common/utils";
-import GradientSVG from "@/common/GradientSVG";
+import GradientSVG from "@/common/GradientSVG/GradientSVG";
 
 const Footer = () => {
   return (
