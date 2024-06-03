@@ -13,7 +13,7 @@ const Welcome = memo((props) => {
 
   return (
     <>
-      <p className="card__content welcome">
+      <p className="card__content welcome animate-render">
         <span className="commoner gradient-text">
           <ReactTyped
             strings={["THE", "theCommoner"]}
