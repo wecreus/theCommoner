@@ -1,26 +1,27 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef} from "react";
 
-const useIntersectionObserver = (reference) => {
+const useIntersectionObserver = () => {
   const [isVisible, setIsVisible] = useState(false);
+  // used to track if item was at some point on the screen
+  const [wasVisible, setWasVisible] = useState(false);
+  const ref = useRef(null);
 
   useEffect(() => {
     const handleIntersect = (entries) => {
-      setIsVisible(entries[0].isIntersecting)
+      setIsVisible(entries[0].isIntersecting);
+      setWasVisible(prev => prev ? prev : entries[0].isIntersecting);
     };
 
-    // Create the observer, passing in the callback
     const observer = new IntersectionObserver(handleIntersect, { threshold: 0.2});
 
-    // If we have a ref value, start observing it
-    if (reference && reference.current) {
-      observer.observe(reference.current);
+    if (ref && ref.current) {
+      observer.observe(ref.current);
     }
 
-    // If unmounting, disconnect the observer
     return () => observer.disconnect();
-  }, [reference]);
+  }, [ref]);
 
-  return isVisible;
+  return [ref, isVisible, wasVisible];
 };
 
 export default useIntersectionObserver;

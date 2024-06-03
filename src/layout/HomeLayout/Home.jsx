@@ -1,4 +1,4 @@
-import { useState, lazy, Suspense, useRef, useEffect, useMemo } from "react";
+import { useState, lazy, Suspense, useEffect, useMemo } from "react";
 import Welcome from "./HomeComponents/Welcome";
 import MainPageSelector from "./HomeComponents/MainPageSelector";
 import useIntersectionObserver from "@/common/hooks/useIntersectionObserver";
@@ -10,59 +10,30 @@ const Map = lazy(() => import("./HomeComponents/Map/Map"));
 
 const Home = () => {
   const [pageNumber, setPageNumber] = useState(0);
-  const [shouldRender, setShouldRender] = useState({
-    gallery: false,
-    reviews: false,
-    map: false,
-  });
 
-  const welcomeSection = useRef(null);
-  const gallerySection = useRef(null);
-  const reviewsSection = useRef(null);
-  const mapSection = useRef(null);
-  const sectionsList = [
-    welcomeSection,
-    reviewsSection,
-    gallerySection,
-    mapSection,
-  ];
+  const [galleryRef, isGalleryVisible, wasGalleryVisible] =
+    useIntersectionObserver();
+  const [reviewsRef, isReviewsVisible, wasReviewsVisible] =
+    useIntersectionObserver();
+  const [mapRef, isMapVisible, wasMapVisible] = useIntersectionObserver();
+  const [welcomeRef, isWelcomeVisible] = useIntersectionObserver();
+
+  // order of items in isVisibleList and in refList is important for scrolling
+  const isVisibleList = useMemo(
+    () => [isWelcomeVisible, isReviewsVisible, isGalleryVisible, isMapVisible],
+    [isWelcomeVisible, isReviewsVisible, isGalleryVisible, isMapVisible]
+  );
+
+  const refList = [welcomeRef, reviewsRef, galleryRef, mapRef];
 
   const handlePageChange = (page) => {
-    
-    sectionsList[page].current.scrollIntoView({ behavior: "smooth" });
+    refList[page].current.scrollIntoView({ behavior: "smooth" });
   };
-
-  const isGalleryVisible = useIntersectionObserver(gallerySection);
-  const isReviewsVisible = useIntersectionObserver(reviewsSection);
-  const isMapVisible = useIntersectionObserver(mapSection);
-  const isWelcomeVisible = useIntersectionObserver(welcomeSection);
-  const isVisibleList = useMemo(() => [isWelcomeVisible, isReviewsVisible, isGalleryVisible, isMapVisible], [isWelcomeVisible, isReviewsVisible, isGalleryVisible, isMapVisible]);
-  console.log(isVisibleList)
-  // if shown once on screen then it should stay shown
-  useEffect(() => {
-    isGalleryVisible &&
-      !shouldRender.gallery &&
-      setShouldRender((prev) => {
-        return { ...prev, gallery: isGalleryVisible };
-      });
-
-    isReviewsVisible &&
-      !shouldRender.reviews &&
-      setShouldRender((prev) => {
-        return { ...prev, reviews: isReviewsVisible };
-      });
-    isMapVisible &&
-      !shouldRender.map &&
-      setShouldRender((prev) => {
-        return { ...prev, map: isMapVisible };
-      });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isVisibleList]);
 
   // should update page number on scroll
   useEffect(() => {
     for (let i = isVisibleList.length - 1; i >= 0; i--) {
-      if(isVisibleList[i]) {
+      if (isVisibleList[i]) {
         setPageNumber(i);
         return;
       }
@@ -72,30 +43,30 @@ const Home = () => {
   return (
     <>
       <MainPageSelector
-        totalPages={sectionsList.length}
+        totalPages={refList.length}
         currentPage={pageNumber}
         handlePageChange={handlePageChange}
       />
-      <section className="card card-welcome" ref={welcomeSection}>
+      <section className="card card-welcome" ref={welcomeRef}>
         <Welcome onScrollClick={() => handlePageChange(1)} />
       </section>
-      <section className="card card-reviews" ref={reviewsSection}>
-        {shouldRender.reviews && (
+      <section className="card card-reviews" ref={reviewsRef}>
+        {wasReviewsVisible && (
           <Suspense fallback={<div className="loading">Loading...</div>}>
             {/* Reviews needs to know when user scrolls to it */}
             <Reviews focused={isReviewsVisible} />
           </Suspense>
         )}
       </section>
-      <section className="card card-gallery" ref={gallerySection}>
-        {shouldRender.gallery && (
+      <section className="card card-gallery" ref={galleryRef}>
+        {wasGalleryVisible && (
           <Suspense fallback={<div className="loading">Loading...</div>}>
             <Gallery />
           </Suspense>
         )}
       </section>
-      <section className="card card-map" ref={mapSection}>
-        {shouldRender.map && (
+      <section className="card card-map" ref={mapRef}>
+        {wasMapVisible && (
           <Suspense fallback={<div className="loading">Loading...</div>}>
             <Map />
           </Suspense>
