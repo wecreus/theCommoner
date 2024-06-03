@@ -1,40 +1,25 @@
-import { useState, useEffect } from "react";
-import ReactPageScroller from "react-page-scroller";
-import { useDispatch } from "react-redux";
-import { updateIsScrolled } from "@/slices/scrollReducer";
+import { useState, lazy, Suspense, useRef } from "react";
 import Welcome from "./HomeComponents/Welcome";
-import Gallery from "./HomeComponents/Gallery/Gallery";
-import Reviews from "./HomeComponents/Reviews/Reviews";
-import Map from "./HomeComponents/Map/Map";
 import MainPageSelector from "./HomeComponents/MainPageSelector";
+import useIntersectionObserver from "@/common/hooks/useIntersectionObserver";
 import "./Home.scss";
 
+const Reviews = lazy(() => import("./HomeComponents/Reviews/Reviews"));
+const Gallery = lazy(() => import("./HomeComponents/Gallery/Gallery"));
+const Map = lazy(() => import("./HomeComponents/Map/Map"));
+
 const Home = () => {
-  const dispatch = useDispatch();
   const [pageNumber, setPageNumber] = useState(0);
   const handlePageChange = (page) => {
     setPageNumber(page);
   };
+  const gallerySection = useRef(null);
+  const reviewsSection = useRef(null);
+  const mapSection = useRef(null);
 
-  useEffect(() => {
-    // only set isScrolled when user isnt on the first page of ReactPageScroller
-    dispatch(
-      updateIsScrolled({
-        isScrolled: !(pageNumber === 0),
-      })
-    );
-  }, [dispatch, pageNumber]);
-
-  // set scroll to false when Home unmounts to prevent Header specific logic to affect other pages
-  useEffect(() => {
-    return () => {
-      dispatch(
-        updateIsScrolled({
-          isScrolled: false,
-        })
-      );
-    };
-  }, [dispatch]);
+  const isGalleryVisible = useIntersectionObserver(gallerySection);
+  const isReviewsVisible = useIntersectionObserver(reviewsSection);
+  const isMapVisible = useIntersectionObserver(mapSection);
 
   return (
     <>
@@ -43,20 +28,31 @@ const Home = () => {
         currentPage={pageNumber}
         handlePageChange={handlePageChange}
       />
-      <ReactPageScroller
-        animationTimer={250}
-        customPageNumber={pageNumber}
-        onBeforePageScroll={(i) => {
-          handlePageChange(i);
-        }}
-        renderAllPagesOnFirstRender
-      >
-        <Welcome onScrollClick={() => handlePageChange(1)} />
-        {/* Reviews needs to know when user scrolls to it */}
-        <Reviews focused={pageNumber === 1} />
-        <Gallery />
-        <Map />
-      </ReactPageScroller>
+      <section className="card card-welcome">
+        <Welcome onScrollClick={() => handlePageChange(1)}/>
+      </section>
+      <section className="card card-reviews" ref={reviewsSection}>
+        {isReviewsVisible && (
+          <Suspense fallback={<div className="loading">Loading...</div>}>
+            {/* Reviews needs to know when user scrolls to it */}
+            <Reviews focused={isReviewsVisible} />
+          </Suspense>
+        )}
+      </section>
+      <section className="card card-gallery" ref={gallerySection}>
+        {isGalleryVisible && (
+          <Suspense fallback={<div className="loading">Loading...</div>}>
+            <Gallery />
+          </Suspense>
+        )}
+      </section>
+      <section className="card card-map" ref={mapSection}>
+        {isMapVisible && (
+          <Suspense fallback={<div className="loading">Loading...</div>}>
+            <Map />
+          </Suspense>
+        )}
+      </section>
     </>
   );
 };
