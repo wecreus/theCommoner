@@ -4,17 +4,12 @@ const useIntersectionObserver = (reference) => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    const handleIntersect = (entries, observer) => {
-      console.log(entries[0].target)
-      if (entries[0].isIntersecting) {
-        setIsVisible(true);
-        observer.unobserve(entries[0].target);
-        observer.disconnect();
-      }
+    const handleIntersect = (entries) => {
+      setIsVisible(entries[0].isIntersecting)
     };
 
     // Create the observer, passing in the callback
-    const observer = new IntersectionObserver(handleIntersect);
+    const observer = new IntersectionObserver(handleIntersect, { threshold: 0.2});
 
     // If we have a ref value, start observing it
     if (reference && reference.current) {
