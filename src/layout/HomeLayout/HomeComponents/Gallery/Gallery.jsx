@@ -7,7 +7,7 @@ import SocialIcon from "@/common/SocialIcon/SocialIcon";
 
 const Gallery = memo(() => {
   return (
-    <div className="card__content card__gallery">
+    <div className="card__content card__gallery animate-render">
       <Carousel
         emulateTouch
         showArrows={false}

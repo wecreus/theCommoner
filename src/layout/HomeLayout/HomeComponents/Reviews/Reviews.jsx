@@ -46,7 +46,7 @@ const Reviews = memo(({ focused }) => {
   }, []);
 
   return (
-    <div className="reviews">
+    <div className="reviews animate-render">
       <p className="card__content card-reviews__content">
         My <b>100% correct</b> and totally unbiased game reviews{" "}
         <img src={AlienMonster} alt="" className="emoji" />
