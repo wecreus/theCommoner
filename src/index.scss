@@ -54,6 +54,19 @@ a {
   text-decoration: inherit;
 }
 
+.animate-render {
+  animation: splash 300ms normal forwards ease-in-out;
+}
+
+@keyframes splash {
+  from {
+    transform: scale(0.8);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
 .section {
   width: 100%;
   padding: 130px 50px 30px 50px;
@@ -108,9 +121,9 @@ a {
 }
 
 input:-webkit-autofill,
-input:-webkit-autofill:hover, 
-input:-webkit-autofill:focus, 
-input:-webkit-autofill:active{
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
   transition: background-color 5000s ease-in-out 0s;
   -webkit-text-fill-color: white;
 }

@@ -19,6 +19,10 @@
       max-height: fit-content;
     }
 
+    @include toPhoneScreen {
+      font-size: 90%;
+    }
+
     &-content {
       flex: 1 1 0;
       padding: 25px;
@@ -83,10 +87,12 @@
         padding: 5px 15px;
         color: white;
         transition: all 200ms ease;
+        font-family: Inter, system-ui;
 
         &::placeholder {
-          font-style: italic;
-          opacity: 0.5;
+          opacity: 0.2;
+          font-family: Inter, system-ui;
+          font-variation-settings: "slnt" -8;
         }
 
         &--message {

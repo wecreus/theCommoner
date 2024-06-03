@@ -1,62 +1,80 @@
-import { useState, useEffect } from "react";
-import ReactPageScroller from "react-page-scroller";
-import { useDispatch } from "react-redux";
-import { updateIsScrolled } from "@/slices/scrollReducer";
+import { useState, lazy, Suspense, useEffect, useMemo } from "react";
 import Welcome from "./HomeComponents/Welcome";
-import Gallery from "./HomeComponents/Gallery/Gallery";
-import Reviews from "./HomeComponents/Reviews/Reviews";
-// import Map from "./HomeComponents/Map";
 import MainPageSelector from "./HomeComponents/MainPageSelector";
+import useIntersectionObserver from "@/common/hooks/useIntersectionObserver";
 import "./Home.scss";
 
+const Reviews = lazy(() => import("./HomeComponents/Reviews/Reviews"));
+const Gallery = lazy(() => import("./HomeComponents/Gallery/Gallery"));
+const Map = lazy(() => import("./HomeComponents/Map/Map"));
+
 const Home = () => {
-  const dispatch = useDispatch();
   const [pageNumber, setPageNumber] = useState(0);
+
+  const [galleryRef, isGalleryVisible, wasGalleryVisible] =
+    useIntersectionObserver();
+  const [reviewsRef, isReviewsVisible, wasReviewsVisible] =
+    useIntersectionObserver();
+  const [mapRef, isMapVisible, wasMapVisible] = useIntersectionObserver();
+  const [welcomeRef, isWelcomeVisible] = useIntersectionObserver();
+
+  // order of items in isVisibleList and in refList is important for scrolling
+  const isVisibleList = useMemo(
+    () => [isWelcomeVisible, isReviewsVisible, isGalleryVisible, isMapVisible],
+    [isWelcomeVisible, isReviewsVisible, isGalleryVisible, isMapVisible]
+  );
+
+  const refList = [welcomeRef, reviewsRef, galleryRef, mapRef];
+
   const handlePageChange = (page) => {
-    setPageNumber(page);
+    refList[page].current.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+    });
   };
 
+  // should update page number on scroll
   useEffect(() => {
-    // only set isScrolled when user isnt on the first page of ReactPageScroller
-    dispatch(
-      updateIsScrolled({
-        isScrolled: !(pageNumber === 0),
-      })
-    );
-  }, [dispatch, pageNumber]);
-
-  // set scroll to false when Home unmounts to prevent Header specific logic to affect other pages
-  useEffect(() => {
-    return () => {
-      dispatch(
-        updateIsScrolled({
-          isScrolled: false,
-        })
-      );
-    };
-  }, [dispatch]);
+    for (let i = isVisibleList.length - 1; i >= 0; i--) {
+      if (isVisibleList[i]) {
+        setPageNumber(i);
+        return;
+      }
+    }
+  }, [isVisibleList]);
 
   return (
     <>
       <MainPageSelector
-        totalPages={3} /* total number of children for ReactPageScroller 🗿 */
+        totalPages={refList.length}
         currentPage={pageNumber}
         handlePageChange={handlePageChange}
       />
-      <ReactPageScroller
-        animationTimer={250}
-        customPageNumber={pageNumber}
-        onBeforePageScroll={(i) => {
-          handlePageChange(i);
-        }}
-        renderAllPagesOnFirstRender
-      >
+      <section className="card card-welcome" ref={welcomeRef}>
         <Welcome onScrollClick={() => handlePageChange(1)} />
-        {/* Reviews needs to know when user scrolls to it */}
-        <Reviews focused={pageNumber === 1} />
-        <Gallery />
-        {/* <Map /> */}
-      </ReactPageScroller>
+      </section>
+      <section className="card card-reviews" ref={reviewsRef}>
+        {wasReviewsVisible && (
+          <Suspense fallback={<div className="loading">Loading...</div>}>
+            {/* Reviews needs to know when user scrolls to it */}
+            <Reviews focused={isReviewsVisible} />
+          </Suspense>
+        )}
+      </section>
+      <section className="card card-gallery" ref={galleryRef}>
+        {wasGalleryVisible && (
+          <Suspense fallback={<div className="loading">Loading...</div>}>
+            <Gallery />
+          </Suspense>
+        )}
+      </section>
+      <section className="card card-map" ref={mapRef}>
+        {wasMapVisible && (
+          <Suspense fallback={<div className="loading">Loading...</div>}>
+            <Map />
+          </Suspense>
+        )}
+      </section>
     </>
   );
 };

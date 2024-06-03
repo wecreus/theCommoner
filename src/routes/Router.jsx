@@ -1,11 +1,12 @@
 import { BrowserRouter, Route, Routes as RoutesList } from "react-router-dom";
 import Wrapper from "@/common/Wrapper";
-import Home from "@/layout/HomeLayout/Home";
-import ContactMe from "@/layout/ContactMeLayout/ContactMe";
+import { Suspense, lazy } from "react";
+
+const ContactMe = lazy(() => import("@/layout/ContactMeLayout/ContactMe"));
+const Home = lazy(() => import("@/layout/HomeLayout/Home"));
 
 // TODO:
 // 1. add 404 page
-// 2. not use react-page-scroller
 const Router = () => (
   <BrowserRouter>
     <RoutesList>
@@ -14,7 +15,9 @@ const Router = () => (
         exact
         element={
           <Wrapper>
-            <Home />
+            <Suspense fallback={<div></div>}>
+              <Home />
+            </Suspense>
           </Wrapper>
         }
       />
@@ -23,7 +26,9 @@ const Router = () => (
         exact
         element={
           <Wrapper>
-            <ContactMe />
+            <Suspense fallback={<div></div>}>
+              <ContactMe />
+            </Suspense>
           </Wrapper>
         }
       />

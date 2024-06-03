@@ -1,14 +1,19 @@
 import { memo } from "react";
-import { CoolArrow, AlienMonster, Technologist, Thoughts, Fireworks } from "@/common/utils";
+import {
+  CoolArrow,
+  AlienMonster,
+  Technologist,
+  Thoughts,
+  Fireworks,
+} from "@/common/utils";
 import { ReactTyped } from "react-typed";
 
-// TODO: shrink webp to 40x40
 const Welcome = memo((props) => {
   const { onScrollClick } = props;
 
   return (
-    <section className="card">
-      <p className="card__content welcome">
+    <>
+      <p className="card__content welcome animate-render">
         <span className="commoner gradient-text">
           <ReactTyped
             strings={["THE", "theCommoner"]}
@@ -29,7 +34,7 @@ const Welcome = memo((props) => {
       <div className="card__arrow" onClick={onScrollClick}>
         <CoolArrow className="card__arrow-img" />
       </div>
-    </section>
+    </>
   );
 });
 
