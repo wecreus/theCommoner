@@ -15,7 +15,7 @@ const ContactMe = memo(() => {
   };
 
   return (
-    <section className="section Contact animate-render">
+    <section className="section Contact">
       <form
         className="Form"
         onSubmit={onSubmit}
