@@ -7,7 +7,6 @@ import { updateIsScrolled } from "@/slices/scrollReducer";
 import ThemeList from "./ThemeList/ThemeList";
 import classNames from "classnames";
 
-// TODO: check header styles for chrome on andriod
 const Header = () => {
   const [collapse, setCollapse] = useState(false);
   const navigate = useNavigate();
