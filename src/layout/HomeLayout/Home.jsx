@@ -27,7 +27,10 @@ const Home = () => {
   const refList = [welcomeRef, reviewsRef, galleryRef, mapRef];
 
   const handlePageChange = (page) => {
-    refList[page].current.scrollIntoView({ behavior: "smooth" });
+    refList[page].current.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+    });
   };
 
   // should update page number on scroll
