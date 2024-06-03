@@ -5,7 +5,7 @@ import { updateIsScrolled } from "@/slices/scrollReducer";
 import Welcome from "./HomeComponents/Welcome";
 import Gallery from "./HomeComponents/Gallery/Gallery";
 import Reviews from "./HomeComponents/Reviews/Reviews";
-// import Map from "./HomeComponents/Map";
+import Map from "./HomeComponents/Map/Map";
 import MainPageSelector from "./HomeComponents/MainPageSelector";
 import "./Home.scss";
 
@@ -39,7 +39,7 @@ const Home = () => {
   return (
     <>
       <MainPageSelector
-        totalPages={3} /* total number of children for ReactPageScroller 🗿 */
+        totalPages={4} /* total number of children for ReactPageScroller 🗿 */
         currentPage={pageNumber}
         handlePageChange={handlePageChange}
       />
@@ -55,7 +55,7 @@ const Home = () => {
         {/* Reviews needs to know when user scrolls to it */}
         <Reviews focused={pageNumber === 1} />
         <Gallery />
-        {/* <Map /> */}
+        <Map />
       </ReactPageScroller>
     </>
   );
