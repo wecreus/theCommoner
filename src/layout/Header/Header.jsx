@@ -21,7 +21,7 @@ const Header = () => {
     const handleScroll = () => {
       dispatch(
         updateIsScrolled({
-          isScrolled: !(window.scrollY === 0),
+          isScrolled: !(window.scrollY <= 0),
         })
       );
     };
