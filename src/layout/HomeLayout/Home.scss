@@ -17,7 +17,7 @@
   }
 
   @include toPhoneScreen {
-    padding: 15px 6px;
+    padding: 10px 6px;
   }
 
   &__hidden {
@@ -80,20 +80,22 @@
         height: 10px;
       }
     }
+    // only affects devices that can hover
+    @media (hover: hover) {
+      &:hover:before {
+        background-color: white;
+        width: 8px;
+        height: 8px;
 
-    &:hover:before {
-      background-color: white;
-      width: 8px;
-      height: 8px;
+        @include fromDesktopScreen {
+          width: 14px;
+          height: 14px;
+        }
 
-      @include fromDesktopScreen {
-        width: 14px;
-        height: 14px;
-      }
-
-      @include toPhoneScreen {
-        width: 12px;
-        height: 12px;
+        @include toPhoneScreen {
+          width: 10px;
+          height: 10px;
+        }
       }
     }
 
