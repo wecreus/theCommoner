@@ -1,3 +1,4 @@
+// TODO: stylize scrollbar
 .page-selector {
   background: #00000067;
   backdrop-filter: blur(15px);
@@ -133,6 +134,10 @@
     padding: 20px 32px;
     flex-direction: column;
     justify-content: center;
+  }
+
+  &-map {
+    padding: 0;
   }
 
   &__content {
