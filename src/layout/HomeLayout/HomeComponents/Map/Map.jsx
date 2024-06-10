@@ -1,74 +1,37 @@
-import { memo, useEffect, useState, useRef } from "react";
-import Globe from "react-globe.gl";
+import { memo, useRef, useEffect } from "react";
+import { Canvas } from "@react-three/fiber";
+import * as THREE from "three";
+import Globe from "./Globe";
 import { GlobeData } from "@/common/utils";
+import { Environment, CameraControls } from "@react-three/drei";
+
 import "./Map.scss";
 
-// Globe renders component 73 times on mount :)
 const Map = memo(() => {
-  const [countries, setCountries] = useState({ features: [] });
-  const globeRef = useRef(null);
+  const cameraControlsRef = useRef(null);
 
-  const getWindowDimensions = () => {
-    return { width: window.innerWidth, height: window.innerHeight };
-  };
-
-  const [windowDimensions, setWindowDimensions] = useState(
-    getWindowDimensions()
-  );
-
-  useEffect(() => {
-    setCountries(GlobeData);
-
-    const handleResize = () => setWindowDimensions(getWindowDimensions());
-    window.addEventListener("resize", handleResize);
-
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  useEffect(() => {
-    globeRef.current.pointOfView({ lat: 49.55, lng: 25.59, altitude: 1.3 }, 2000);
-    console.log(globeRef.current.controls());
-    console.log(globeRef.current.camera());
-    console.log(globeRef.current.scene());
-    console.log(globeRef.current.renderer());
-    
-    // globeRef.current.controls().enabled = false;
-    // globeRef.current.controls().enableZoom = true;
-    globeRef.current.controls().maxDistance = 250;
-    globeRef.current.controls().minDistance = 145;
-    globeRef.current.controls().zoomSpeed = 5;
-    globeRef.current.camera().fov = 40;
-    
-    globeRef.current.controls().minPolarAngle = Math.PI/4;
-    globeRef.current.controls().maxPolarAngle = Math.PI/4;
-  }, []);
-
+  /* eslint-disable react/no-unknown-property  */
   return (
     <div className="card__content card__map animate-render">
-      <Globe
-        ref={globeRef}
-        height={800}
-        width={windowDimensions.width < 800 ? windowDimensions.width : 800}
-        backgroundColor="#00000000"
-        polygonsData={countries.features}
-        polygonCapColor={(d) =>
-          d.properties.ADMIN === "Ukraine" ? "yellow" : "#0000ff22"
-        }
-        polygonSideColor={(d) =>
-          d.properties.ADMIN === "Ukraine" ? "white" : "#00000000"
-        }
-        polygonStrokeColor={(d) =>
-          d.properties.ADMIN === "Ukraine" ? "black" : "#494949"
-        }
-        polygonAltitude={(d) =>
-          d.properties.ADMIN === "Ukraine" ? 0.02 : 0.005
-        }
-        polygonLabel={({ properties: d }) => `
-        <b>${d.ADMIN}</b>
-      `}
-        // enablePointerInteraction={false}
-      />
+      <Canvas
+        camera={{ fov: 50, position: [44, 88, 101] }}
+        onCreated={({ gl }) => {
+          // gl.toneMapping = THREE.NoToneMapping;
+        }}
+      >
+        <ambientLight intensity={Math.PI * 2} color="#ffffff" />
+        <Globe polygonsData={GlobeData.features} />
+        <Environment preset={"dawn"} />
+        <CameraControls
+          ref={cameraControlsRef}
+          minDistance={120}
+          maxDistance={155}
+          maxPolarAngle={Math.PI / 3.5}
+          minPolarAngle={Math.PI / 3.5}
+        />
+      </Canvas>
     </div>
+    /* eslint-enable react/no-unknown-property  */
   );
 });
 
