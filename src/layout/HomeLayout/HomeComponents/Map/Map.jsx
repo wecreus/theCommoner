@@ -11,7 +11,7 @@ const Map = memo(() => {
 
   /* eslint-disable react/no-unknown-property  */
   return (
-    <div className="card__content card__map animate-render">
+    <div className="card__content card__map">
       <Canvas camera={{ fov: 50, position: [44, 88, 101] }}>
         <ambientLight intensity={Math.PI * 2} color="#ffffff" />
         <Globe polygonsData={GlobeData.features} />
