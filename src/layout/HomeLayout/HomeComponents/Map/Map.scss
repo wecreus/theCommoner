@@ -11,7 +11,7 @@
     border-radius: 25px;
     border: 1px solid white;
     transition: all 250ms ease-in;
-    padding: 5px 10px;
+    padding: 10px;
     font-size: 80%;
     background: linear-gradient(
       140deg,
@@ -19,6 +19,11 @@
       color-mix(in srgb, var(--primary) 40%, transparent) 120%
     );
     width: max-content;
+    line-height: normal;
+
+    @include fromDesktopScreen { 
+      font-size: 70%;
+    }
 
     &:before {
       position: absolute;
@@ -46,8 +51,8 @@
         text-transform: uppercase;
         align-self: flex-end;
         font-variation-settings: "slnt" -8;
-        padding: 0 15px;
-        font-size: 80%;
+        padding: 8px 15px;
+        font-size: 70%;
         border-radius: 25px;
         font-weight: 600;
         font-family: inherit;
@@ -64,6 +69,10 @@
         border: 1px solid rgba(255, 255, 255, 0.5);
         align-self: flex-end;
         margin-top: auto;
+
+        @include toPhoneScreen {
+          padding: 4px 10px;
+        }
 
         &:hover {
           background-position: 40% center;
