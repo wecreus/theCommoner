@@ -1,9 +1,8 @@
-import { memo, useRef, useEffect } from "react";
+import { memo, useRef } from "react";
 import { Canvas } from "@react-three/fiber";
-import * as THREE from "three";
-import Globe from "./Globe";
+import Globe from "./components/Globe";
 import { GlobeData } from "@/common/utils";
-import { Environment, CameraControls } from "@react-three/drei";
+import { Environment, CameraControls, Stats } from "@react-three/drei";
 
 import "./Map.scss";
 
@@ -13,12 +12,7 @@ const Map = memo(() => {
   /* eslint-disable react/no-unknown-property  */
   return (
     <div className="card__content card__map animate-render">
-      <Canvas
-        camera={{ fov: 50, position: [44, 88, 101] }}
-        onCreated={({ gl }) => {
-          // gl.toneMapping = THREE.NoToneMapping;
-        }}
-      >
+      <Canvas camera={{ fov: 50, position: [44, 88, 101] }}>
         <ambientLight intensity={Math.PI * 2} color="#ffffff" />
         <Globe polygonsData={GlobeData.features} />
         <Environment preset={"dawn"} />
@@ -28,7 +22,9 @@ const Map = memo(() => {
           maxDistance={155}
           maxPolarAngle={Math.PI / 3.5}
           minPolarAngle={Math.PI / 3.5}
+          truck={false}
         />
+        <Stats />
       </Canvas>
     </div>
     /* eslint-enable react/no-unknown-property  */
