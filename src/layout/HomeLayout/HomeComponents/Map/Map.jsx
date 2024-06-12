@@ -18,6 +18,7 @@ const Map = memo(() => {
         <Environment preset={"dawn"} />
         <CameraControls
           ref={cameraControlsRef}
+          azimuthRotateSpeed={0.5}
           minDistance={120}
           maxDistance={155}
           maxPolarAngle={Math.PI / 3.5}

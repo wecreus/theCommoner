@@ -4,6 +4,7 @@ import { extend, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 import ThreeGlobe from "three-globe";
 import createCountryMaterial from "../helpers/createCountryMaterial";
+import PopupHTML from "./PopupHTML";
 
 extend({ ThreeGlobe });
 
@@ -61,12 +62,12 @@ const Globe = () => {
       .pointColor("color")
       .pointRadius("radius")
       .pointsTransitionDuration(0);
-
   }, []);
 
   /* eslint-disable react/no-unknown-property  */
   return (
     <>
+      <PopupHTML isFocused={isFocused} />
       <threeGlobe ref={globeRef} />
     </>
   );
