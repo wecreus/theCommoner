@@ -19,7 +19,7 @@ const Heart = () => {
 
   const { scale, rotation } = useSpring({
     scale: active ? 4 : 2.5,
-    rotation: [0, active ? -1.1 : 0, active ? 0.6 : 0],
+    rotation: [0, active ? -0.85 : 0, active ? 0.6 : 0],
     config: config.gentle,
   });
 
@@ -44,7 +44,7 @@ const Heart = () => {
       <Outlines
         thickness={active ? 0.02 : 0}
         color="white"
-        opacity={0.5}
+        opacity={0.3}
         transparent
       />
       <meshStandardMaterial metalness={0.2} roughness={0.1} color={"red"} />
