@@ -57,7 +57,7 @@ const Globe = () => {
   return (
     <>
       <Heart />
-      <PopupHTML  isFocused={isFocused} />
+      <PopupHTML isFocused={isFocused} />
       <threeGlobe args={globeArgs} ref={globeRef} />
     </>
   );

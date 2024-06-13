@@ -3,8 +3,9 @@ import { HeartShape } from "@/common/utils";
 import { useRef, useState, useEffect } from "react";
 import { useFrame } from "@react-three/fiber";
 import { animated, useSpring, config } from "@react-spring/three";
+import { Outlines } from "@react-three/drei";
 
-// TODO: add shadow 
+// TODO: add shadow
 const Heart = () => {
   const { nodes } = useGLTF(HeartShape);
   const heartRef = useRef();
@@ -23,9 +24,9 @@ const Heart = () => {
   });
 
   useEffect(() => {
-    document.body.style.cursor = active ? 'pointer' : 'auto'
-    return () => document.body.style.cursor = 'auto';
-  }, [active])
+    document.body.style.cursor = active ? "pointer" : "auto";
+    return () => (document.body.style.cursor = "auto");
+  }, [active]);
 
   /* eslint-disable react/no-unknown-property  */
   return (
@@ -40,6 +41,12 @@ const Heart = () => {
       onPointerEnter={() => setActive(true)}
       onPointerLeave={() => setActive(false)}
     >
+      <Outlines
+        thickness={active ? 0.02 : 0}
+        color="white"
+        opacity={0.5}
+        transparent
+      />
       <meshStandardMaterial metalness={0.2} roughness={0.1} color={"red"} />
     </animated.mesh>
   );

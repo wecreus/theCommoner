@@ -6,13 +6,14 @@ import { Environment, CameraControls, Stats } from "@react-three/drei";
 
 import "./Map.scss";
 
+// TODO: Environment adds about 2 seconds to load time, find ways to optimise
 const Map = memo(() => {
   const cameraControlsRef = useRef(null);
 
   /* eslint-disable react/no-unknown-property  */
   return (
     <div className="card__content card__map">
-      <Canvas camera={{ fov: 50, position: [44, 88, 101] }} gl={{antialias: true}}>
+      <Canvas  camera={{ fov: 50, position: [44, 88, 101] }} gl={{antialias: true}}>
         <Globe polygonsData={GlobeData.features} />
         <Environment preset={"dawn"} />
         <CameraControls
