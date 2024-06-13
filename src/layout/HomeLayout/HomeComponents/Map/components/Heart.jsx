@@ -1,30 +1,47 @@
 import { useGLTF } from "@react-three/drei";
 import { HeartShape } from "@/common/utils";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { useFrame } from "@react-three/fiber";
+import { animated, useSpring, config } from "@react-spring/three";
 
+// TODO: add shadow 
 const Heart = () => {
-  const { nodes, materials } = useGLTF(HeartShape);
+  const { nodes } = useGLTF(HeartShape);
   const heartRef = useRef();
+  const [active, setActive] = useState(false);
 
   useFrame(() => {
-    heartRef.current.rotation.y += 0.005;
+    if (!active) {
+      heartRef.current.rotation.y += 0.005;
+    }
   });
+
+  const { scale, rotation } = useSpring({
+    scale: active ? 4 : 2.5,
+    rotation: [0, active ? -1.1 : 0, active ? 0.6 : 0],
+    config: config.gentle,
+  });
+
+  useEffect(() => {
+    document.body.style.cursor = active ? 'pointer' : 'auto'
+    return () => document.body.style.cursor = 'auto';
+  }, [active])
 
   /* eslint-disable react/no-unknown-property  */
   return (
-    <mesh
+    <animated.mesh
       ref={heartRef}
       castShadow
       receiveShadow
       geometry={nodes.Cube002_Cube024.geometry}
-      material={materials["Material.008"]}
       position={[28.8, 53.15, 59.5]}
-      scale={[2.5, 2.5, 2.5]}
-      rotation={[0, 0, 0.5]}
+      scale={scale}
+      rotation={rotation}
+      onPointerEnter={() => setActive(true)}
+      onPointerLeave={() => setActive(false)}
     >
       <meshStandardMaterial metalness={0.2} roughness={0.1} color={"red"} />
-    </mesh>
+    </animated.mesh>
   );
   /* eslint-enable react/no-unknown-property  */
 };

@@ -28,6 +28,7 @@
     );
     width: max-content;
     line-height: normal;
+    box-shadow: 2px 7px 15px rgba(0, 0, 0, 0.2);
 
     @include fromDesktopScreen { 
       font-size: 70%;

@@ -1,4 +1,4 @@
-import { useRef, useLayoutEffect, useState } from "react";
+import { useRef, useLayoutEffect, useState, useMemo } from "react";
 import { GlobeData } from "@/common/utils";
 import { extend, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
@@ -18,6 +18,10 @@ const Globe = () => {
     setIsFocused(camera.rotation.z > 0.25 && camera.rotation.z < 0.5);
   });
 
+  // React or R3F will think that args change even if they do not and rerender ThreeGlobe
+  // godda do it this way
+  const globeArgs = useMemo(() => [{ animateIn: false}], []);
+
   useLayoutEffect(() => {
     const globeMaterial = new THREE.MeshStandardMaterial({
       metalness: 1,
@@ -30,6 +34,8 @@ const Globe = () => {
       .globeMaterial(globeMaterial)
       .polygonsData(GlobeData.features)
       .atmosphereAltitude(0.05);
+
+    
     globeRef.current.position.y = -25;
 
     // polygons
@@ -50,10 +56,9 @@ const Globe = () => {
   /* eslint-disable react/no-unknown-property  */
   return (
     <>
-    
       <Heart />
-      <PopupHTML isFocused={isFocused} />
-      <threeGlobe ref={globeRef} />
+      <PopupHTML  isFocused={isFocused} />
+      <threeGlobe args={globeArgs} ref={globeRef} />
     </>
   );
   /* eslint-enable react/no-unknown-property  */
