@@ -13,14 +13,13 @@ const Map = memo(() => {
   return (
     <div className="card__content card__map">
       <Canvas camera={{ fov: 50, position: [44, 88, 101] }}>
-        <ambientLight intensity={Math.PI * 2} color="#ffffff" />
         <Globe polygonsData={GlobeData.features} />
         <Environment preset={"dawn"} />
         <CameraControls
           ref={cameraControlsRef}
           azimuthRotateSpeed={0.5}
-          minDistance={120}
-          maxDistance={155}
+          minDistance={100}
+          maxDistance={190}
           maxPolarAngle={Math.PI / 3.5}
           minPolarAngle={Math.PI / 3.5}
           truck={false}

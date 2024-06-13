@@ -5,23 +5,14 @@ import * as THREE from "three";
 import ThreeGlobe from "three-globe";
 import createCountryMaterial from "../helpers/createCountryMaterial";
 import PopupHTML from "./PopupHTML";
+import Heart from "./Heart";
 
 extend({ ThreeGlobe });
-
-const PointsData = [
-  {
-    lat: 49.55352,
-    lng: 25.59477,
-    size: 0.016,
-    color: "#ff0000ff",
-    radius: 0.1,
-  },
-];
 
 // TODO: add clouds from drei
 const Globe = () => {
   const globeRef = useRef(null);
-  const [isFocused, setIsFocused] = useState(true);
+  const [isFocused, setIsFocused] = useState(false);
 
   useFrame(({ camera }) => {
     setIsFocused(camera.rotation.z > 0.25 && camera.rotation.z < 0.5);
@@ -54,19 +45,13 @@ const Globe = () => {
       .polygonAltitude((d) =>
         d.properties.ADMIN === "Ukraine" ? 0.015 : 0.008
       );
-
-    // points
-    globeRef.current
-      .pointsData(PointsData)
-      .pointAltitude("size")
-      .pointColor("color")
-      .pointRadius("radius")
-      .pointsTransitionDuration(0);
   }, []);
 
   /* eslint-disable react/no-unknown-property  */
   return (
     <>
+    
+      <Heart />
       <PopupHTML isFocused={isFocused} />
       <threeGlobe ref={globeRef} />
     </>
