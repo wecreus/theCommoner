@@ -11,6 +11,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "react-circular-progressbar/dist/styles.css";
 import "./Reviews.scss";
 
+// TODO: decrease reviews bundle size (300kb wtf)
 const Reviews = memo(({ focused }) => {
   const [reviews, setReviews] = useState();
   const [currentSlide, setCurrentSlide] = useState(0);
