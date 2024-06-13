@@ -13,7 +13,7 @@ const Map = memo(() => {
   /* eslint-disable react/no-unknown-property  */
   return (
     <div className="card__content card__map">
-      <Canvas  camera={{ fov: 50, position: [44, 88, 101] }} gl={{antialias: true}}>
+      <Canvas shadows camera={{ fov: 50, position: [44, 88, 101] }} gl={{antialias: true}}>
         <Globe polygonsData={GlobeData.features} />
         <Environment preset={"dawn"} />
         <CameraControls

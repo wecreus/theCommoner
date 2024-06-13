@@ -30,25 +30,51 @@ const Heart = () => {
 
   /* eslint-disable react/no-unknown-property  */
   return (
-    <animated.mesh
-      ref={heartRef}
-      castShadow
-      receiveShadow
-      geometry={nodes.Cube002_Cube024.geometry}
-      position={[28.8, 53.15, 59.5]}
-      scale={scale}
-      rotation={rotation}
-      onPointerEnter={() => setActive(true)}
-      onPointerLeave={() => setActive(false)}
-    >
-      <Outlines
-        thickness={active ? 0.02 : 0}
-        color="white"
-        opacity={0.3}
-        transparent
+    <>
+      <mesh
+        receiveShadow
+        castShadow
+        position={[28.8, 52.5, 59.5]}
+        rotation={[Math.PI / 1.5, Math.PI * 0.92, 0]}
+        scale={4}
+      >
+        <planeGeometry receiveShadow castShadow />
+        <shadowMaterial attach="material" opacity={0.15} />
+      </mesh>
+      <directionalLight
+        castShadow
+        position={[36, 56, 61.5]}
+        intensity={0.1}
+        shadow-mapSize-width={1024}
+        shadow-mapSize-height={1024}
+        target-position={[28.8, 52.5, 60.5]}
+        shadow-camera-near={0.1}
+        shadow-camera-far={20}
+        shadow-camera-left={-10}
+        shadow-camera-right={10}
+        shadow-camera-top={10}
+        shadow-camera-bottom={-10}
       />
-      <meshStandardMaterial metalness={0.2} roughness={0.1} color={"red"} />
-    </animated.mesh>
+      <animated.mesh
+        ref={heartRef}
+        castShadow
+        receiveShadow
+        geometry={nodes.Cube002_Cube024.geometry}
+        position={[28.8, 53.15, 59.5]}
+        scale={scale}
+        rotation={rotation}
+        onPointerEnter={() => setActive(true)}
+        onPointerLeave={() => setActive(false)}
+      >
+        <Outlines
+          thickness={active ? 0.02 : 0}
+          color="white"
+          opacity={0.2}
+          transparent
+        />
+        <meshStandardMaterial metalness={0.2} roughness={0.1} color={"red"} />
+      </animated.mesh>
+    </>
   );
   /* eslint-enable react/no-unknown-property  */
 };
