@@ -1,7 +1,7 @@
-import { useRef, useLayoutEffect, useState, useMemo } from "react";
+import { useRef, useLayoutEffect, useMemo } from "react";
 import { GlobeData } from "@/common/utils";
-import { extend, useFrame } from "@react-three/fiber";
-import * as THREE from "three";
+import { extend } from "@react-three/fiber";
+import { MeshStandardMaterial } from "three";
 import ThreeGlobe from "three-globe";
 import createCountryMaterial from "../helpers/createCountryMaterial";
 import PopupHTML from "./PopupHTML";
@@ -12,18 +12,13 @@ extend({ ThreeGlobe });
 // TODO: add clouds from drei
 const Globe = () => {
   const globeRef = useRef(null);
-  const [isFocused, setIsFocused] = useState(false);
-
-  useFrame(({ camera }) => {
-    setIsFocused(camera.rotation.z > 0.25 && camera.rotation.z < 0.5);
-  });
 
   // React or R3F will think that args change even if they do not and rerender ThreeGlobe
   // godda do it this way
   const globeArgs = useMemo(() => [{ animateIn: false}], []);
 
   useLayoutEffect(() => {
-    const globeMaterial = new THREE.MeshStandardMaterial({
+    const globeMaterial = new MeshStandardMaterial({
       metalness: 1,
       roughness: 0.8,
       color: "#e4dfff",
@@ -57,7 +52,7 @@ const Globe = () => {
   return (
     <>
       <Heart />
-      <PopupHTML isFocused={isFocused} />
+      <PopupHTML />
       <threeGlobe args={globeArgs} ref={globeRef} />
     </>
   );

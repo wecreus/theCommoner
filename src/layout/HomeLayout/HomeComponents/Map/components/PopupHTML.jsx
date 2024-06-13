@@ -1,8 +1,10 @@
 import { Html } from "@react-three/drei";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-const PopupHTML = ({ isFocused }) => {
+const PopupHTML = () => {
   const navigate = useNavigate();
+  const isFocused = useSelector((store) => store.globe.isFocused);
 
   /* eslint-disable react/no-unknown-property  */
   return (
