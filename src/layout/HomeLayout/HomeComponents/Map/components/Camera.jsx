@@ -18,7 +18,6 @@ const Camera = () => {
     );
   });
 
-  // ("46.984265277036315, y: 74.09583864904899, z: 80.1582778857412");
   useEffect(() => {
     dispatch(
       updateIsInRange({
@@ -27,7 +26,6 @@ const Camera = () => {
     );
   }, [isInRange, dispatch]);
 
-  console.log("huh")
   return (
     <>
       <CameraControls
@@ -39,6 +37,7 @@ const Camera = () => {
         minPolarAngle={Math.PI / 3.5}
         dollySpeed={0.5}
         truck={false}
+        makeDefault
       />
     </>
   );
