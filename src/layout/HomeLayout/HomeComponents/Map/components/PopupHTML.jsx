@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 const PopupHTML = () => {
   const navigate = useNavigate();
-  const isFocused = useSelector((store) => store.globe.isFocused);
+  const isInRange = useSelector((store) => store.globe.isInRange);
 
   /* eslint-disable react/no-unknown-property  */
   return (
@@ -12,7 +12,7 @@ const PopupHTML = () => {
       <Html
         position={[30, 53.5, 60]}
         style={{
-          opacity: isFocused ? 1 : 0,
+          opacity: isInRange ? 1 : 0,
           transform: "translate(0%, -50%)",
         }}
         className="three-embedded"

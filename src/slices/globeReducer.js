@@ -3,15 +3,15 @@ import { createSlice } from "@reduxjs/toolkit";
 const globeSlice = createSlice({
   name: "globe",
   initialState: {
-    isFocused: false,
+    isInRange: false,
   },
   reducers: {
-    updateIsFocused: (state, action) => {
-      state.isFocused = action.payload.isFocused;
+    updateIsInRange: (state, action) => {
+      state.isInRange = action.payload.isInRange;
     },
   },
 });
 
-export const { updateIsFocused } = globeSlice.actions;
+export const { updateIsInRange } = globeSlice.actions;
 
 export default globeSlice.reducer;

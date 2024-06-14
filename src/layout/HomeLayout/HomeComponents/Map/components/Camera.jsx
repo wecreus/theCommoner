@@ -2,29 +2,32 @@ import { useRef, useState, useEffect } from "react";
 import { CameraControls } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { useDispatch } from "react-redux";
-import { updateIsFocused } from "@/slices/globeReducer";
+import { updateIsInRange } from "@/slices/globeReducer";
 
 const Camera = () => {
   const dispatch = useDispatch();
   const cameraControlsRef = useRef(null);
-  const [isFocused, setIsFocused] = useState(false);
-  
+  const [isInRange, setIsInRange] = useState(false);
+
   useFrame(({ camera }) => {
-    setIsFocused(
-      camera.rotation.z > 0.20 &&
+    setIsInRange(
+      camera.rotation.z > 0.2 &&
         camera.rotation.z < 0.6 &&
         cameraControlsRef.current.distance < 160 &&
         cameraControlsRef.current.distance > 105
     );
   });
 
+  // ("46.984265277036315, y: 74.09583864904899, z: 80.1582778857412");
   useEffect(() => {
     dispatch(
-      updateIsFocused({
-        isFocused: isFocused,
+      updateIsInRange({
+        isInRange: isInRange,
       })
     );
-  }, [isFocused, dispatch]);
+  }, [isInRange, dispatch]);
+
+  console.log("huh")
   return (
     <>
       <CameraControls
@@ -34,6 +37,7 @@ const Camera = () => {
         maxDistance={190}
         maxPolarAngle={Math.PI / 3.5}
         minPolarAngle={Math.PI / 3.5}
+        dollySpeed={0.5}
         truck={false}
       />
     </>
