@@ -20,7 +20,7 @@
     border: 1px solid white;
     transition: all 250ms ease-in;
     padding: 10px;
-    font-size: 80%;
+    font-size: 60%;
     background: linear-gradient(
       140deg,
       rgba(255, 255, 255, 0.2) 0%,
@@ -30,8 +30,13 @@
     line-height: normal;
     box-shadow: 2px 7px 15px rgba(0, 0, 0, 0.2);
 
-    @include fromDesktopScreen { 
-      font-size: 70%;
+    @include toTabletScreen {
+      border-radius: 15px;
+      padding: 6px;
+    }
+
+    @include toPhoneScreen {
+      font-size: 75%;
     }
 
     &:before {
@@ -79,7 +84,7 @@
         align-self: flex-end;
         margin-top: auto;
 
-        @include toPhoneScreen {
+        @include toTabletScreen {
           padding: 4px 10px;
         }
 

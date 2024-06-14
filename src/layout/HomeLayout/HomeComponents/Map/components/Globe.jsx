@@ -34,7 +34,6 @@ const Globe = () => {
       .globeMaterial(globeMaterial)
       .polygonsData(GlobeData.features)
       .atmosphereAltitude(0.05);
-
     
     globeRef.current.position.y = -25;
 

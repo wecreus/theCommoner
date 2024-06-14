@@ -10,7 +10,7 @@ const PopupHTML = ({ handleClick }) => {
   return (
     <>
       <Html
-        position={[30, 53.5, 60]}
+        position={[30.2, 53.5, 59.8]}
         style={{
           opacity: isInRange ? 1 : 0,
           transform: "translate(0%, -50%)",
