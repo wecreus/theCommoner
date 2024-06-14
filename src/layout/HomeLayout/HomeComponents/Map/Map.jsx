@@ -2,7 +2,7 @@ import { memo } from "react";
 import { Canvas } from "@react-three/fiber";
 import Globe from "./components/Globe";
 import { GlobeData } from "@/common/utils";
-import { Environment, Stats } from "@react-three/drei";
+import { Environment } from "@react-three/drei";
 import Camera from "./components/Camera";
 
 import "./Map.scss";
@@ -17,7 +17,6 @@ const Map = memo(() => {
       <Canvas shadows camera={{ fov: 50, position: [55.12, 87.91, 95.46] }} gl={{antialias: true}}>
         <Globe polygonsData={GlobeData.features} />
         <Environment preset={"dawn"} />
-        <Stats />
         <Camera />
       </Canvas>
     </div>
