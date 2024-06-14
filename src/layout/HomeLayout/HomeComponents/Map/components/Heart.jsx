@@ -43,7 +43,7 @@ const Heart = ({ handleClick }) => {
       </mesh>
       <directionalLight
         castShadow
-        position={[36, 56, 61.5]}
+        position={[40, 55, 75.5]}
         intensity={0.1}
         shadow-mapSize-width={1024}
         shadow-mapSize-height={1024}
