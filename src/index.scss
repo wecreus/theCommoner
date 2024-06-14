@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:slnt,wght@-8,100..900&display=swap");
 @import "./assets/styles/_variables.scss";
 
+// TODO: fix bug with scroll-snap-align on ios and page-selector
 :root {
   font-family: Inter, system-ui;
   font-size: 30px;

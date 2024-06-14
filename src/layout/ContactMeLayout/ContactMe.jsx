@@ -19,7 +19,6 @@ const ContactMe = memo(() => {
       <form
         className="Form"
         onSubmit={onSubmit}
-        action="mailto:wecreus@gmail.com"
         method="post"
         encType="text/plain"
       >

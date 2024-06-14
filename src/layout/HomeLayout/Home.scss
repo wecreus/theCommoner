@@ -1,5 +1,5 @@
+// TODO: stylize scrollbar
 .page-selector {
-  padding: 10px;
   background: #00000067;
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
@@ -8,35 +8,42 @@
   gap: 10px;
   border-radius: 0px 10px 10px 0px;
   margin: 0;
+  width: 50%;
+  box-sizing: border-box;
+  align-items: end;
+  padding: 15px 12px;
 
   @include fromDesktopScreen {
-    padding: 20px 15px 20px 10px;
+    padding: 20px 17px;
   }
 
   @include toPhoneScreen {
-    padding: 10px 5px;
+    padding: 10px 6px;
   }
 
   &__hidden {
     position: fixed;
-    top: 50%;
-    transform: translate(-30px, -50%);
+    top: 50vh;
+    transform: translate(-45%, -50%);
     z-index: 2;
-    padding: 40px 40px 40px 0;
-    transition: transform 200ms;
-    transition-delay: 1.5s;
-    animation: jumpPageSelector 2s normal;
+    transition: all 200ms;
+    transition-delay: 3.5s;
+    animation: jumpPageSelector 6s normal;
+    width: 100px;
+    padding: 40px 0;
 
     @include fromDesktopScreen {
-      transform: translate(-45px, -50%);
+      width: 150px;
+      animation: none;
+      transform: translate(-10%, -50%);
     }
 
     @include toPhoneScreen {
-      transform: translate(-22px, -50%);
+      width: 70px;
     }
 
     &:hover {
-      transform: translate(0, -50%);
+      transform: translate(-10%, -50%);
       transition-delay: 0s;
       // adding "s" to "0s" will actually make it work
     }
@@ -74,20 +81,22 @@
         height: 10px;
       }
     }
+    // only affects devices that can hover
+    @media (hover: hover) {
+      &:hover:before {
+        background-color: white;
+        width: 8px;
+        height: 8px;
 
-    &:hover:before {
-      background-color: white;
-      width: 8px;
-      height: 8px;
+        @include fromDesktopScreen {
+          width: 14px;
+          height: 14px;
+        }
 
-      @include fromDesktopScreen {
-        width: 14px;
-        height: 14px;
-      }
-
-      @include toPhoneScreen {
-        width: 12px;
-        height: 12px;
+        @include toPhoneScreen {
+          width: 10px;
+          height: 10px;
+        }
       }
     }
 
@@ -214,12 +223,12 @@
 
 @keyframes jumpPageSelector {
   0% {
-    transform: translate(0px, -50%);
+    transform: translate(-10%, -50%);
   }
-  90% {
-    transform: translate(0px, -50%);
+  95% {
+    transform: translate(-10%, -50%);
   }
   100% {
-    transform: translate(-45px, -50%);
+    transform: translate(-45%, -50%);
   }
 }

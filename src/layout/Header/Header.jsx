@@ -1,6 +1,6 @@
 import "./Header.scss";
 import { LogoTransparent } from "@/common/utils";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { updateIsScrolled } from "@/slices/scrollReducer";
@@ -8,20 +8,15 @@ import ThemeList from "./ThemeList/ThemeList";
 import classNames from "classnames";
 
 const Header = () => {
-  const [collapse, setCollapse] = useState(false);
   const navigate = useNavigate();
   const isScrolled = useSelector((store) => store.scroll.isScrolled);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    setCollapse(isScrolled);
-  }, [isScrolled]);
-
-  useEffect(() => {
     const handleScroll = () => {
       dispatch(
         updateIsScrolled({
-          isScrolled: !(window.scrollY === 0),
+          isScrolled: !(window.scrollY <= 0),
         })
       );
     };
@@ -33,7 +28,7 @@ const Header = () => {
 
   return (
     <header
-      className={classNames({ Header: true, "Header-collapse": collapse })}
+      className={classNames({ Header: true, "Header-collapse": isScrolled })}
     >
       <img
         src={LogoTransparent}

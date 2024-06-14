@@ -18,6 +18,10 @@ import telegram from "@/assets/icons/telegram.svg?react";
 import pdf from "@/assets/icons/PDF.svg?react";
 import map from "@/assets/icons/map.svg?react";
 
+import globeData from "@/assets/data/countries.json";
+
+import heart from "@/assets/shapes/heart.glb?url";
+
 export const CoolArrow = arrow;
 export const AlienMonster = alien;
 export const Technologist = tech;
@@ -36,6 +40,8 @@ export const Linkedin = linkedin;
 export const Telegram = telegram;
 export const PDFicon = pdf;
 export const Map = map;
+export const GlobeData = globeData;
+export const HeartShape = heart;
 
 export const GalleryPictures = [
   {
