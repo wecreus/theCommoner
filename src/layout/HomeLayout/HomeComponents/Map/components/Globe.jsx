@@ -1,6 +1,6 @@
 import { useRef, useLayoutEffect, useMemo } from "react";
 import { GlobeData } from "@/common/utils";
-import { extend } from "@react-three/fiber";
+import { extend, useThree } from "@react-three/fiber";
 import { MeshStandardMaterial } from "three";
 import ThreeGlobe from "three-globe";
 import createCountryMaterial from "../helpers/createCountryMaterial";
@@ -12,6 +12,11 @@ extend({ ThreeGlobe });
 // TODO: add clouds from drei
 const Globe = () => {
   const globeRef = useRef(null);
+  const controls = useThree((state) => state.controls)
+  
+  const pointCameraToUkraine = () => {
+    controls?.setPosition(46.98, 74.09, 80.15, true);
+  };
 
   // React or R3F will think that args change even if they do not and rerender ThreeGlobe
   // godda do it this way
@@ -51,8 +56,8 @@ const Globe = () => {
   /* eslint-disable react/no-unknown-property  */
   return (
     <>
-      <Heart />
-      <PopupHTML />
+      <Heart handleClick={pointCameraToUkraine}/>
+      <PopupHTML handleClick={pointCameraToUkraine}/>
       <threeGlobe args={globeArgs} ref={globeRef} />
     </>
   );

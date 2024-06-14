@@ -1,20 +1,15 @@
 import { useGLTF } from "@react-three/drei";
 import { HeartShape } from "@/common/utils";
 import { useRef, useState, useEffect } from "react";
-import { useFrame, useThree } from "@react-three/fiber";
+import { useFrame } from "@react-three/fiber";
 import { animated, useSpring, config } from "@react-spring/three";
 import { Outlines } from "@react-three/drei";
 
 // TODO: add shadow
-const Heart = () => {
+const Heart = ({ handleClick }) => {
   const { nodes } = useGLTF(HeartShape);
   const heartRef = useRef();
   const [active, setActive] = useState(false);
-  const controls = useThree((state) => state.controls)
-  
-  const handleClick = () => {
-    controls?.setPosition(46.98, 74.09, 80.15, true);
-  };
 
   useFrame(() => {
     if (!active) {

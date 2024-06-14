@@ -2,7 +2,7 @@ import { Html } from "@react-three/drei";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-const PopupHTML = () => {
+const PopupHTML = ({ handleClick }) => {
   const navigate = useNavigate();
   const isInRange = useSelector((store) => store.globe.isInRange);
 
@@ -16,8 +16,9 @@ const PopupHTML = () => {
           transform: "translate(0%, -50%)",
         }}
         className="three-embedded"
+        
       >
-        <div className="three-embedded__content">
+        <div className="three-embedded__content" onClick={handleClick}>
           <span>
             Currently based in <b>Ternopil</b>
           </span>
