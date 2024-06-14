@@ -1,15 +1,15 @@
-import * as THREE from "three";
-import * as d3 from "d3";
+import { Color, ShaderMaterial, MeshStandardMaterial } from "three";
+import { scaleSequentialSqrt, interpolateGreys } from "d3";
 
 const createCountryMaterial = (d) => {
   if (d.properties.ADMIN === "Ukraine") {
-    const ukMesh = new THREE.ShaderMaterial({
+    const ukMesh = new ShaderMaterial({
       uniforms: {
         color1: {
-          value: new THREE.Color("#fffc4b"),
+          value: new Color("#fffc4b"),
         },
         color2: {
-          value: new THREE.Color("#ffd698"),
+          value: new Color("#ffd698"),
         },
       },
       vertexShader: `
@@ -33,10 +33,10 @@ const createCountryMaterial = (d) => {
     return ukMesh;
   }
 
-  const colorScale = d3.scaleSequentialSqrt(d3.interpolateGreys);
+  const colorScale = scaleSequentialSqrt(interpolateGreys);
   colorScale.domain([0, 6]);
 
-  const otherContriesMesh = new THREE.MeshStandardMaterial({
+  const otherContriesMesh = new MeshStandardMaterial({
     color: colorScale(Math.random() + 5),
     metalness: 0.5,
     roughness: 0.6,
