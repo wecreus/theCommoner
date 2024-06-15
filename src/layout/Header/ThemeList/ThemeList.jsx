@@ -17,24 +17,28 @@ const ThemeList = memo(() => {
     );
   };
 
-  return Array(Number(style.totalThemes))
-    .fill()
-    .map((el, i) => {
-      return (
-        <div
-          className={classNames({
-            ThemeList: true,
-            [`theme${i + 1}`]: true,
-            "ThemeList--selected": i === storeTheme,
-          })}
-          key={"theme" + i}
-          onClick={() => updateStore(i)}
-        >
-          <HalfCircle className="ThemeList__theme ThemeList__theme--primary" />
-          <HalfCircle className="ThemeList__theme ThemeList__theme--secondary" />
-        </div>
-      );
-    });
+  return (
+    <div className="ThemeList-container">
+      {Array(Number(style.totalThemes))
+        .fill()
+        .map((el, i) => {
+          return (
+            <div
+              className={classNames({
+                ThemeList: true,
+                [`theme${i + 1}`]: true,
+                "ThemeList--selected": i === storeTheme,
+              })}
+              key={"theme" + i}
+              onClick={() => updateStore(i)}
+            >
+              <HalfCircle className="ThemeList__theme ThemeList__theme--primary" />
+              <HalfCircle className="ThemeList__theme ThemeList__theme--secondary" />
+            </div>
+          );
+        })}
+    </div>
+  );
 });
 
 export default ThemeList;
