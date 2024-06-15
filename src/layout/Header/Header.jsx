@@ -14,8 +14,6 @@ const Header = () => {
   const dispatch = useDispatch();
   const headerRef = useRef();
 
-  console.log("iran");
-
   const handleLogoClick = () => {
     if (location.pathname === "/") {
       window.scrollTo({ top: 0, behavior: "smooth" });
