@@ -9,6 +9,7 @@ import "./Map.scss";
 
 // TODO: Environment adds about 2 seconds to load time, find ways to optimise
 // add point to Mariupol
+// remove magnifying glass on mobile safari 
 const Map = memo(() => {
   
   /* eslint-disable react/no-unknown-property  */
