@@ -57,9 +57,25 @@
   }
 
   &-logo {
-    height: 80%;
+    height: 86%;
     aspect-ratio: 1/1;
     cursor: pointer;
+    padding: 5px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    background: transparent;
+    transition: all 200ms ease-in;
+
+    @media (hover: hover) {
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.432);
+      }
+    }
+
+    &:active {
+      background-color: rgba(112, 112, 112, 0.432);
+      transition: all 50ms ease-in;
+    }
   }
 
   &-sections {
@@ -85,7 +101,7 @@
       transition: all 200ms ease;
       opacity: 0.7;
       text-shadow: 3px 1px 8px rgba(195, 186, 188, 0.2);
-      
+
       &:hover {
         opacity: 1;
         text-shadow: 3px 1px 8px rgba(195, 186, 188, 0.44);
