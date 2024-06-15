@@ -5,9 +5,8 @@ import LoadingSpinner from "@/common/LoadingSpinner/LoadingSpinner";
 
 const ContactMe = lazy(() => import("@/layout/ContactMeLayout/ContactMe"));
 const Home = lazy(() => import("@/layout/HomeLayout/Home"));
+const NotFound = lazy(() => import("@/layout/NotFoundLayout/NotFound"));
 
-// TODO:
-// 1. add 404 page
 const Router = () => (
   <BrowserRouter>
     <RoutesList>
@@ -29,6 +28,16 @@ const Router = () => (
           <Wrapper>
             <Suspense fallback={<LoadingSpinner />}>
               <ContactMe />
+            </Suspense>
+          </Wrapper>
+        }
+      />
+      <Route
+        path="*"
+        element={
+          <Wrapper>
+            <Suspense fallback={<LoadingSpinner />}>
+              <NotFound />
             </Suspense>
           </Wrapper>
         }
