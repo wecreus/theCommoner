@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes as RoutesList } from "react-router-dom";
-import Wrapper from "@/common/Wrapper";
+import Wrapper from "@/common/Wrapper/Wrapper";
 import { Suspense, lazy } from "react";
 
 const ContactMe = lazy(() => import("@/layout/ContactMeLayout/ContactMe"));

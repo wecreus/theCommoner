@@ -2,8 +2,8 @@ import { useEffect } from "react";
 import Footer from "@/layout/Footer/Footer";
 import Header from "@/layout/Header/Header";
 import { useLocation } from "react-router-dom";
-import GradientSVG from "./GradientSVG/GradientSVG";
-import ThemeProvider from "./ThemeProvider/ThemeProvider";
+import GradientSVG from "@/common/GradientSVG/GradientSVG";
+import ThemeProvider from "@/common/ThemeProvider/ThemeProvider";
 
 const Wrapper = ({ children }) => {
   const { pathname } = useLocation();
