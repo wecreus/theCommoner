@@ -13,9 +13,10 @@ import "./FormSidebar.scss";
 import Divider from "@/common/Divider/Divider";
 import Link from "@/common/Link/Link";
 
+const dummyText =
+"Itext ever since the 1500s, when an unknown printer took a galley of type and scram";
+
 const FormSidebar = memo(() => {
-  const dummyText =
-    "Itext ever since the 1500s, when an unknown printer took a galley of type and scram";
 
   return (
     <div className="Form-sidebar">
