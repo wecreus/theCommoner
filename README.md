@@ -8,8 +8,6 @@ View it online https://commoner.vercel.app/
 ![LOGO](./public/theCommoner.png) 
 </div>
 
-This project is an opportunity for me to learn and improve at web developement.
-
 ## Implementation
 
 This project was build as Front-end only SPA with [React](https://react.dev/), [Firebase](https://firebase.google.com/) for basic database manipulation, [React Three Fiber](https://docs.pmnd.rs/react-three-fiber/getting-started/introduction) and [Three-Globe](https://github.com/vasturiano/three-globe) for creating an interactive 3D Globe. And a Candy heart shape by Google [CC-BY](https://creativecommons.org/licenses/by/3.0/)
