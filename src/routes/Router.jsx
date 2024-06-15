@@ -1,12 +1,12 @@
-import { BrowserRouter, Route, Routes as RoutesList } from "react-router-dom";
-import Wrapper from "@/common/Wrapper";
 import { Suspense, lazy } from "react";
+import { BrowserRouter, Route, Routes as RoutesList } from "react-router-dom";
+import Wrapper from "@/common/Wrapper/Wrapper";
+import LoadingSpinner from "@/common/LoadingSpinner/LoadingSpinner";
 
 const ContactMe = lazy(() => import("@/layout/ContactMeLayout/ContactMe"));
 const Home = lazy(() => import("@/layout/HomeLayout/Home"));
+const NotFound = lazy(() => import("@/layout/NotFoundLayout/NotFound"));
 
-// TODO:
-// 1. add 404 page
 const Router = () => (
   <BrowserRouter>
     <RoutesList>
@@ -15,7 +15,7 @@ const Router = () => (
         exact
         element={
           <Wrapper>
-            <Suspense fallback={<div></div>}>
+            <Suspense fallback={<LoadingSpinner />}>
               <Home />
             </Suspense>
           </Wrapper>
@@ -26,8 +26,18 @@ const Router = () => (
         exact
         element={
           <Wrapper>
-            <Suspense fallback={<div></div>}>
+            <Suspense fallback={<LoadingSpinner />}>
               <ContactMe />
+            </Suspense>
+          </Wrapper>
+        }
+      />
+      <Route
+        path="*"
+        element={
+          <Wrapper>
+            <Suspense fallback={<LoadingSpinner />}>
+              <NotFound />
             </Suspense>
           </Wrapper>
         }

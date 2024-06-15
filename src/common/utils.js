@@ -22,6 +22,8 @@ import globeData from "@/assets/data/countries.json";
 
 import heart from "@/assets/shapes/heart.glb?url";
 
+//TODO: this apparently breaks lazy loading
+
 export const CoolArrow = arrow;
 export const AlienMonster = alien;
 export const Technologist = tech;
