@@ -1,6 +1,7 @@
+import { Suspense, lazy } from "react";
 import { BrowserRouter, Route, Routes as RoutesList } from "react-router-dom";
 import Wrapper from "@/common/Wrapper/Wrapper";
-import { Suspense, lazy } from "react";
+import LoadingSpinner from "@/common/LoadingSpinner/LoadingSpinner";
 
 const ContactMe = lazy(() => import("@/layout/ContactMeLayout/ContactMe"));
 const Home = lazy(() => import("@/layout/HomeLayout/Home"));
@@ -15,7 +16,7 @@ const Router = () => (
         exact
         element={
           <Wrapper>
-            <Suspense fallback={<div></div>}>
+            <Suspense fallback={<LoadingSpinner />}>
               <Home />
             </Suspense>
           </Wrapper>
@@ -26,7 +27,7 @@ const Router = () => (
         exact
         element={
           <Wrapper>
-            <Suspense fallback={<div></div>}>
+            <Suspense fallback={<LoadingSpinner />}>
               <ContactMe />
             </Suspense>
           </Wrapper>

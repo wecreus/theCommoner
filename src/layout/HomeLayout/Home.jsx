@@ -2,6 +2,7 @@ import { useState, lazy, Suspense, useEffect, useMemo } from "react";
 import Welcome from "./HomeComponents/Welcome";
 import MainPageSelector from "./HomeComponents/MainPageSelector";
 import useIntersectionObserver from "@/common/hooks/useIntersectionObserver";
+import LoadingSpinner from "@/common/LoadingSpinner/LoadingSpinner";
 import "./Home.scss";
 
 const Reviews = lazy(() => import("./HomeComponents/Reviews/Reviews"));
@@ -55,7 +56,7 @@ const Home = () => {
       </section>
       <section className="card card-reviews" ref={reviewsRef}>
         {wasReviewsVisible && (
-          <Suspense fallback={<div className="loading">Loading...</div>}>
+          <Suspense fallback={<LoadingSpinner />}>
             {/* Reviews needs to know when user scrolls to it */}
             <Reviews focused={isReviewsVisible} />
           </Suspense>
@@ -63,14 +64,14 @@ const Home = () => {
       </section>
       <section className="card card-gallery" ref={galleryRef}>
         {wasGalleryVisible && (
-          <Suspense fallback={<div className="loading">Loading...</div>}>
+          <Suspense fallback={<LoadingSpinner />}>
             <Gallery />
           </Suspense>
         )}
       </section>
       <section className="card card-map" ref={mapRef}>
         {wasMapVisible && (
-          <Suspense fallback={<div className="loading">Loading...</div>}>
+          <Suspense fallback={<LoadingSpinner />}>
             <Map />
           </Suspense>
         )}

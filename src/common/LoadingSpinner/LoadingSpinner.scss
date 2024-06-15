@@ -1,0 +1,18 @@
+.Spinner {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: AnimateOpacity 500ms normal forwards;
+  opacity: 0;
+}
+
+@keyframes AnimateOpacity {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
