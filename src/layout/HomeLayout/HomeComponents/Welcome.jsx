@@ -8,6 +8,7 @@ import {
 } from "@/common/utils";
 import { ReactTyped } from "react-typed";
 
+// TODO: find a way to not ruin Layout Shift with ReactTyped https://web.dev/articles/cls
 const Welcome = memo((props) => {
   const { onScrollClick } = props;
 
