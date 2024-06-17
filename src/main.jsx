@@ -4,6 +4,7 @@ import { Provider } from "react-redux";
 import store from "./store";
 import "./index.scss";
 import { inject } from '@vercel/analytics';
+import { SpeedInsights } from '@vercel/speed-insights/react';
  
 inject();
 
@@ -11,5 +12,6 @@ inject();
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Provider store={store}>
     <Router />
+    <SpeedInsights />
   </Provider>
 );
