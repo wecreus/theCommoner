@@ -44,9 +44,11 @@ body {
 
   &::before {
     content: "";
+
+    animation: 9s InfiniteBackground ease-in-out infinite;
     display: block;
     background-color: $background;
-    width: 100%;
+    width: 120%;
     height: 100%;
     position: fixed;
     mask-image: radial-gradient(
@@ -75,6 +77,18 @@ body {
       );
     }
   }
+}
+
+@keyframes InfiniteBackground {
+    0% {
+      left: 0%;
+    }
+    50% {
+      left: -20%;
+    }
+    100% {
+      left: 0%;
+    }
 }
 
 main {
