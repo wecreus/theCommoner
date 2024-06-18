@@ -15,15 +15,17 @@ const Welcome = memo((props) => {
   return (
     <>
       <p className="card__content welcome animate-render">
-        <span className="commoner gradient-text">
+        <span className="commoner">
           <ReactTyped
             strings={["THE", "theCommoner"]}
             typeSpeed={100}
             backSpeed={20}
+            className="react-typed gradient-text"
             onComplete={(instance) => {
               instance.cursor.className = "hidden";
             }}
           />
+          <span className="commoner__background">theCOMMONER</span>
         </span>
         is my humble library of thoughts{" "}
         <img src={Thoughts} alt="" className="emoji" />, game reviews{" "}
