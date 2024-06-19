@@ -31,7 +31,7 @@ const Gallery = memo(() => {
             className="carousel-gallery__image"
             key={picture.title + i}
           >
-            <span>{picture.title}</span>
+            <span style={{ userSelect: "none" }}>{picture.title}</span>
           </div>
         ))}
       </Carousel>
