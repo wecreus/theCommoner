@@ -1,7 +1,9 @@
 # theCommoner
 My blog for random stuff that I like.
 
-View it online https://commoner.vercel.app/
+View it online https://commoner-spa.vercel.app/
+
+View Next.js 15 implementation https://github.com/wecreus/theCommoner-next
 
 <div align="center">
 
